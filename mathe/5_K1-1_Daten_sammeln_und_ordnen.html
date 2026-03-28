@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>5 K1-1 Daten sammeln und ordnen</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── BODY ───────────────────────────────────────────────── */
+body {
+  background: #F0EDE8;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+  line-height: 1.65;
+  padding: 30px 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── SEITE ───────────────────────────────────────────────── */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: 0 auto 40px;
+  padding: 10mm 15mm 10mm;
+  box-shadow: 0 4px 24px rgba(0,0,0,.10);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.page-loe { border-top: 5px solid #1A7A50; }
+.page-loe .sec-hdr { border-left-color: #1A7A50; }
+.page-loe .auf-label::before { display: none; }
+
+/* ── KOPFZEILE ───────────────────────────────────────────── */
+.kat-badge {
+  position: absolute; top: 10mm; right: 17mm;
+  font-family: 'Nunito', sans-serif; font-size: 9.5px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: white; padding: 3px 10px 3px 8px;
+  border-radius: 0 4px 4px 0;
+  display: flex; align-items: center; gap: 5px;
+}
+.kat-badge.k1 { background: #1C5F96; }
+.kat-badge::before {
+  content: ''; display: inline-block;
+  width: 6px; height: 6px;
+  background: rgba(255,255,255,0.7); border-radius: 50%;
+}
+.loe-badge {
+  position: absolute; top: 10mm; right: 17mm;
+  font-family: 'Nunito', sans-serif; font-size: 9.5px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: white; padding: 3px 10px 3px 8px;
+  border-radius: 0 4px 4px 0; background: #1A7A50;
+}
+.sequenz-badge {
+  font-family: 'Nunito', sans-serif; font-size: 10.5px;
+  font-weight: 700; color: #5A5A5A;
+  text-transform: uppercase; letter-spacing: .10em;
+  text-align: center; margin-bottom: 3px;
+}
+.pg-title {
+  text-align: center; font-family: 'Lora', serif;
+  font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px;
+}
+.pg-sub {
+  text-align: center; font-family: 'Nunito', sans-serif;
+  font-size: 11px; font-style: italic; margin-bottom: 14px;
+}
+.datum-row { display: none; }
+
+/* ── SCOTCH-TAPE ─────────────────────────────────────────── */
+.tape-tl, .tape-tr {
+  position: absolute; width: 36px; height: 20px;
+  background: rgba(235,222,175,0.90);
+  filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.55));
+  clip-path: polygon(0% 0%,9% 20%,2% 45%,10% 70%,3% 90%,0% 100%,
+    100% 100%,97% 80%,100% 55%,91% 30%,98% 10%,92% 0%);
+}
+.tape-tl { top: -4px; left: -2px; transform: rotate(-38deg); }
+.tape-tr { top: -4px; right: -2px; transform: rotate(38deg); }
+
+/* ── BOXEN ───────────────────────────────────────────────── */
+.tape-box {
+  position: relative; background: #FDFAF0; border: 1.5px solid #D0C898;
+  border-radius: 5px; padding: 14px 15px 13px; margin-bottom: 18px;
+  font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.68;
+  box-shadow: 3px 4px 0px rgba(0,0,0,.07);
+}
+.tape-box .ll { margin-top: 16px !important; gap: 54px !important; }
+.tape-box .l  { padding-bottom: 6px; }
+
+.def-tape {
+  position: relative; background: #FDFAF0; border: 1.5px solid #D0C898;
+  border-radius: 5px; padding: 10px 13px; margin-bottom: 15px;
+  box-shadow: 3px 4px 0px rgba(0,0,0,.07);
+}
+.def-row {
+  display: grid; grid-template-columns: 90px 1fr; gap: 8px;
+  align-items: start; padding: 8px 0;
+  border-bottom: 1px dashed #D0C898;
+  font-size: 13.5px; font-family: 'Nunito', sans-serif;
+}
+.def-row:last-child { border-bottom: none; padding-bottom: 0; }
+.def-left {
+  font-family: 'Caveat', cursive; font-size: 15px;
+  font-weight: 700; color: #1C5F96; line-height: 1.3;
+}
+
+.merk-box {
+  position: relative; background: #FFFDE6; border: 1.5px solid #E8D84A;
+  border-radius: 5px; padding: 15px 13px 14px; margin-bottom: 15px;
+  font-family: 'Lora', serif; font-size: 13.5px; line-height: 2.2;
+  box-shadow: 3px 4px 0px rgba(0,0,0,.07);
+}
+.merk-box .tape-tl, .merk-box .tape-tr {
+  all: unset; position: absolute; width: 15px; height: 22px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 32'%3E%3Ccircle cx='11' cy='11' r='9.5' fill='%23E8821A' stroke='%231a1a1a' stroke-width='2'/%3E%3Crect x='10' y='19' width='2' height='11' rx='1' fill='%23999'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-size: contain; top: -12px;
+}
+.merk-box .tape-tl { left: 14px; transform: rotate(-28deg); }
+.merk-box .tape-tr { right: 14px; transform: rotate(28deg); }
+.merk-label {
+  font-family: 'Lora', serif; font-size: 13px; font-weight: 700;
+  font-style: italic; color: #6B5A00; margin-bottom: 4px;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+
+.tipp-box {
+  background: #F0F7FF; border: 1.5px solid #88BBE0;
+  border-left: 4px solid #5599CC; border-radius: 5px;
+  padding: 9px 12px 9px 34px; margin: 9px 0;
+  font-family: 'Nunito', sans-serif; font-size: 12px;
+  color: #1A3A5C; position: relative;
+}
+.tipp-box::before { content: '💡'; position: absolute; left: 9px; top: 50%; transform: translateY(-50%); }
+
+.exp-block {
+  background: #FFF5EB; border: 1.5px solid #D4892A;
+  border-left: 4px solid #E8821A; border-radius: 5px;
+  padding: 12px 13px; margin-bottom: 16px; position: relative;
+}
+.exp-header { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; color: #8B4500; margin-bottom: 6px; }
+.exp-body   { font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.75; }
+
+/* ── SECTION HEADER ──────────────────────────────────────── */
+.sec-hdr {
+  font-family: 'Lora', serif; font-size: 15px; font-weight: 700;
+  color: #1a1a1a; margin: 18px 0 10px; padding: 4px 0 4px 11px;
+  border-left: 4px solid #1C5F96; border-bottom: 1px solid #E0DDD5; display: block;
+}
+.sec-hdr.k1 { border-left-color: #1C5F96; }
+
+/* ── AUFGABEN ────────────────────────────────────────────── */
+.auf { margin-bottom: 20px; }
+.auf-label {
+  font-family: 'Lora', serif; font-size: 14px; font-weight: 700;
+  margin-bottom: 5px; display: flex; align-items: center; gap: 6px;
+}
+.auf-label::before { display: none; }
+.sterne { margin-left: auto; font-size: 12px; flex-shrink: 0; }
+.sterne.s1 { color: #1A7A50; }
+.sterne.s2 { color: #CF7C09; }
+.sterne.s3 { color: #A31515; }
+.auf-body { font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.82; }
+.teil { display: flex; gap: 7px; margin-top: 12px; font-size: 13.5px; align-items: flex-start; }
+.tn  { font-weight: 700; color: #555; min-width: 21px; flex-shrink: 0; }
+
+/* ── SCHREIBLINIEN ───────────────────────────────────────── */
+.ll   { display: flex; flex-direction: column; gap: 52px; margin-top: 18px; }
+.ll .l { border-bottom: 1.5px solid #bbb; width: 100%; min-height: 28px; display: block; }
+.ln   { border-bottom: 1px solid #aaa; display: inline-block; min-width: 80px; height: 14px; vertical-align: bottom; }
+.luecke { display: inline-block; border-bottom: 1.5px solid #C8A800; min-width: 70px; height: 16px; vertical-align: bottom; margin: 0 3px; }
+
+/* ── ZEICHENFLÄCHEN ──────────────────────────────────────── */
+.draw-box {
+  background-color: #FAFAFA;
+  background-image:
+    repeating-linear-gradient(to right,  #E0E0E0 0, #E0E0E0 0.6px, transparent 0.6px, transparent 20px),
+    repeating-linear-gradient(to bottom, #E0E0E0 0, #E0E0E0 0.6px, transparent 0.6px, transparent 20px);
+  border: 1.5px solid #C8C8C8;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+/* ── BRÜCHE ──────────────────────────────────────────────── */
+.b {
+  display: inline-flex; flex-direction: column; align-items: stretch;
+  vertical-align: middle; line-height: 1.2; margin: 0 3px;
+  font-size: 0.92em; text-align: center;
+}
+.b .z {
+  border-bottom: 1.4px solid currentColor;
+  padding: 1px 4px 2px; display: block; white-space: nowrap;
+  width: 100%; box-sizing: border-box;
+}
+.b .n {
+  padding: 2px 4px 0; display: block; white-space: nowrap;
+  width: 100%; box-sizing: border-box;
+}
+
+/* ── TABELLEN ────────────────────────────────────────────── */
+.mt-tbl {
+  width: 100%; border-collapse: collapse;
+  font-size: 12px; margin: 8px 0; font-family: 'Nunito', sans-serif;
+}
+.mt-tbl th {
+  background: #F0F4F8; padding: 5px 8px;
+  border: 1px solid #C8D4E0; font-weight: 700; text-align: center;
+}
+.mt-tbl td {
+  border: 1px solid #D0D8E0; padding: 5px 8px; text-align: center;
+}
+.mt-tbl td.fill { background: #FFFEF8; min-width: 40px; }
+.mt-tbl tr:nth-child(even) td { background: #F8FAFC; }
+.mt-tbl td.fill:nth-child(even) { background: #FFFBF0; }
+.mt-tbl td.label-cell { text-align: left; font-weight: 600; background: #F8FAFC; }
+
+/* Lösungs-Tabelle */
+.loe-tbl {
+  width: 100%; border-collapse: collapse;
+  font-size: 11.5px; margin: 6px 0; font-family: 'Nunito', sans-serif;
+}
+.loe-tbl th { background: #C8E8D4; padding: 4px 8px; border: 1px solid #8AC4A4; font-weight: 700; text-align: center; }
+.loe-tbl td { border: 1px solid #A8D4B8; padding: 4px 8px; text-align: center; }
+.loe-tbl td.sol { background: #D4EFE0; font-weight: 700; color: #0D5C35; }
+
+/* ── LÖSUNGSBLATT ────────────────────────────────────────── */
+.loe-antwort {
+  background: #E8F5EE; border: 1.5px solid #1A7A50;
+  border-radius: 5px; padding: 10px 13px; margin: 5px 0;
+  font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.75;
+}
+.loe-antwort .sol { font-weight: 700; color: #0D5C35; }
+.loe-antwort .loe-sol { color: #A31515; font-weight: 700; }
+.loe-antwort .teil { display: flex; gap: 7px; margin-top: 5px; font-size: 13.5px; align-items: flex-start; }
+.loe-antwort .tn   { font-weight: 700; color: #0D5C35; min-width: 21px; flex-shrink: 0; }
+.loe-hinweis {
+  font-family: 'Lora', serif; font-size: 11.5px; font-style: italic;
+  color: #555; border-left: 3px solid #A8D4B8;
+  padding-left: 9px; margin: 6px 0 0; line-height: 1.6;
+}
+
+/* ── QR-BOX ──────────────────────────────────────────────── */
+.qr-box {
+  display: flex; align-items: center; gap: 10px;
+  background: #F8FAF8; border: 1px solid #B8D4C0;
+  border-radius: 5px; padding: 8px 12px; margin-top: auto;
+  margin-bottom: 8px; align-self: flex-start;
+}
+.qr-box-label {
+  font-family: 'Nunito', sans-serif; font-size: 10px;
+  font-weight: 700; color: #1A7A50;
+}
+
+/* ── SEITENUMMER ─────────────────────────────────────────── */
+.seiten-nr {
+  font-family: 'Nunito', sans-serif; font-size: 9px;
+  color: #bbb; text-align: center; margin-top: auto; padding-top: 10px;
+}
+
+/* ── DRUCK ───────────────────────────────────────────────── */
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body { background: white !important; padding: 0 !important; margin: 0 !important; }
+  .page {
+    box-shadow: none !important; margin: 0 !important;
+    page-break-after: always !important; break-after: page !important;
+    width: 210mm !important; height: 297mm !important;
+    min-height: 0 !important; overflow: hidden !important;
+    padding: 12mm 15mm 10mm !important;
+  }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .kat-badge, .loe-badge   { background: #444 !important; }
+  .sec-hdr                 { border-left-color: #555 !important; }
+  .tape-box, .def-tape     { background: #F8F8F5 !important; border-color: #ccc !important; }
+  .merk-box                { background: #FAFAF0 !important; border-color: #bbb !important; }
+  .tipp-box                { background: #F4F4F8 !important; border-color: #999 !important; border-left-color: #666 !important; }
+  .draw-box                { background-image: repeating-linear-gradient(to right, #ccc 0, #ccc 0.5px, transparent 0.5px, transparent 20px), repeating-linear-gradient(to bottom, #ccc 0, #ccc 0.5px, transparent 0.5px, transparent 20px) !important; }
+  .exp-block               { background: #F8F5F0 !important; border-left-color: #888 !important; border-color: #bbb !important; }
+}
+</style>
+</head>
+
+<body>
+<!-- Wavy-Filter deaktiviert -->
+<svg style="position:absolute;width:0;height:0;">
+  <defs>
+    <filter id="wavy">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="5"/>
+      <feDisplacementMap in="SourceGraphic" scale="0"/>
+    </filter>
+  </defs>
+</svg>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SEITE 1 — SCHÜLER
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="kat-badge k1">LB 6 &middot; Auswertung von Daten</div>
+
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">Daten sammeln und ordnen</div>
+
+  <!-- ── EINSTIEG ──────────────────────────────────── -->
+  <div class="tape-box">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <strong>Eure Lehrkraft behauptet:</strong> &bdquo;In dieser Klasse hat mehr als die H&auml;lfte braune Haare.&ldquo;
+    <div class="tipp-box" style="margin-top:10px;">Stimmt das? Um diese Frage zu beantworten, brauchen wir <strong>Daten</strong>. Aber wie sammelt und ordnet man Daten richtig?</div>
+  </div>
+
+  <!-- ── GRUNDBEGRIFFE ──────────────────────────────── -->
+  <div class="sec-hdr k1">Grundbegriffe</div>
+  <div class="def-tape">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <div class="def-row">
+      <div class="def-left">Merkmal</div>
+      <div>Eine Eigenschaft, die man untersucht &mdash; zum Beispiel Haarfarbe, Schulweg oder Lieblingstier.</div>
+    </div>
+    <div class="def-row">
+      <div class="def-left">Strichliste</div>
+      <div>Eine Methode zum Sammeln von Daten: F&uuml;r jede Beobachtung ein Strich. Jeder f&uuml;nfte Strich geht quer durch die vier vorherigen:
+        <svg width="38" height="22" viewBox="0 0 38 22" style="display:inline-block;vertical-align:middle;margin:0 6px;" xmlns="http://www.w3.org/2000/svg"><line x1="4" y1="2" x2="4" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="11" y1="2" x2="11" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="2" x2="18" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="25" y1="2" x2="25" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="15" x2="28" y2="5" stroke="#C2571A" stroke-width="2.2" stroke-linecap="round"/></svg>&thinsp;=&thinsp;5 &nbsp;&nbsp;
+        <svg width="48" height="22" viewBox="0 0 52 22" style="display:inline-block;vertical-align:middle;margin:0 3px;" xmlns="http://www.w3.org/2000/svg"><line x1="4" y1="2" x2="4" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="11" y1="2" x2="11" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="2" x2="18" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="25" y1="2" x2="25" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="15" x2="28" y2="5" stroke="#C2571A" stroke-width="2.2" stroke-linecap="round"/><line x1="36" y1="2" x2="36" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="43" y1="2" x2="43" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="50" y1="2" x2="50" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/></svg>&thinsp;=&thinsp;8
+      </div>
+    </div>
+    <div class="def-row">
+      <div class="def-left">Tabelle</div>
+      <div>Ordnet die gesammelten Daten &uuml;bersichtlich in Zeilen und Spalten.</div>
+    </div>
+  </div>
+
+  <!-- ── AUFGABEN ─────────────────────────────────── -->
+  <div class="sec-hdr k1">Aufgaben</div>
+
+  <!-- AUFGABE 1 — PA ★ -->
+  <div class="auf">
+    <div class="auf-label">
+      <!-- Sequenz-Icon: Balkendiagramm -->
+      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#1C5F96"/>
+        <rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#1C5F96"/>
+        <rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#1C5F96"/>
+        <line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#1C5F96" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <!-- PA-Icon -->
+      <svg width="32" height="22" viewBox="0 0 40 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="6" r="5.5" fill="#1C5F96"/>
+        <circle cx="7.8" cy="5.2" r="1" fill="white"/>
+        <circle cx="12.2" cy="5.2" r="1" fill="white"/>
+        <path d="M7 8 Q10 10 13 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <rect x="3" y="13" width="14" height="12" rx="5" fill="#1C5F96" opacity="0.75"/>
+        <line x1="3" y1="16" x2="0" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
+        <circle cx="30" cy="6" r="5" fill="#1C5F96" opacity="0.6"/>
+        <circle cx="28" cy="5.2" r="0.9" fill="white"/>
+        <circle cx="32" cy="5.2" r="0.9" fill="white"/>
+        <path d="M27 8 Q30 10 33 8" stroke="white" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+        <rect x="23" y="13" width="13" height="11" rx="4.5" fill="#1C5F96" opacity="0.5"/>
+        <line x1="36" y1="16" x2="40" y2="21" stroke="#1C5F96" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+      Aufgabe 1: Haarfarbe der Klasse <span class="sterne s1">&#9733;</span>
+    </div>
+    <div class="auf-body">
+      Pr&uuml;ft gemeinsam die Behauptung eurer Lehrkraft. F&uuml;hrt dazu eine Umfrage in der Klasse durch.
+      <div class="teil"><span class="tn">a)</span><span>Befrage alle Sch&uuml;lerinnen und Sch&uuml;ler nach ihrer Haarfarbe. Trage f&uuml;r jede Antwort einen Strich in die passende Zeile der Strichliste ein.</span></div>
+      <table class="mt-tbl" style="margin-top:10px;">
+        <thead>
+          <tr><th style="width:22%;">Haarfarbe</th><th style="width:48%;">Strichliste</th><th style="width:30%;">Anzahl</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="label-cell">blond</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="label-cell">braun</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="label-cell">schwarz</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="label-cell">rot</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="label-cell">andere</td><td class="fill"></td><td class="fill"></td></tr>
+        </tbody>
+      </table>
+      <div class="teil"><span class="tn">b)</span><span>Z&auml;hle die Striche in jeder Zeile und trage die Anzahl in die rechte Spalte ein.</span></div>
+      <div class="teil"><span class="tn">c)</span><span>Hatte eure Lehrkraft recht? Begr&uuml;nde deine Antwort mit den Daten aus der Tabelle.</span></div>
+      <div class="draw-box" style="height:80px;"></div>
+    </div>
+  </div>
+
+  <div class="seiten-nr">5 &middot; Auswertung von Daten &middot; K1-1 &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SEITE 2 — SCHÜLER (+ Merksatz am Ende)
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="kat-badge k1">LB 6 &middot; Auswertung von Daten</div>
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">Daten sammeln und ordnen</div>
+
+  <!-- AUFGABE 2 — EA ★★ -->
+  <div class="auf">
+    <div class="auf-label">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#1C5F96"/>
+        <rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#1C5F96"/>
+        <rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#1C5F96"/>
+        <line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#1C5F96" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <!-- EA-Icon -->
+      <svg width="18" height="22" viewBox="0 0 24 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="6" r="5.5" fill="#1C5F96"/>
+        <circle cx="9.8" cy="5.2" r="1" fill="white"/>
+        <circle cx="14.2" cy="5.2" r="1" fill="white"/>
+        <path d="M9 8 Q12 10 15 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <rect x="5" y="13" width="14" height="12" rx="5" fill="#1C5F96" opacity="0.75"/>
+        <line x1="5" y1="16" x2="0" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
+        <line x1="19" y1="16" x2="24" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
+      </svg>
+      Aufgabe 2: Schulwege der Klasse 5a <span class="sterne s2">&#9733;&#9733;</span>
+    </div>
+    <div class="auf-body">
+      Die Klasse 5a hat ihre Schulwege untersucht. Hier sind die Ergebnisse: 8&nbsp;Sch&uuml;ler kommen mit dem <strong>Bus</strong>, 6&nbsp;fahren mit dem <strong>Fahrrad</strong>, 5&nbsp;werden mit dem <strong>Auto</strong> gebracht, 3&nbsp;kommen <strong>zu Fu&szlig;</strong> und 2&nbsp;fahren mit dem <strong>Roller</strong>.
+      <div class="teil"><span class="tn">a)</span><span>&Uuml;bertrage die Daten aus dem Text in die Strichliste und erg&auml;nze die Anzahl.</span></div>
+      <table class="mt-tbl" style="margin-top:10px;">
+        <thead>
+          <tr><th style="width:22%;">Schulweg</th><th style="width:48%;">Strichliste</th><th style="width:30%;">Anzahl</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="label-cell">Bus</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="label-cell">Fahrrad</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="label-cell">Auto</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="label-cell">zu Fu&szlig;</td><td class="fill"></td><td class="fill"></td></tr>
+          <tr><td class="label-cell">Roller</td><td class="fill"></td><td class="fill"></td></tr>
+        </tbody>
+      </table>
+      <div class="teil"><span class="tn">b)</span><span>Wie viele Sch&uuml;lerinnen und Sch&uuml;ler hat die Klasse 5a insgesamt? <span class="ln" style="min-width:50px;"></span></span></div>
+      <div class="teil"><span class="tn">c)</span><span>Welcher Schulweg wird am h&auml;ufigsten genutzt, welcher am seltensten?</span></div>
+      <div class="ll"><div class="l"></div></div>
+    </div>
+  </div>
+
+  <!-- AUFGABE 3 — EA ★★★ -->
+  <div class="auf">
+    <div class="auf-label">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#1C5F96"/>
+        <rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#1C5F96"/>
+        <rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#1C5F96"/>
+        <line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#1C5F96" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <svg width="18" height="22" viewBox="0 0 24 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="6" r="5.5" fill="#1C5F96"/>
+        <circle cx="9.8" cy="5.2" r="1" fill="white"/>
+        <circle cx="14.2" cy="5.2" r="1" fill="white"/>
+        <path d="M9 8 Q12 10 15 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <rect x="5" y="13" width="14" height="12" rx="5" fill="#1C5F96" opacity="0.75"/>
+        <line x1="5" y1="16" x2="0" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
+        <line x1="19" y1="16" x2="24" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
+      </svg>
+      Aufgabe 3: Deine eigene Umfrage <span class="sterne s3">&#9733;&#9733;&#9733;</span>
+    </div>
+    <div class="auf-body">
+      W&auml;hle ein eigenes Merkmal, das dich interessiert (zum Beispiel: Anzahl der Geschwister, Lieblingsfarbe, Lieblingstier oder Lieblingssportart). Erstelle daf&uuml;r eine eigene Tabelle mit Strichliste und Anzahl.
+      <div class="teil"><span class="tn">a)</span><span>Mein Merkmal: <span class="ln" style="min-width:140px;"></span></span></div>
+      <div class="teil"><span class="tn">b)</span><span>Erstelle deine eigene Tabelle und befrage mindestens 10&nbsp;Mitsch&uuml;lerinnen und Mitsch&uuml;ler.</span></div>
+      <div class="draw-box" style="height:120px;"></div>
+      <div class="teil"><span class="tn">c)</span><span>Formuliere eine Frage, die du mit deinen Daten beantworten kannst, und beantworte sie.</span></div>
+      <div class="draw-box" style="height:80px;"></div>
+    </div>
+  </div>
+
+  <!-- MERKSATZ -->
+  <div class="merk-box">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <div class="merk-label">Merksatz: Daten sammeln und ordnen</div>
+    Um Daten zu untersuchen, w&auml;hlt man zuerst ein
+    <span class="luecke" style="min-width:80px;"></span>
+    aus, das man untersuchen m&ouml;chte. Die Daten sammelt man mithilfe einer
+    <span class="luecke" style="min-width:100px;"></span>.
+    Anschlie&szlig;end ordnet man die Ergebnisse in einer
+    <span class="luecke" style="min-width:75px;"></span>.
+    So lassen sich die Daten &uuml;bersichtlich
+    <span class="luecke" style="min-width:100px;"></span>
+    und Fragen beantworten.
+  </div>
+
+  <div class="seiten-nr">5 &middot; Auswertung von Daten &middot; K1-1 &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+
+
+<!-- LOE_SEP -->
+<!-- ══════════════════════════════════════════════════════════
+     SEITE 3 — LÖSUNGSBLATT
+     ══════════════════════════════════════════════════════════ -->
+<div class="page page-loe" id="loesung">
+
+  <div class="loe-badge">&#10004; L&ouml;sungsblatt</div>
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">Daten sammeln und ordnen &mdash; L&ouml;sungsblatt</div>
+  <div class="pg-sub" style="color:#1A7A50;">L&ouml;sungsblatt &middot; nur f&uuml;r die Lehrkraft</div>
+
+  <!-- Aufgabe 1 -->
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe 1: Haarfarbe der Klasse</div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">a+b)</span><span>Individuelle Ergebnisse &mdash; abh&auml;ngig von der jeweiligen Klasse. Beispiel f&uuml;r eine Klasse mit 26&nbsp;Sch&uuml;lern:</span></div>
+    <table class="loe-tbl" style="margin-top:6px;">
+      <thead><tr><th>Haarfarbe</th><th>Strichliste</th><th>Anzahl</th></tr></thead>
+      <tbody>
+        <tr><td>blond</td><td class="sol">|||| |||</td><td class="sol">8</td></tr>
+        <tr><td>braun</td><td class="sol">|||| |||| |</td><td class="sol">11</td></tr>
+        <tr><td>schwarz</td><td class="sol">||||</td><td class="sol">4</td></tr>
+        <tr><td>rot</td><td class="sol">||</td><td class="sol">2</td></tr>
+        <tr><td>andere</td><td class="sol">|</td><td class="sol">1</td></tr>
+      </tbody>
+    </table>
+    <div class="teil"><span class="tn">c)</span><span>Beispielantwort: <span class="sol">Die Lehrkraft hatte nicht recht.</span> Von 26&nbsp;Sch&uuml;lern haben 11 braune Haare. Die H&auml;lfte von 26 ist 13. Da 11&nbsp;&lt;&nbsp;13, hat <em>weniger</em> als die H&auml;lfte braune Haare.</span></div>
+  </div>
+  <div class="loe-hinweis">Typischer Fehler: Sch&uuml;ler verwechseln &bdquo;mehr als die H&auml;lfte&ldquo; mit &bdquo;die meisten&ldquo;. Braun kann die h&auml;ufigste Farbe sein, ohne &uuml;ber der H&auml;lfte zu liegen. Diese Unterscheidung ist ein wichtiges Lernziel. &mdash; <strong>Zeitplanung:</strong> ca. 15&nbsp;Min. f&uuml;r die Umfrage einplanen (aufstehen, befragen, eintragen).</div>
+
+  <!-- Aufgabe 2 -->
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe 2: Schulwege der Klasse 5a</div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">a)</span><span>Korrekte Strichliste und Anzahl:</span></div>
+    <table class="loe-tbl" style="margin-top:6px;">
+      <thead><tr><th>Schulweg</th><th>Strichliste</th><th>Anzahl</th></tr></thead>
+      <tbody>
+        <tr><td>Bus</td><td class="sol">|||| |||</td><td class="sol">8</td></tr>
+        <tr><td>Fahrrad</td><td class="sol">|||| |</td><td class="sol">6</td></tr>
+        <tr><td>Auto</td><td class="sol">||||</td><td class="sol">5</td></tr>
+        <tr><td>zu Fu&szlig;</td><td class="sol">|||</td><td class="sol">3</td></tr>
+        <tr><td>Roller</td><td class="sol">||</td><td class="sol">2</td></tr>
+      </tbody>
+    </table>
+    <div class="teil"><span class="tn">b)</span><span>Die Klasse 5a hat insgesamt <span class="sol">8 + 6 + 5 + 3 + 2 = 24 Sch&uuml;ler</span>.</span></div>
+    <div class="teil"><span class="tn">c)</span><span>Am h&auml;ufigsten: <span class="sol">Bus (8 Sch&uuml;ler)</span>. Am seltensten: <span class="sol">Roller (2 Sch&uuml;ler)</span>.</span></div>
+  </div>
+  <div class="loe-hinweis">Typischer Fehler: Sch&uuml;ler vergessen beim Z&auml;hlen die 5er-B&uuml;ndelung in der Strichliste und verzählen sich. Tipp: &bdquo;Der f&uuml;nfte Strich geht immer quer &mdash; so z&auml;hlt ihr in F&uuml;nferschritten.&ldquo;</div>
+
+  <!-- Aufgabe 3 -->
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe 3: Deine eigene Umfrage</div>
+  <div class="loe-antwort">
+    <div class="loe-hinweis" style="margin:0;">Offene Aufgabe &mdash; individuelle L&ouml;sungen akzeptieren. Bewertungskriterien: (1)&nbsp;Merkmal klar benannt, (2)&nbsp;Tabelle mit Spalten Merkmal / Strichliste / Anzahl, (3)&nbsp;mindestens 10&nbsp;Befragte, (4)&nbsp;Frage mathematisch sinnvoll und mit den Daten beantwortbar (z.&nbsp;B. &bdquo;Welche Farbe wurde am h&auml;ufigsten genannt?&ldquo;). <br><br><strong>Differenzierung:</strong> Starke Sch&uuml;ler formulieren Fragen, die einen Vergleich erfordern (&bdquo;Haben mehr Sch&uuml;ler ein Haustier als keins?&ldquo;). Schw&auml;chere Sch&uuml;ler beantworten einfache &bdquo;Was ist am meisten/wenigsten?&ldquo;-Fragen.</div>
+  </div>
+
+  <!-- Merksatz-Lücken -->
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Merksatz-L&uuml;cken</div>
+  <div class="loe-antwort">
+    <span class="sol">Merkmal</span> &mdash;
+    <span class="sol">Strichliste</span> &mdash;
+    <span class="sol">Tabelle</span> &mdash;
+    <span class="sol">vergleichen</span>
+  </div>
+
+  <div class="loe-hinweis" style="margin-top:14px;">
+    <strong>R&uuml;ckbezug zum Einstieg:</strong> Die Behauptung der Lehrkraft aufzul&ouml;sen ist ein guter Abschluss f&uuml;r die Stunde. Ergebnis im Plenum besprechen: &bdquo;Braun ist vielleicht am h&auml;ufigsten &mdash; aber das hei&szlig;t noch nicht &sbquo;mehr als die H&auml;lfte&lsquo;.&ldquo; Das bereitet die kritische Datenanalyse in K3-1 vor.
+  </div>
+
+  <div class="seiten-nr">5 &middot; K1-1 &middot; L&ouml;sungsblatt &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+
+
+</body>
+</html>

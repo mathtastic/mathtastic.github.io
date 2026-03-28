@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>5 K1-2a Säulendiagramm</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; color: #1a1a1a; line-height: 1.65; padding: 30px 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+.page { width: 210mm; min-height: 297mm; background: #fff; margin: 0 auto 40px; padding: 10mm 15mm 10mm; box-shadow: 0 4px 24px rgba(0,0,0,.10); display: flex; flex-direction: column; position: relative; }
+.page-loe { border-top: 5px solid #1A7A50; }
+.page-loe .sec-hdr { border-left-color: #1A7A50; }
+.page-loe .auf-label::before { display: none; }
+.kat-badge { position: absolute; top: 10mm; right: 17mm; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; padding: 3px 10px 3px 8px; border-radius: 0 4px 4px 0; display: flex; align-items: center; gap: 5px; }
+.kat-badge.k1 { background: #1C5F96; }
+.kat-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; }
+.loe-badge { position: absolute; top: 10mm; right: 17mm; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; padding: 3px 10px 3px 8px; border-radius: 0 4px 4px 0; background: #1A7A50; }
+.sequenz-badge { font-family: 'Nunito', sans-serif; font-size: 10.5px; font-weight: 700; color: #5A5A5A; text-transform: uppercase; letter-spacing: .10em; text-align: center; margin-bottom: 3px; }
+.pg-title { text-align: center; font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+.pg-sub { text-align: center; font-family: 'Nunito', sans-serif; font-size: 11px; font-style: italic; margin-bottom: 14px; }
+.datum-row { display: none; }
+.gruppe-badge { display: inline-block; font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 700; color: white; background: #1C5F96; padding: 3px 12px; border-radius: 12px; margin: 0 auto 8px; }
+.tape-tl, .tape-tr { position: absolute; width: 36px; height: 20px; background: rgba(235,222,175,0.90); filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.55)); clip-path: polygon(0% 0%,9% 20%,2% 45%,10% 70%,3% 90%,0% 100%,100% 100%,97% 80%,100% 55%,91% 30%,98% 10%,92% 0%); }
+.tape-tl { top: -4px; left: -2px; transform: rotate(-38deg); }
+.tape-tr { top: -4px; right: -2px; transform: rotate(38deg); }
+.tape-box { position: relative; background: #FDFAF0; border: 1.5px solid #D0C898; border-radius: 5px; padding: 14px 15px 13px; margin-bottom: 18px; font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.68; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.tape-box .ll { margin-top: 16px !important; gap: 54px !important; }
+.tape-box .l  { padding-bottom: 6px; }
+.def-tape { position: relative; background: #FDFAF0; border: 1.5px solid #D0C898; border-radius: 5px; padding: 10px 13px; margin-bottom: 15px; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.def-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; align-items: start; padding: 8px 0; border-bottom: 1px dashed #D0C898; font-size: 13.5px; font-family: 'Nunito', sans-serif; }
+.def-row:last-child { border-bottom: none; padding-bottom: 0; }
+.def-left { font-family: 'Caveat', cursive; font-size: 15px; font-weight: 700; color: #1C5F96; line-height: 1.3; }
+.tipp-box { background: #F0F7FF; border: 1.5px solid #88BBE0; border-left: 4px solid #5599CC; border-radius: 5px; padding: 9px 12px 9px 34px; margin: 9px 0; font-family: 'Nunito', sans-serif; font-size: 12.5px; color: #1A3A5C; position: relative; }
+.tipp-box::before { content: '💡'; position: absolute; left: 9px; top: 50%; transform: translateY(-50%); }
+.sec-hdr { font-family: 'Lora', serif; font-size: 15px; font-weight: 700; color: #1a1a1a; margin: 18px 0 10px; padding: 4px 0 4px 11px; border-left: 4px solid #1C5F96; border-bottom: 1px solid #E0DDD5; display: block; }
+.sec-hdr.k1 { border-left-color: #1C5F96; }
+.auf { margin-bottom: 20px; }
+.auf-label { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+.auf-label::before { display: none; }
+.sterne { margin-left: auto; font-size: 12px; flex-shrink: 0; }
+.sterne.s1 { color: #1A7A50; } .sterne.s2 { color: #CF7C09; } .sterne.s3 { color: #A31515; }
+.auf-body { font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.82; }
+.teil { display: flex; gap: 7px; margin-top: 12px; font-size: 13.5px; align-items: flex-start; }
+.tn { font-weight: 700; color: #555; min-width: 21px; flex-shrink: 0; }
+.ll { display: flex; flex-direction: column; gap: 52px; margin-top: 18px; }
+.ll .l { border-bottom: 1.5px solid #bbb; width: 100%; min-height: 28px; display: block; }
+.ln { border-bottom: 1px solid #aaa; display: inline-block; min-width: 80px; height: 14px; vertical-align: bottom; }
+.luecke { display: inline-block; border-bottom: 1.5px solid #C8A800; min-width: 70px; height: 16px; vertical-align: bottom; margin: 0 3px; }
+.draw-box { background-color: #FAFAFA; background-image: repeating-linear-gradient(to right, #E0E0E0 0, #E0E0E0 0.6px, transparent 0.6px, transparent 20px), repeating-linear-gradient(to bottom, #E0E0E0 0, #E0E0E0 0.6px, transparent 0.6px, transparent 20px); border: 1.5px solid #C8C8C8; border-radius: 4px; margin-top: 8px; }
+.mt-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin: 8px 0; font-family: 'Nunito', sans-serif; }
+.mt-tbl th { background: #F0F4F8; padding: 5px 8px; border: 1px solid #C8D4E0; font-weight: 700; text-align: center; }
+.mt-tbl td { border: 1px solid #D0D8E0; padding: 5px 8px; text-align: center; }
+.mt-tbl td.label-cell { text-align: left; font-weight: 600; background: #F8FAFC; }
+.loe-antwort { background: #E8F5EE; border: 1.5px solid #1A7A50; border-radius: 5px; padding: 10px 13px; margin: 5px 0; font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.75; }
+.loe-antwort .sol { font-weight: 700; color: #0D5C35; }
+.loe-antwort .teil { display: flex; gap: 7px; margin-top: 5px; font-size: 13.5px; align-items: flex-start; }
+.loe-antwort .tn { font-weight: 700; color: #0D5C35; min-width: 21px; flex-shrink: 0; }
+.loe-hinweis { font-family: 'Lora', serif; font-size: 11.5px; font-style: italic; color: #555; border-left: 3px solid #A8D4B8; padding-left: 9px; margin: 6px 0 0; line-height: 1.6; }
+.loe-tbl { width: 100%; border-collapse: collapse; font-size: 11.5px; margin: 6px 0; font-family: 'Nunito', sans-serif; }
+.loe-tbl th { background: #C8E8D4; padding: 4px 8px; border: 1px solid #8AC4A4; font-weight: 700; text-align: center; }
+.loe-tbl td { border: 1px solid #A8D4B8; padding: 4px 8px; text-align: center; }
+.loe-tbl td.sol { background: #D4EFE0; font-weight: 700; color: #0D5C35; }
+.seiten-nr { font-family: 'Nunito', sans-serif; font-size: 9px; color: #bbb; text-align: center; margin-top: auto; padding-top: 10px; }
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body { background: white !important; padding: 0 !important; margin: 0 !important; }
+  .page { box-shadow: none !important; margin: 0 !important; page-break-after: always !important; break-after: page !important; width: 210mm !important; height: 297mm !important; min-height: 0 !important; overflow: hidden !important; padding: 12mm 15mm 10mm !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .kat-badge, .loe-badge { background: #444 !important; }
+  .sec-hdr { border-left-color: #555 !important; }
+  .tape-box, .def-tape { background: #F8F8F5 !important; border-color: #ccc !important; }
+  .tipp-box { background: #F4F4F8 !important; border-color: #999 !important; border-left-color: #666 !important; }
+  .draw-box { background-image: repeating-linear-gradient(to right, #ccc 0, #ccc 0.5px, transparent 0.5px, transparent 20px), repeating-linear-gradient(to bottom, #ccc 0, #ccc 0.5px, transparent 0.5px, transparent 20px) !important; }
+}
+</style>
+</head>
+
+<body>
+<svg style="position:absolute;width:0;height:0;"><defs><filter id="wavy"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="0"/></filter></defs></svg>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SEITE 1 — SCHÜLER
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="kat-badge k1">LB 6 &middot; Auswertung von Daten</div>
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">Diagramme kennenlernen</div>
+  <div style="text-align:center;"><span class="gruppe-badge">Gruppe A &mdash; S&auml;ulendiagramm</span></div>
+
+  <!-- ── EINSTIEG ──────────────────────────────────── -->
+  <div class="tape-box">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <strong>Eure Aufgabe:</strong> Die Klasse 5b hat ihre Lieblingsf&auml;cher gesammelt. Jede Gruppe stellt die <em>gleichen Daten</em> auf eine andere Art dar. Eure Gruppe lernt das <strong>S&auml;ulendiagramm</strong> kennen. Am Ende pr&auml;sentiert ihr euer Ergebnis &mdash; und lernt von den anderen Gruppen deren Diagrammtypen.
+  </div>
+
+  <!-- ── DATEN FÜR ALLE GRUPPEN ──────────────────── -->
+  <div class="sec-hdr k1">Die Daten</div>
+  <table class="mt-tbl">
+    <thead><tr><th>Lieblingsfach</th><th>Sport</th><th>Mathe</th><th>Kunst</th><th>Musik</th><th>Deutsch</th><th>Gesamt</th></tr></thead>
+    <tbody><tr><td style="font-weight:600;background:#F8FAFC;">Anzahl</td><td>10</td><td>7</td><td>4</td><td>3</td><td>2</td><td style="font-weight:700;">26</td></tr></tbody>
+  </table>
+
+  <!-- ── ERKLÄRUNG ──────────────────────────────────── -->
+  <div class="sec-hdr k1">So funktioniert ein S&auml;ulendiagramm</div>
+  <div class="def-tape">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <div class="def-row">
+      <div class="def-left">S&auml;ulen</div>
+      <div>Jede Kategorie (z.&nbsp;B. jedes Fach) bekommt eine <strong>senkrechte S&auml;ule</strong>. Je h&ouml;her die S&auml;ule, desto gr&ouml;&szlig;er die Anzahl.</div>
+    </div>
+    <div class="def-row">
+      <div class="def-left">x-Achse</div>
+      <div>Die waagerechte Achse zeigt die <strong>Kategorien</strong> (hier: die F&auml;cher).</div>
+    </div>
+    <div class="def-row">
+      <div class="def-left">y-Achse</div>
+      <div>Die senkrechte Achse zeigt die <strong>Anzahl</strong>. Sie beginnt immer bei&nbsp;0!</div>
+    </div>
+    <div class="def-row">
+      <div class="def-left">&Uuml;berschrift</div>
+      <div>Jedes Diagramm braucht eine <strong>&Uuml;berschrift</strong>, die beschreibt, was dargestellt wird.</div>
+    </div>
+  </div>
+
+  <div class="tipp-box">Alle S&auml;ulen m&uuml;ssen <strong>gleich breit</strong> sein und den <strong>gleichen Abstand</strong> zueinander haben. Nur die H&ouml;he zeigt den Unterschied!</div>
+
+  <!-- ── AUFGABE ─────────────────────────────────── -->
+  <div class="sec-hdr k1">Auftrag f&uuml;r eure Gruppe</div>
+
+  <div class="auf">
+    <div class="auf-label">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#1C5F96"/><rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#1C5F96"/><rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#1C5F96"/><line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#1C5F96" stroke-width="1" stroke-linecap="round"/></svg>
+      <!-- GA-Icon -->
+      <svg width="44" height="22" viewBox="0 0 54 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="7" r="4.5" fill="#1C5F96" opacity="0.55"/><circle cx="6.2" cy="6.3" r="0.8" fill="white"/><circle cx="9.8" cy="6.3" r="0.8" fill="white"/><rect x="2" y="14" width="12" height="10" rx="4" fill="#1C5F96" opacity="0.45"/><circle cx="27" cy="5.5" r="5.5" fill="#1C5F96"/><circle cx="24.8" cy="4.7" r="1" fill="white"/><circle cx="29.2" cy="4.7" r="1" fill="white"/><path d="M23.5 7.5 Q27 9.5 30.5 7.5" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="19" y="13" width="16" height="12" rx="5" fill="#1C5F96" opacity="0.8"/><line x1="19" y1="16" x2="14" y2="21" stroke="#1C5F96" stroke-width="2" stroke-linecap="round" opacity="0.7"/><line x1="35" y1="16" x2="40" y2="21" stroke="#1C5F96" stroke-width="2" stroke-linecap="round" opacity="0.7"/><circle cx="46" cy="7" r="4.5" fill="#1C5F96" opacity="0.55"/><circle cx="44.2" cy="6.3" r="0.8" fill="white"/><circle cx="47.8" cy="6.3" r="0.8" fill="white"/><rect x="40" y="14" width="12" height="10" rx="4" fill="#1C5F96" opacity="0.45"/></svg>
+      Aufgabe: S&auml;ulendiagramm zeichnen <span class="sterne s1">&#9733;</span>
+    </div>
+    <div class="auf-body">
+      <div class="teil"><span class="tn">a)</span><span>Zeichnet ein S&auml;ulendiagramm mit den Daten aus der Tabelle oben. Nutzt das K&auml;stchenfeld auf Seite&nbsp;2. Ein K&auml;stchen nach oben = 1&nbsp;Sch&uuml;ler. Jede S&auml;ule ist 2&nbsp;K&auml;stchen breit.</span></div>
+      <div class="teil"><span class="tn">b)</span><span>Beschriftet beide Achsen und gebt dem Diagramm eine &Uuml;berschrift.</span></div>
+      <div class="teil"><span class="tn">c)</span><span>Bereitet eine kurze Pr&auml;sentation vor (ca. 2&nbsp;Minuten): Erkl&auml;rt der Klasse, wie ein S&auml;ulendiagramm funktioniert und was man daran gut ablesen kann.</span></div>
+    </div>
+  </div>
+
+  <div class="seiten-nr">5 &middot; Auswertung von Daten &middot; K1-2a &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SEITE 2 — ZEICHENFLÄCHE
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="kat-badge k1">LB 6 &middot; Auswertung von Daten</div>
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">Diagramme kennenlernen</div>
+
+  <div style="text-align:center;margin-bottom:6px;"><span class="gruppe-badge">Gruppe A &mdash; S&auml;ulendiagramm</span></div>
+
+  <div class="sec-hdr k1">Eure Zeichenfl&auml;che</div>
+  <div class="draw-box" style="height:280px;"></div>
+
+  <div class="sec-hdr k1" style="margin-top:14px;">Notizen f&uuml;r eure Pr&auml;sentation</div>
+  <div class="auf">
+    <div class="auf-body">
+      Was kann man an einem S&auml;ulendiagramm besonders gut ablesen? Wann ist es sinnvoll?
+    </div>
+    <div class="draw-box" style="height:140px;"></div>
+  </div>
+
+  <div class="seiten-nr">5 &middot; Auswertung von Daten &middot; K1-2a &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+
+
+<!-- LOE_SEP -->
+<!-- ══════════════════════════════════════════════════════════
+     SEITE 3 — LÖSUNGSBLATT
+     ══════════════════════════════════════════════════════════ -->
+<div class="page page-loe" id="loesung">
+
+  <div class="loe-badge">&#10004; L&ouml;sungsblatt</div>
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">S&auml;ulendiagramm &mdash; L&ouml;sungsblatt</div>
+  <div class="pg-sub" style="color:#1A7A50;">L&ouml;sungsblatt &middot; nur f&uuml;r die Lehrkraft</div>
+
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe: S&auml;ulendiagramm</div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">a+b)</span><span>Korrektes S&auml;ulendiagramm mit:</span></div>
+    <span class="sol">&bull;</span> &Uuml;berschrift: z.&nbsp;B. &bdquo;Lieblingsf&auml;cher der Klasse 5b&ldquo;<br>
+    <span class="sol">&bull;</span> x-Achse: Sport, Mathe, Kunst, Musik, Deutsch<br>
+    <span class="sol">&bull;</span> y-Achse: Anzahl (0, 2, 4, 6, 8, 10) &mdash; beginnt bei 0!<br>
+    <span class="sol">&bull;</span> S&auml;ulenh&ouml;hen: Sport=10, Mathe=7, Kunst=4, Musik=3, Deutsch=2<br>
+    <span class="sol">&bull;</span> Alle S&auml;ulen gleich breit (2 K&auml;stchen), gleicher Abstand
+    <div class="teil"><span class="tn">c)</span><span>Pr&auml;sentationshinweise: <span class="sol">Man kann Unterschiede sofort an der H&ouml;he erkennen. Gut f&uuml;r Vergleiche zwischen Kategorien. Man sieht auf einen Blick, was am h&auml;ufigsten/seltensten ist.</span></span></div>
+  </div>
+
+  <div class="loe-hinweis">
+    <strong>Typische Fehler:</strong> (1)&nbsp;y-Achse beginnt nicht bei 0. (2)&nbsp;S&auml;ulen unterschiedlich breit. (3)&nbsp;Achsenbeschriftung oder &Uuml;berschrift fehlt. (4)&nbsp;S&auml;ulen kleben aneinander statt Abstand.
+    <br><br><strong>Zeitplanung:</strong> 15&nbsp;Min. Gruppenarbeit, 2&ndash;3&nbsp;Min. Pr&auml;sentation. Falls die Gruppe schnell fertig ist: &bdquo;Welches Fach m&uuml;sste 5&nbsp;Stimmen mehr bekommen, damit es genauso beliebt wie Sport w&auml;re?&ldquo;
+  </div>
+
+  <div class="seiten-nr">5 &middot; K1-2a &middot; L&ouml;sungsblatt &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+
+</body>
+</html>

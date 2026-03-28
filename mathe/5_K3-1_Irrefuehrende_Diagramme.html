@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>5 K3-1 Irreführende Diagramme</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; color: #1a1a1a; line-height: 1.65; padding: 30px 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+.page { width: 210mm; min-height: 297mm; background: #fff; margin: 0 auto 40px; padding: 10mm 15mm 10mm; box-shadow: 0 4px 24px rgba(0,0,0,.10); display: flex; flex-direction: column; position: relative; }
+.page-loe { border-top: 5px solid #1A7A50; }
+.page-loe .sec-hdr { border-left-color: #1A7A50; }
+.page-loe .auf-label::before { display: none; }
+.kat-badge { position: absolute; top: 10mm; right: 17mm; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; padding: 3px 10px 3px 8px; border-radius: 0 4px 4px 0; display: flex; align-items: center; gap: 5px; }
+.kat-badge.k3 { background: #C2571A; }
+.kat-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; }
+.loe-badge { position: absolute; top: 10mm; right: 17mm; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; padding: 3px 10px 3px 8px; border-radius: 0 4px 4px 0; background: #1A7A50; }
+.sequenz-badge { font-family: 'Nunito', sans-serif; font-size: 10.5px; font-weight: 700; color: #5A5A5A; text-transform: uppercase; letter-spacing: .10em; text-align: center; margin-bottom: 3px; }
+.pg-title { text-align: center; font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+.pg-sub { text-align: center; font-family: 'Nunito', sans-serif; font-size: 11px; font-style: italic; margin-bottom: 14px; }
+.datum-row { display: none; }
+.tape-tl, .tape-tr { position: absolute; width: 36px; height: 20px; background: rgba(235,222,175,0.90); filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.55)); clip-path: polygon(0% 0%,9% 20%,2% 45%,10% 70%,3% 90%,0% 100%,100% 100%,97% 80%,100% 55%,91% 30%,98% 10%,92% 0%); }
+.tape-tl { top: -4px; left: -2px; transform: rotate(-38deg); }
+.tape-tr { top: -4px; right: -2px; transform: rotate(38deg); }
+.tape-box { position: relative; background: #FDFAF0; border: 1.5px solid #D0C898; border-radius: 5px; padding: 14px 15px 13px; margin-bottom: 18px; font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.68; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.merk-box { position: relative; background: #FFFDE6; border: 1.5px solid #E8D84A; border-radius: 5px; padding: 15px 13px 14px; margin-bottom: 15px; font-family: 'Lora', serif; font-size: 13.5px; line-height: 2.2; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.merk-box .tape-tl, .merk-box .tape-tr { all: unset; position: absolute; width: 15px; height: 22px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 32'%3E%3Ccircle cx='11' cy='11' r='9.5' fill='%23E8821A' stroke='%231a1a1a' stroke-width='2'/%3E%3Crect x='10' y='19' width='2' height='11' rx='1' fill='%23999'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: contain; top: -12px; }
+.merk-box .tape-tl { left: 14px; transform: rotate(-28deg); }
+.merk-box .tape-tr { right: 14px; transform: rotate(28deg); }
+.merk-label { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; font-style: italic; color: #6B5A00; margin-bottom: 4px; text-decoration: underline; text-underline-offset: 3px; }
+.tipp-box { background: #F0F7FF; border: 1.5px solid #88BBE0; border-left: 4px solid #5599CC; border-radius: 5px; padding: 9px 12px 9px 34px; margin: 9px 0; font-family: 'Nunito', sans-serif; font-size: 12.5px; color: #1A3A5C; position: relative; }
+.tipp-box::before { content: '💡'; position: absolute; left: 9px; top: 50%; transform: translateY(-50%); }
+.sec-hdr { font-family: 'Lora', serif; font-size: 15px; font-weight: 700; color: #1a1a1a; margin: 18px 0 10px; padding: 4px 0 4px 11px; border-left: 4px solid #C2571A; border-bottom: 1px solid #E0DDD5; display: block; }
+.auf { margin-bottom: 20px; }
+.auf-label { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+.auf-label::before { display: none; }
+.sterne { margin-left: auto; font-size: 12px; flex-shrink: 0; }
+.sterne.s1 { color: #1A7A50; } .sterne.s2 { color: #CF7C09; } .sterne.s3 { color: #A31515; }
+.auf-body { font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.82; }
+.teil { display: flex; gap: 7px; margin-top: 12px; font-size: 13.5px; align-items: flex-start; }
+.tn { font-weight: 700; color: #555; min-width: 21px; flex-shrink: 0; }
+.ll { display: flex; flex-direction: column; gap: 52px; margin-top: 18px; }
+.ll .l { border-bottom: 1.5px solid #bbb; width: 100%; min-height: 28px; display: block; }
+.luecke { display: inline-block; border-bottom: 1.5px solid #C8A800; min-width: 70px; height: 16px; vertical-align: bottom; margin: 0 3px; }
+.draw-box { background-color: #FAFAFA; background-image: repeating-linear-gradient(to right, #E0E0E0 0, #E0E0E0 0.6px, transparent 0.6px, transparent 20px), repeating-linear-gradient(to bottom, #E0E0E0 0, #E0E0E0 0.6px, transparent 0.6px, transparent 20px); border: 1.5px solid #C8C8C8; border-radius: 4px; margin-top: 8px; }
+.idu-phase { display: inline-block; font-family: 'Nunito', sans-serif; font-size: 10px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin: 6px 0; }
+.idu-ich { background: #EBF2FA; color: #1C5F96; }
+.idu-du { background: #FEF5E7; color: #CF7C09; }
+.idu-wir { background: #FCEEE6; color: #C2571A; }
+.loe-antwort { background: #E8F5EE; border: 1.5px solid #1A7A50; border-radius: 5px; padding: 10px 13px; margin: 5px 0; font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.75; }
+.loe-antwort .sol { font-weight: 700; color: #0D5C35; }
+.loe-antwort .teil { display: flex; gap: 7px; margin-top: 5px; font-size: 13.5px; align-items: flex-start; }
+.loe-antwort .tn { font-weight: 700; color: #0D5C35; min-width: 21px; flex-shrink: 0; }
+.loe-hinweis { font-family: 'Lora', serif; font-size: 11.5px; font-style: italic; color: #555; border-left: 3px solid #A8D4B8; padding-left: 9px; margin: 6px 0 0; line-height: 1.6; }
+.qr-box { display: flex; align-items: center; gap: 10px; background: #F8FAF8; border: 1px solid #B8D4C0; border-radius: 5px; padding: 8px 12px; margin-top: auto; margin-bottom: 8px; align-self: flex-start; }
+.qr-box-label { font-family: 'Nunito', sans-serif; font-size: 10px; font-weight: 700; color: #1A7A50; }
+.seiten-nr { font-family: 'Nunito', sans-serif; font-size: 9px; color: #bbb; text-align: center; margin-top: auto; padding-top: 10px; }
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body { background: white !important; padding: 0 !important; margin: 0 !important; }
+  .page { box-shadow: none !important; margin: 0 !important; page-break-after: always !important; break-after: page !important; width: 210mm !important; height: 297mm !important; min-height: 0 !important; overflow: hidden !important; padding: 12mm 15mm 10mm !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .kat-badge, .loe-badge { background: #444 !important; }
+  .sec-hdr { border-left-color: #555 !important; }
+  .tape-box { background: #F8F8F5 !important; border-color: #ccc !important; }
+  .merk-box { background: #FAFAF0 !important; border-color: #bbb !important; }
+  .tipp-box { background: #F4F4F8 !important; border-color: #999 !important; border-left-color: #666 !important; }
+  .draw-box { background-image: repeating-linear-gradient(to right, #ccc 0, #ccc 0.5px, transparent 0.5px, transparent 20px), repeating-linear-gradient(to bottom, #ccc 0, #ccc 0.5px, transparent 0.5px, transparent 20px) !important; }
+}
+</style>
+</head>
+<body>
+<svg style="position:absolute;width:0;height:0;"><defs><filter id="wavy"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="0"/></filter></defs></svg>
+
+<!-- ═══ SEITE 1 ═══ -->
+<div class="page">
+  <div class="kat-badge k3">LB 6 &middot; Auswertung von Daten</div>
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">Irref&uuml;hrende Diagramme</div>
+
+  <div class="tape-box">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <strong>Kann ein Diagramm l&uuml;gen?</strong> Diagramme zeigen Daten &mdash; aber nicht immer ehrlich. Mit kleinen Tricks kann man den Betrachter t&auml;uschen. Heute wirst du zum <strong>Diagramm-Detektiv</strong>: Finde die Tricks und korrigiere sie!
+  </div>
+
+  <div class="sec-hdr" style="border-left-color:#C2571A;">Aufgaben</div>
+
+  <!-- A1: Abgeschnittene y-Achse — Ich-Du-Wir -->
+  <div class="auf">
+    <div class="auf-label">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#C2571A"/><rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#C2571A"/><rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#C2571A"/><line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#C2571A" stroke-width="1" stroke-linecap="round"/></svg>
+      <!-- EA-Icon -->
+      <svg width="18" height="22" viewBox="0 0 24 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="6" r="5.5" fill="#C2571A"/><circle cx="9.8" cy="5.2" r="1" fill="white"/><circle cx="14.2" cy="5.2" r="1" fill="white"/><path d="M9 8 Q12 10 15 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="5" y="13" width="14" height="12" rx="5" fill="#C2571A" opacity="0.75"/><line x1="5" y1="16" x2="0" y2="21" stroke="#C2571A" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/><line x1="19" y1="16" x2="24" y2="21" stroke="#C2571A" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/></svg>
+      Aufgabe 1: Der Eishersteller-Trick <span class="sterne s1">&#9733;</span>
+    </div>
+    <div class="auf-body">
+      Ein Eishersteller wirbt: &bdquo;Unser Eis ist <strong>doppelt so beliebt</strong> wie die Konkurrenz!&ldquo; Dazu zeigt er dieses Diagramm:
+      <!-- Manipuliertes SVG: y-Achse beginnt bei 80 -->
+      <div style="text-align:center;margin:10px 0;">
+        <svg width="260" height="140" viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;">
+          <text x="130" y="13" text-anchor="middle" font-family="Lora,serif" font-size="10" font-weight="600" fill="#1a1a1a">Beliebtheit von Eissorten</text>
+          <line x1="50" y1="22" x2="50" y2="120" stroke="#888" stroke-width="1"/>
+          <line x1="50" y1="120" x2="240" y2="120" stroke="#888" stroke-width="1"/>
+          <text x="45" y="122" text-anchor="end" font-family="Nunito,sans-serif" font-size="8" fill="#888">80</text>
+          <text x="45" y="95" text-anchor="end" font-family="Nunito,sans-serif" font-size="8" fill="#888">90</text>
+          <line x1="48" y1="92" x2="240" y2="92" stroke="#E0DDD5" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <text x="45" y="68" text-anchor="end" font-family="Nunito,sans-serif" font-size="8" fill="#888">100</text>
+          <line x1="48" y1="65" x2="240" y2="65" stroke="#E0DDD5" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <text x="45" y="41" text-anchor="end" font-family="Nunito,sans-serif" font-size="8" fill="#888">110</text>
+          <line x1="48" y1="38" x2="240" y2="38" stroke="#E0DDD5" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <!-- Säulen: Unser Eis=105, Marke A=90, Marke B=85 -->
+          <rect x="70" y="30" width="40" height="90" rx="2" fill="#C2571A" opacity="0.85"/>
+          <text x="90" y="133" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#1a1a1a">Unser Eis</text>
+          <rect x="130" y="92" width="40" height="28" rx="2" fill="#888" opacity="0.6"/>
+          <text x="150" y="133" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#1a1a1a">Marke A</text>
+          <rect x="190" y="103" width="40" height="17" rx="2" fill="#888" opacity="0.6"/>
+          <text x="210" y="133" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#1a1a1a">Marke B</text>
+        </svg>
+      </div>
+      <span class="idu-phase idu-ich">ICH &mdash; &Uuml;berlege alleine (2 Min.)</span>
+      <div class="teil"><span class="tn">a)</span><span>Was f&auml;llt dir an der y-Achse auf? Was ist der Trick?</span></div>
+      <div class="ll"><div class="l"></div></div>
+      <span class="idu-phase idu-du">DU &mdash; Vergleiche mit deinem Partner</span>
+      <div class="teil"><span class="tn">b)</span><span>Zeichne das Diagramm <em>korrekt</em> &mdash; mit einer y-Achse, die bei 0 beginnt. Was ver&auml;ndert sich am Eindruck?</span></div>
+      <div class="draw-box" style="height:160px;"></div>
+    </div>
+  </div>
+
+  <div class="seiten-nr">5 &middot; Auswertung von Daten &middot; K3-1 &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+
+<!-- ═══ SEITE 2 ═══ -->
+<div class="page">
+  <div class="kat-badge k3">LB 6 &middot; Auswertung von Daten</div>
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">Irref&uuml;hrende Diagramme</div>
+
+  <!-- A2: Fehlersuche -->
+  <div class="auf">
+    <div class="auf-label">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#C2571A"/><rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#C2571A"/><rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#C2571A"/><line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#C2571A" stroke-width="1" stroke-linecap="round"/></svg>
+      <svg width="32" height="22" viewBox="0 0 40 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="6" r="5.5" fill="#C2571A"/><circle cx="7.8" cy="5.2" r="1" fill="white"/><circle cx="12.2" cy="5.2" r="1" fill="white"/><path d="M7 8 Q10 10 13 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="3" y="13" width="14" height="12" rx="5" fill="#C2571A" opacity="0.75"/><line x1="3" y1="16" x2="0" y2="21" stroke="#C2571A" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/><circle cx="30" cy="6" r="5" fill="#C2571A" opacity="0.6"/><circle cx="28" cy="5.2" r="0.9" fill="white"/><circle cx="32" cy="5.2" r="0.9" fill="white"/><path d="M27 8 Q30 10 33 8" stroke="white" stroke-width="1.1" fill="none" stroke-linecap="round"/><rect x="23" y="13" width="13" height="11" rx="4.5" fill="#C2571A" opacity="0.5"/><line x1="36" y1="16" x2="40" y2="21" stroke="#C2571A" stroke-width="2" stroke-linecap="round" opacity="0.5"/></svg>
+      Aufgabe 2: Fehler finden und korrigieren <span class="sterne s2">&#9733;&#9733;</span>
+    </div>
+    <div class="auf-body">
+      Ein Sch&uuml;ler hat ein Diagramm zum Thema &bdquo;Lieblingsgetr&auml;nk in der Pause&ldquo; gezeichnet. Leider hat er <strong>drei Fehler</strong> eingebaut.
+      <!-- Fehlerhaftes SVG: (1) keine Überschrift, (2) Säulen unterschiedlich breit, (3) y-Achse fehlt Beschriftung -->
+      <div style="text-align:center;margin:8px 0;">
+        <svg width="280" height="130" viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;">
+          <!-- KEIN Titel! (Fehler 1) -->
+          <line x1="40" y1="15" x2="40" y2="115" stroke="#888" stroke-width="1"/>
+          <line x1="40" y1="115" x2="270" y2="115" stroke="#888" stroke-width="1"/>
+          <!-- y-Achse OHNE Beschriftung/Zahlen (Fehler 3) -->
+          <!-- Säulen UNTERSCHIEDLICH BREIT (Fehler 2): Wasser=60px breit, Saft=30px, Kakao=25px -->
+          <rect x="55" y="35" width="60" height="80" rx="2" fill="#C2571A" opacity="0.7"/>
+          <text x="85" y="127" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#1a1a1a">Wasser</text>
+          <rect x="135" y="55" width="30" height="60" rx="2" fill="#CF7C09" opacity="0.7"/>
+          <text x="150" y="127" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#1a1a1a">Saft</text>
+          <rect x="195" y="70" width="25" height="45" rx="2" fill="#1C5F96" opacity="0.7"/>
+          <text x="208" y="127" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#1a1a1a">Kakao</text>
+        </svg>
+      </div>
+      <div class="teil"><span class="tn">a)</span><span>Finde die drei Fehler und beschreibe sie.</span></div>
+      <div class="draw-box" style="height:100px;"></div>
+      <div class="teil"><span class="tn">b)</span><span>Zeichne das Diagramm korrekt. Verwende daf&uuml;r die Daten: Wasser&nbsp;12, Saft&nbsp;8, Kakao&nbsp;6.</span></div>
+      <div class="draw-box" style="height:160px;"></div>
+    </div>
+  </div>
+
+  <!-- A3: Eigenes manipuliertes Diagramm — GA -->
+  <div class="auf">
+    <div class="auf-label">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#C2571A"/><rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#C2571A"/><rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#C2571A"/><line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#C2571A" stroke-width="1" stroke-linecap="round"/></svg>
+      <!-- GA-Icon -->
+      <svg width="44" height="22" viewBox="0 0 54 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="7" r="4.5" fill="#C2571A" opacity="0.55"/><circle cx="6.2" cy="6.3" r="0.8" fill="white"/><circle cx="9.8" cy="6.3" r="0.8" fill="white"/><rect x="2" y="14" width="12" height="10" rx="4" fill="#C2571A" opacity="0.45"/><circle cx="27" cy="5.5" r="5.5" fill="#C2571A"/><circle cx="24.8" cy="4.7" r="1" fill="white"/><circle cx="29.2" cy="4.7" r="1" fill="white"/><path d="M23.5 7.5 Q27 9.5 30.5 7.5" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="19" y="13" width="16" height="12" rx="5" fill="#C2571A" opacity="0.8"/><line x1="19" y1="16" x2="14" y2="21" stroke="#C2571A" stroke-width="2" stroke-linecap="round" opacity="0.7"/><line x1="35" y1="16" x2="40" y2="21" stroke="#C2571A" stroke-width="2" stroke-linecap="round" opacity="0.7"/><circle cx="46" cy="7" r="4.5" fill="#C2571A" opacity="0.55"/><circle cx="44.2" cy="6.3" r="0.8" fill="white"/><circle cx="47.8" cy="6.3" r="0.8" fill="white"/><rect x="40" y="14" width="12" height="10" rx="4" fill="#C2571A" opacity="0.45"/></svg>
+      Aufgabe 3: Selbst t&auml;uschen <span class="sterne s3">&#9733;&#9733;&#9733;</span>
+    </div>
+    <div class="auf-body">
+      <span class="idu-phase idu-wir">WIR &mdash; Besprecht im Plenum</span><br>
+      Jede Tischgruppe bekommt die gleichen Daten: Lieblingsfarbe der Klasse &mdash; Blau&nbsp;8, Rot&nbsp;6, Gr&uuml;n&nbsp;5, Gelb&nbsp;4, Lila&nbsp;3. Erstellt zwei Diagramme: eines <strong>ehrlich</strong> und eines <strong>absichtlich irref&uuml;hrend</strong>. Die Klasse r&auml;t, welches das manipulierte ist!
+    </div>
+  </div>
+
+  <!-- MERKSATZ -->
+  <div class="merk-box">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <div class="merk-label">Merksatz: Diagramme kritisch lesen</div>
+    Diagramme k&ouml;nnen t&auml;uschen! Typische Tricks sind: eine
+    <span class="luecke" style="min-width:130px;"></span>
+    die nicht bei Null beginnt,
+    <span class="luecke" style="min-width:110px;"></span>
+    Beschriftung oder eine fehlende
+    <span class="luecke" style="min-width:100px;"></span>.
+    Pr&uuml;fe deshalb immer:
+    <span class="luecke" style="min-width:140px;"></span>?
+  </div>
+
+  <!-- QR -->
+  <div class="qr-box">
+    <span class="qr-box-label">&#10004; L&ouml;sung</span>
+    <div id="qr_k31" style="width:80px;height:80px;"></div>
+    <script>
+      new QRCode(document.getElementById("qr_k31"), {
+        text: "https://mathtastic.github.io/mathe/5_K3-1_Irrefuehrende_Diagramme.html#loesung",
+        width: 80, height: 80, colorDark: "#1a1a1a", colorLight: "#ffffff"
+      });
+    </script>
+  </div>
+
+  <div class="seiten-nr">5 &middot; Auswertung von Daten &middot; K3-1 &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+
+<!-- LOE_SEP -->
+<!-- ═══ SEITE 3 — LÖSUNG ═══ -->
+<div class="page page-loe" id="loesung">
+  <div class="loe-badge">&#10004; L&ouml;sungsblatt</div>
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">Irref&uuml;hrende Diagramme &mdash; L&ouml;sungsblatt</div>
+  <div class="pg-sub" style="color:#1A7A50;">L&ouml;sungsblatt &middot; nur f&uuml;r die Lehrkraft</div>
+
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe 1: Eishersteller-Trick</div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">a)</span><span><span class="sol">Die y-Achse beginnt bei 80 statt bei 0.</span> Dadurch wirkt die S&auml;ule von &bdquo;Unser Eis&ldquo; (105) viel gr&ouml;&szlig;er als die anderen (90, 85), obwohl der Unterschied in Wirklichkeit klein ist.</span></div>
+    <div class="teil"><span class="tn">b)</span><span>Korrektes Diagramm: y-Achse von 0 bis 110. Alle drei S&auml;ulen sind fast gleich hoch &mdash; der Unterschied ist <span class="sol">viel geringer als im manipulierten Diagramm</span>.</span></div>
+  </div>
+  <div class="loe-hinweis">Kernaussage: &bdquo;Doppelt so beliebt&ldquo; stimmt nicht &mdash; 105 vs. 90 ist nur ca. 17% mehr. Die abgeschnittene Achse l&auml;sst es aber doppelt so gro&szlig; aussehen. Das ist DER zentrale Lernmoment dieses ABs.</div>
+
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe 2: Fehler finden</div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">a)</span><span>Drei Fehler:</span></div>
+    <span class="sol">1.</span> Keine &Uuml;berschrift &mdash; man wei&szlig; nicht, worum es geht.<br>
+    <span class="sol">2.</span> S&auml;ulen sind unterschiedlich breit &mdash; Wasser wirkt dadurch noch dominanter.<br>
+    <span class="sol">3.</span> Die y-Achse hat keine Zahlenbeschriftung &mdash; man kann die Werte nicht ablesen.
+  </div>
+  <div class="loe-hinweis">Fehler 2 ist besonders t&uuml;ckisch: Breitere S&auml;ulen wirken optisch gr&ouml;&szlig;er, auch wenn die H&ouml;he stimmt. Das ist ein realer Trick in der Werbung.</div>
+
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe 3: Selbst t&auml;uschen</div>
+  <div class="loe-antwort">
+    Offene Aufgabe. Typische Sch&uuml;ler-Tricks: abgeschnittene Achse, unterschiedliche S&auml;ulenbreiten, fehlende Beschriftung, 3D-Effekte die Proportionen verzerren. <span class="sol">Bewertung: Trick muss erkennbar sein, ehrliches Diagramm muss korrekt sein.</span>
+  </div>
+  <div class="loe-hinweis"><strong>Zeitplanung:</strong> A1 (10 Min.), A2 (15 Min.), A3 nur wenn Zeit &mdash; kann als HA oder in der n&auml;chsten Stunde fortgesetzt werden. Die Plenum-Diskussion zu A3 ist der didaktische H&ouml;hepunkt &mdash; mindestens 5 Min. einplanen.</div>
+
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Merksatz-L&uuml;cken</div>
+  <div class="loe-antwort">
+    <span class="sol">y-Achse</span> (bzw. Achse) &mdash;
+    <span class="sol">fehlende</span> (bzw. falsche) &mdash;
+    <span class="sol">&Uuml;berschrift</span> &mdash;
+    <span class="sol">Beginnt die Achse bei Null</span> (o.&auml;.)
+  </div>
+
+  <div class="seiten-nr">5 &middot; K3-1 &middot; L&ouml;sungsblatt &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+</body>
+</html>
