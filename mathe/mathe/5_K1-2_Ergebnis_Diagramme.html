@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>5 K1-2 Ergebnis Diagramme</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; color: #1a1a1a; line-height: 1.65; padding: 30px 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+.page { width: 210mm; min-height: 297mm; background: #fff; margin: 0 auto 40px; padding: 10mm 15mm 10mm; box-shadow: 0 4px 24px rgba(0,0,0,.10); display: flex; flex-direction: column; position: relative; }
+.page-loe { border-top: 5px solid #1A7A50; }
+.page-loe .sec-hdr { border-left-color: #1A7A50; }
+.page-loe .auf-label::before { display: none; }
+.kat-badge { position: absolute; top: 10mm; right: 17mm; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; padding: 3px 10px 3px 8px; border-radius: 0 4px 4px 0; display: flex; align-items: center; gap: 5px; }
+.kat-badge.k1 { background: #1C5F96; }
+.kat-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; }
+.loe-badge { position: absolute; top: 10mm; right: 17mm; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; padding: 3px 10px 3px 8px; border-radius: 0 4px 4px 0; background: #1A7A50; }
+.sequenz-badge { font-family: 'Nunito', sans-serif; font-size: 10.5px; font-weight: 700; color: #5A5A5A; text-transform: uppercase; letter-spacing: .10em; text-align: center; margin-bottom: 3px; }
+.pg-title { text-align: center; font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+.pg-sub { text-align: center; font-family: 'Nunito', sans-serif; font-size: 11px; font-style: italic; margin-bottom: 14px; }
+.datum-row { display: none; }
+.tape-tl, .tape-tr { position: absolute; width: 36px; height: 20px; background: rgba(235,222,175,0.90); filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.55)); clip-path: polygon(0% 0%,9% 20%,2% 45%,10% 70%,3% 90%,0% 100%,100% 100%,97% 80%,100% 55%,91% 30%,98% 10%,92% 0%); }
+.tape-tl { top: -4px; left: -2px; transform: rotate(-38deg); }
+.tape-tr { top: -4px; right: -2px; transform: rotate(38deg); }
+.tape-box { position: relative; background: #FDFAF0; border: 1.5px solid #D0C898; border-radius: 5px; padding: 14px 15px 13px; margin-bottom: 18px; font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.68; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.merk-box { position: relative; background: #FFFDE6; border: 1.5px solid #E8D84A; border-radius: 5px; padding: 15px 13px 14px; margin-bottom: 15px; font-family: 'Lora', serif; font-size: 13.5px; line-height: 2.2; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.merk-box .tape-tl, .merk-box .tape-tr { all: unset; position: absolute; width: 15px; height: 22px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 32'%3E%3Ccircle cx='11' cy='11' r='9.5' fill='%23E8821A' stroke='%231a1a1a' stroke-width='2'/%3E%3Crect x='10' y='19' width='2' height='11' rx='1' fill='%23999'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: contain; top: -12px; }
+.merk-box .tape-tl { left: 14px; transform: rotate(-28deg); }
+.merk-box .tape-tr { right: 14px; transform: rotate(28deg); }
+.merk-label { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; font-style: italic; color: #6B5A00; margin-bottom: 4px; text-decoration: underline; text-underline-offset: 3px; }
+.sec-hdr { font-family: 'Lora', serif; font-size: 15px; font-weight: 700; color: #1a1a1a; margin: 18px 0 10px; padding: 4px 0 4px 11px; border-left: 4px solid #1C5F96; border-bottom: 1px solid #E0DDD5; display: block; }
+.auf { margin-bottom: 20px; }
+.auf-label { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+.auf-label::before { display: none; }
+.sterne { margin-left: auto; font-size: 12px; flex-shrink: 0; }
+.sterne.s2 { color: #CF7C09; } .sterne.s3 { color: #A31515; }
+.auf-body { font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.82; }
+.teil { display: flex; gap: 7px; margin-top: 12px; font-size: 13.5px; align-items: flex-start; }
+.tn { font-weight: 700; color: #555; min-width: 21px; flex-shrink: 0; }
+.ll { display: flex; flex-direction: column; gap: 52px; margin-top: 18px; }
+.ll .l { border-bottom: 1.5px solid #bbb; width: 100%; min-height: 28px; display: block; }
+.ln { border-bottom: 1px solid #aaa; display: inline-block; min-width: 80px; height: 14px; vertical-align: bottom; }
+.luecke { display: inline-block; border-bottom: 1.5px solid #C8A800; min-width: 70px; height: 16px; vertical-align: bottom; margin: 0 3px; }
+.draw-box { background-color: #FAFAFA; background-image: repeating-linear-gradient(to right, #E0E0E0 0, #E0E0E0 0.6px, transparent 0.6px, transparent 20px), repeating-linear-gradient(to bottom, #E0E0E0 0, #E0E0E0 0.6px, transparent 0.6px, transparent 20px); border: 1.5px solid #C8C8C8; border-radius: 4px; margin-top: 8px; }
+/* Übersichts-Tabelle für Ergebnisse */
+.erg-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin: 8px 0; font-family: 'Nunito', sans-serif; }
+.erg-tbl th { background: #F0F4F8; padding: 6px 8px; border: 1.5px solid #C8D4E0; font-weight: 700; text-align: center; font-size: 11px; }
+.erg-tbl td { border: 1.5px solid #D0D8E0; padding: 6px 8px; vertical-align: top; }
+.erg-tbl td.fill { background: #FFFEF8; min-height: 40px; }
+.erg-tbl .grp-label { font-weight: 700; text-align: center; white-space: nowrap; width: 25%; }
+.grp-a { background: #EBF2FA !important; color: #1C5F96; }
+.grp-b { background: #FEF5E7 !important; color: #CF7C09; }
+.grp-c { background: #FCEEE6 !important; color: #C2571A; }
+.grp-d { background: #E6F5F8 !important; color: #0E7490; }
+.loe-antwort { background: #E8F5EE; border: 1.5px solid #1A7A50; border-radius: 5px; padding: 10px 13px; margin: 5px 0; font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.75; }
+.loe-antwort .sol { font-weight: 700; color: #0D5C35; }
+.loe-antwort .teil { display: flex; gap: 7px; margin-top: 5px; font-size: 13.5px; align-items: flex-start; }
+.loe-antwort .tn { font-weight: 700; color: #0D5C35; min-width: 21px; flex-shrink: 0; }
+.loe-hinweis { font-family: 'Lora', serif; font-size: 11.5px; font-style: italic; color: #555; border-left: 3px solid #A8D4B8; padding-left: 9px; margin: 6px 0 0; line-height: 1.6; }
+.seiten-nr { font-family: 'Nunito', sans-serif; font-size: 9px; color: #bbb; text-align: center; margin-top: auto; padding-top: 10px; }
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body { background: white !important; padding: 0 !important; margin: 0 !important; }
+  .page { box-shadow: none !important; margin: 0 !important; page-break-after: always !important; break-after: page !important; width: 210mm !important; height: 297mm !important; min-height: 0 !important; overflow: hidden !important; padding: 12mm 15mm 10mm !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .kat-badge, .loe-badge { background: #444 !important; }
+  .sec-hdr { border-left-color: #555 !important; }
+  .tape-box { background: #F8F8F5 !important; border-color: #ccc !important; }
+  .merk-box { background: #FAFAF0 !important; border-color: #bbb !important; }
+  .draw-box { background-image: repeating-linear-gradient(to right, #ccc 0, #ccc 0.5px, transparent 0.5px, transparent 20px), repeating-linear-gradient(to bottom, #ccc 0, #ccc 0.5px, transparent 0.5px, transparent 20px) !important; }
+}
+</style>
+</head>
+<body>
+<svg style="position:absolute;width:0;height:0;"><defs><filter id="wavy"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="0"/></filter></defs></svg>
+
+<!-- ═══ SEITE 1 ═══ -->
+<div class="page">
+  <div class="kat-badge k1">LB 6 &middot; Auswertung von Daten</div>
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">Unsere Diagramme &mdash; Ergebnisse</div>
+
+  <div class="tape-box">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <strong>Jetzt wird&rsquo;s spannend!</strong> Jede Gruppe pr&auml;sentiert ihren Diagrammtyp. H&ouml;re genau zu und f&uuml;lle die &Uuml;bersicht unten aus &mdash; am Ende kennst du <strong>vier verschiedene Diagrammtypen</strong>.
+  </div>
+
+  <div class="sec-hdr k1">&Uuml;bersicht: Vier Diagrammtypen</div>
+
+  <!-- Ergebnis-Tabelle: Schüler tragen Erkenntnisse aus Präsentationen ein -->
+  <table class="erg-tbl">
+    <thead>
+      <tr>
+        <th style="width:25%;">Diagrammtyp</th>
+        <th style="width:40%;">So sieht es aus (kleine Skizze)</th>
+        <th style="width:35%;">Das kann man gut ablesen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="grp-label grp-a">S&auml;ulen&shy;diagramm</td>
+        <td class="fill" style="height:60px;"></td>
+        <td class="fill"></td>
+      </tr>
+      <tr>
+        <td class="grp-label grp-b">Balken&shy;diagramm</td>
+        <td class="fill" style="height:60px;"></td>
+        <td class="fill"></td>
+      </tr>
+      <tr>
+        <td class="grp-label grp-c">Kreis&shy;diagramm</td>
+        <td class="fill" style="height:60px;"></td>
+        <td class="fill"></td>
+      </tr>
+      <tr>
+        <td class="grp-label grp-d">Streifen&shy;diagramm</td>
+        <td class="fill" style="height:60px;"></td>
+        <td class="fill"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Aufgabe: Vergleich -->
+  <div class="auf" style="margin-top:14px;">
+    <div class="auf-label">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#1C5F96"/><rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#1C5F96"/><rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#1C5F96"/><line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#1C5F96" stroke-width="1" stroke-linecap="round"/></svg>
+      <svg width="18" height="22" viewBox="0 0 24 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="6" r="5.5" fill="#1C5F96"/><circle cx="9.8" cy="5.2" r="1" fill="white"/><circle cx="14.2" cy="5.2" r="1" fill="white"/><path d="M9 8 Q12 10 15 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="5" y="13" width="14" height="12" rx="5" fill="#1C5F96" opacity="0.75"/><line x1="5" y1="16" x2="0" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/><line x1="19" y1="16" x2="24" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/></svg>
+      Aufgabe: Vergleich <span class="sterne s2">&#9733;&#9733;</span>
+    </div>
+    <div class="auf-body">
+      Alle vier Gruppen haben die <em>gleichen Daten</em> dargestellt &mdash; aber auf vier verschiedene Arten. Welches Diagramm findest du am &uuml;bersichtlichsten? Begr&uuml;nde.
+      <div class="draw-box" style="height:100px;"></div>
+    </div>
+  </div>
+
+  <div class="seiten-nr">5 &middot; Auswertung von Daten &middot; K1-2 &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+
+<!-- ═══ SEITE 2 ═══ -->
+<div class="page">
+  <div class="kat-badge k1">LB 6 &middot; Auswertung von Daten</div>
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">Unsere Diagramme &mdash; Ergebnisse</div>
+
+  <!-- Aufgabe: Zuordnung -->
+  <div class="auf">
+    <div class="auf-label">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#1C5F96"/><rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#1C5F96"/><rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#1C5F96"/><line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#1C5F96" stroke-width="1" stroke-linecap="round"/></svg>
+      <svg width="18" height="22" viewBox="0 0 24 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="6" r="5.5" fill="#1C5F96"/><circle cx="9.8" cy="5.2" r="1" fill="white"/><circle cx="14.2" cy="5.2" r="1" fill="white"/><path d="M9 8 Q12 10 15 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="5" y="13" width="14" height="12" rx="5" fill="#1C5F96" opacity="0.75"/><line x1="5" y1="16" x2="0" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/><line x1="19" y1="16" x2="24" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/></svg>
+      Aufgabe: Welches Diagramm passt? <span class="sterne s3">&#9733;&#9733;&#9733;</span>
+    </div>
+    <div class="auf-body">
+      Welchen Diagrammtyp w&uuml;rdest du f&uuml;r die folgenden Situationen w&auml;hlen? Begr&uuml;nde jeweils kurz.
+      <div class="teil"><span class="tn">a)</span><span>Du willst zeigen, wie sich die Besucherzahlen eines Schwimmbads &uuml;ber die Monate ver&auml;ndern.</span></div>
+      <div class="ll"><div class="l"></div></div>
+      <div class="teil"><span class="tn">b)</span><span>Du willst zeigen, welchen Anteil jede Partei bei einer Klassensprecherwahl bekommen hat.</span></div>
+      <div class="ll"><div class="l"></div></div>
+      <div class="teil"><span class="tn">c)</span><span>Du willst die Lieblingseis-Sorten von zwei verschiedenen Klassen vergleichen.</span></div>
+      <div class="ll"><div class="l"></div></div>
+    </div>
+  </div>
+
+  <!-- MERKSATZ -->
+  <div class="merk-box">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <div class="merk-label">Merksatz: Diagrammtypen</div>
+    Es gibt verschiedene Arten, Daten darzustellen. In einem
+    <span class="luecke" style="min-width:120px;"></span>
+    stehen die S&auml;ulen senkrecht, in einem
+    <span class="luecke" style="min-width:120px;"></span>
+    liegen die Balken waagerecht. Ein
+    <span class="luecke" style="min-width:110px;"></span>
+    zeigt Anteile als Tortenstücke, ein
+    <span class="luecke" style="min-width:120px;"></span>
+    zeigt Anteile als Abschnitte in einem Streifen. Jedes Diagramm braucht eine
+    <span class="luecke" style="min-width:100px;"></span>
+    und eine
+    <span class="luecke" style="min-width:110px;"></span>.
+  </div>
+
+  <div class="seiten-nr">5 &middot; Auswertung von Daten &middot; K1-2 &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+
+<!-- LOE_SEP -->
+<!-- ═══ SEITE 3 — LÖSUNG ═══ -->
+<div class="page page-loe" id="loesung">
+  <div class="loe-badge">&#10004; L&ouml;sungsblatt</div>
+  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="pg-title">Unsere Diagramme &mdash; L&ouml;sungsblatt</div>
+  <div class="pg-sub" style="color:#1A7A50;">L&ouml;sungsblatt &middot; nur f&uuml;r die Lehrkraft</div>
+
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">&Uuml;bersicht: Vier Diagrammtypen</div>
+  <div class="loe-antwort">
+    <span class="sol">S&auml;ulendiagramm:</span> Senkrechte S&auml;ulen, H&ouml;he = Anzahl. Gut f&uuml;r: Vergleich von Kategorien.<br>
+    <span class="sol">Balkendiagramm:</span> Waagerechte Balken, L&auml;nge = Anzahl. Gut f&uuml;r: Lange Kategorienamen, Ranking.<br>
+    <span class="sol">Kreisdiagramm:</span> Kreis mit St&uuml;cken, Gr&ouml;&szlig;e = Anteil am Ganzen. Gut f&uuml;r: Anteile zeigen.<br>
+    <span class="sol">Streifendiagramm:</span> Waagerechter Streifen mit Abschnitten, L&auml;nge = Anteil. Gut f&uuml;r: Anteile vergleichen.
+  </div>
+
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe: Vergleich</div>
+  <div class="loe-antwort">
+    Individuelle Antworten &mdash; alle vier Typen sind akzeptabel, solange die Begr&uuml;ndung stimmt. Beispiel: <span class="sol">&bdquo;Ich finde das S&auml;ulendiagramm am &uuml;bersichtlichsten, weil man die Unterschiede an der H&ouml;he sofort sieht.&ldquo;</span>
+  </div>
+
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe: Welches Diagramm passt?</div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">a)</span><span><span class="sol">S&auml;ulendiagramm</span> &mdash; die Monate sind einzelne Kategorien, die H&ouml;he zeigt die Besucherzahl. Man sieht die Ver&auml;nderung &uuml;ber die Zeit.</span></div>
+    <div class="teil"><span class="tn">b)</span><span><span class="sol">Kreisdiagramm</span> (oder Streifendiagramm) &mdash; es geht um Anteile an der Gesamtstimmenzahl. Man sieht, wie viel jede Partei vom Ganzen hat.</span></div>
+    <div class="teil"><span class="tn">c)</span><span><span class="sol">Zwei Streifendiagramme</span> (oder zwei S&auml;ulendiagramme nebeneinander) &mdash; damit kann man die Verteilungen der beiden Klassen direkt vergleichen.</span></div>
+  </div>
+  <div class="loe-hinweis">Die Zuordnungsaufgabe hat KEINE eindeutig richtige Antwort &mdash; mehrere Diagramme k&ouml;nnen passen. Entscheidend ist die Begr&uuml;ndung. Das ist bewusst so: Sch&uuml;ler lernen, dass die Wahl des Diagrammtyps eine <em>Entscheidung</em> ist, keine Rechenaufgabe.</div>
+
+  <div class="sec-hdr" style="border-left-color:#1A7A50;">Merksatz-L&uuml;cken</div>
+  <div class="loe-antwort">
+    <span class="sol">S&auml;ulendiagramm</span> &mdash;
+    <span class="sol">Balkendiagramm</span> &mdash;
+    <span class="sol">Kreisdiagramm</span> &mdash;
+    <span class="sol">Streifendiagramm</span> &mdash;
+    <span class="sol">&Uuml;berschrift</span> &mdash;
+    <span class="sol">Beschriftung</span> (bzw. Achsenbeschriftung)
+  </div>
+
+  <div class="loe-hinweis" style="margin-top:14px;">
+    <strong>Organisationshinweis Jigsaw:</strong> Pro Gruppe ca. 5&ndash;7 Sch&uuml;ler. Pr&auml;sentationsreihenfolge: A&nbsp;(S&auml;ulen) → B&nbsp;(Balken) → C&nbsp;(Kreis) → D&nbsp;(Streifen). Nach jeder Pr&auml;sentation: 1&nbsp;Min. zum Ausfüllen der &Uuml;bersichtstabelle. Ergebnisblatt am Ende gemeinsam besprechen.
+  </div>
+
+  <div class="seiten-nr">5 &middot; K1-2 &middot; L&ouml;sungsblatt &nbsp;&nbsp; &copy; mathtastic</div>
+</div>
+</body>
+</html>

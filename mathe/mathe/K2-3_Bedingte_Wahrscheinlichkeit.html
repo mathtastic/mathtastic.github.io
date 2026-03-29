@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head><meta charset="UTF-8"><title>K2-3 Bedingte Wahrscheinlichkeit 10I</title><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 13px; color: #1a1a1a; line-height: 1.65; padding: 30px 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+.page { width: 210mm; min-height: 297mm; background: #fff; margin: 0 auto 40px; padding: 10mm 15mm 10mm; box-shadow: 0 4px 24px rgba(0,0,0,.10); display: flex; flex-direction: column; position: relative; }
+.page-loe { border-top: 5px solid #1A7A50; }
+.page-loe .sec-hdr { border-left-color: #1A7A50; }
+.page-loe .auf-label::before { display: none; }
+.kat-badge { position: absolute; top: 10mm; right: 17mm; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; padding: 3px 10px 3px 8px; border-radius: 0 4px 4px 0; background: #1C5F96; display: flex; align-items: center; gap: 5px; }
+.kat-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; }
+.loe-badge { position: absolute; top: 10mm; right: 17mm; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; padding: 3px 10px 3px 8px; border-radius: 0 4px 4px 0; background: #1A7A50; }
+.sequenz-badge { font-family: 'Nunito', sans-serif; font-size: 10.5px; font-weight: 700; color: #5A5A5A; text-transform: uppercase; letter-spacing: .10em; text-align: center; margin-bottom: 3px; }
+.pg-title { text-align: center; font-family: 'Lora', serif; font-size: 19px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+.pg-sub { text-align: center; font-family: 'Nunito', sans-serif; font-size: 11px; color: #1C5F96; font-style: italic; margin-bottom: 14px; }
+.datum-row { display: none; }
+
+.klasse-tag { display: none; }
+.tape-tl, .tape-tr { position: absolute; width: 36px; height: 20px; background: rgba(235,222,175,0.90); filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.55)); clip-path: polygon(0% 0%,9% 20%,2% 45%,10% 70%,3% 90%,0% 100%,100% 100%,97% 80%,100% 55%,91% 30%,98% 10%,92% 0%); }
+.tape-tl { top: -4px; left: -2px; transform: rotate(-38deg); }
+.tape-tr { top: -4px; right: -2px; transform: rotate(38deg); }
+.tape-box { position: relative; background: #FDFAF0; border: 1.5px solid #D0C898; border-radius: 5px; padding: 14px 15px 13px; margin-bottom: 18px; font-family: 'Lora', serif; font-size: 12.5px; line-height: 1.68; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.tape-box .ll { margin-top: 16px !important; gap: 54px !important; }
+.tape-box .l { padding-bottom: 6px; }
+.merk-box { position: relative; background: #FFFDE6; border: 1.5px solid #E8D84A; border-radius: 5px; padding: 15px 13px 14px; margin-bottom: 15px; font-family: 'Lora', serif; font-size: 12.5px; line-height: 2.2; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.merk-box .tape-tl, .merk-box .tape-tr { all: unset; position: absolute; width: 15px; height: 22px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 32'%3E%3Ccircle cx='11' cy='11' r='9.5' fill='%23E8821A' stroke='%231a1a1a' stroke-width='2'/%3E%3Crect x='10' y='19' width='2' height='11' rx='1' fill='%23999'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: contain; top: -12px; }
+.merk-box .tape-tl { left: 14px; transform: rotate(-28deg); }
+.merk-box .tape-tr { right: 14px; transform: rotate(28deg); }
+.merk-label { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; font-style: italic; color: #6B5A00; margin-bottom: 4px; text-decoration: underline; text-underline-offset: 3px; }
+.tipp-box { background: #F0F7FF; border: 1.5px solid #88BBE0; border-left: 4px solid #5599CC; border-radius: 5px; padding: 9px 12px 9px 34px; margin: 9px 0; font-family: 'Nunito', sans-serif; font-size: 12px; color: #1A3A5C; position: relative; }
+.tipp-box::before { content: '💡'; position: absolute; left: 9px; top: 50%; transform: translateY(-50%); }
+.video-box { display: flex; align-items: center; gap: 12px; background: #FAFAFA; border: 1.5px solid #E0DDD5; border-left: 4px solid #E0302A; border-radius: 6px; padding: 11px 14px; margin-bottom: 16px; }
+.video-icon { width: 36px; height: 36px; background: #E0302A; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; color: white; }
+.video-info { flex: 1; }
+.video-info .video-titel { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 3px; }
+.video-info .video-link { font-family: 'Nunito', sans-serif; font-size: 11px; color: #E0302A; font-weight: 700; }
+.video-info .video-desc { font-family: 'Nunito', sans-serif; font-size: 11px; color: #666; margin-top: 3px; }
+.exp-block { background: #FFF5EB; border: 1.5px solid #D4892A; border-left: 4px solid #E8821A; border-radius: 5px; padding: 12px 13px; margin-bottom: 16px; position: relative; }
+.exp-header { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; color: #8B4500; margin-bottom: 6px; }
+.exp-body { font-family: 'Nunito', sans-serif; font-size: 12.5px; line-height: 1.75; }
+.exp-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; font-family: 'Nunito', sans-serif; }
+.exp-tbl th { background: #E8821A; color: white; padding: 5px 8px; text-align: center; font-weight: 700; }
+.exp-tbl td { border: 1px solid #EAC08A; padding: 5px 8px; text-align: center; }
+.exp-tbl tr:nth-child(even) td { background: #FEF3E2; }
+.sec-hdr { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: #1a1a1a; margin: 18px 0 10px; padding: 4px 0 4px 11px; border-left: 4px solid #1C5F96; border-bottom: 1px solid #E0DDD5; display: block; }
+.auf { margin-bottom: 20px; }
+.auf-label { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+.auf-label::before { display: none; }
+.sterne { margin-left: auto; font-size: 11px; flex-shrink: 0; }
+.sterne.s1 { color: #1A7A50; } .sterne.s2 { color: #CF7C09; } .sterne.s3 { color: #A31515; }
+.auf-body { font-family: 'Nunito', sans-serif; font-size: 12.5px; line-height: 1.82; }
+.teil { display: flex; gap: 7px; margin-top: 12px; font-size: 12.5px; align-items: flex-start; }
+.tn { font-weight: 700; color: #555; min-width: 21px; flex-shrink: 0; }
+.ll { display: flex; flex-direction: column; gap: 52px; margin-top: 18px; }
+.ll .l { border-bottom: 1.5px solid #bbb; width: 100%; min-height: 28px; display: block; }
+.ln { border-bottom: 1px solid #aaa; display: inline-block; min-width: 80px; height: 14px; vertical-align: bottom; }
+.luecke { display: inline-block; border-bottom: 1.5px solid #C8A800; min-width: 70px; height: 16px; vertical-align: bottom; margin: 0 3px; }
+.draw-box { border: 1.5px dashed #bbb; border-radius: 4px; background-color: #FAFAFA; display: flex; align-items: center; justify-content: center; margin-top: 7px; }
+.draw-box-baum { background-color: #FAFEFA; background-image:
+    repeating-linear-gradient(to right, #E8F0EC 0px, #E8F0EC 0.5px, transparent 0.5px, transparent 10px),
+    repeating-linear-gradient(to bottom, #E8F0EC 0px, #E8F0EC 0.5px, transparent 0.5px, transparent 10px),
+    repeating-linear-gradient(to right, transparent 0px, transparent calc(33% - 1px), #A8D4C0 calc(33% - 1px), #A8D4C0 calc(33% + 1px), transparent calc(33% + 1px), transparent calc(66% - 1px), #A8D4C0 calc(66% - 1px), #A8D4C0 calc(66% + 1px), transparent calc(66% + 1px), transparent 100%); }
+.b { display: inline-flex; flex-direction: column; align-items: stretch; vertical-align: middle; line-height: 1.2; margin: 0 3px; font-size: 0.92em; text-align: center; }
+.b .z { border-bottom: 1.4px solid currentColor; padding: 1px 4px 2px; display: block; white-space: nowrap; width: 100%; box-sizing: border-box; }
+.b .n { padding: 2px 4px 0; display: block; white-space: nowrap; width: 100%; box-sizing: border-box; }
+.def-tape { position: relative; background: #FDFAF0; border: 1.5px solid #D0C898; border-radius: 5px; padding: 10px 13px; margin-bottom: 15px; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.def-row { display: grid; grid-template-columns: 90px 1fr; gap: 8px; align-items: start; padding: 8px 0; border-bottom: 1px dashed #D0C898; font-size: 12.5px; font-family: 'Nunito', sans-serif; }
+.def-row:last-child { border-bottom: none; padding-bottom: 0; }
+.def-left { font-family: 'Caveat', cursive; font-size: 14px; font-weight: 700; color: #1C5F96; line-height: 1.3; }
+.tr-badge { display: inline-flex; align-items: center; gap: 5px; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; padding: 2px 8px; border-radius: 20px; background: #E8F0FA; color: #1C5F96; border: 1px solid #A8C4E0; margin-bottom: 10px; }
+.loe-antwort { background: #E8F5EE; border: 1.5px solid #1A7A50; border-radius: 5px; padding: 10px 13px; margin: 5px 0; font-family: 'Nunito', sans-serif; font-size: 12.5px; line-height: 1.75; }
+.loe-antwort .sol { font-weight: 700; color: #0D5C35; }
+.loe-antwort .teil { display: flex; gap: 7px; margin-top: 5px; font-size: 12.5px; align-items: flex-start; }
+.loe-antwort .tn { font-weight: 700; color: #0D5C35; min-width: 21px; flex-shrink: 0; }
+.loe-hinweis { font-family: 'Lora', serif; font-size: 11.5px; font-style: italic; color: #555; border-left: 3px solid #A8D4B8; padding-left: 9px; margin: 6px 0 0; line-height: 1.6; }
+.loe-sol { color: #A31515; font-weight: 700; }
+.seiten-nr { font-family: 'Nunito', sans-serif; font-size: 9px; color: #bbb; text-align: center; margin-top: auto; padding-top: 10px; }
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body { background: white !important; padding: 0 !important; margin: 0 !important; }
+  .page { box-shadow: none !important; margin: 0 !important; page-break-after: always !important; break-after: page !important; width: 210mm !important; height: 297mm !important; min-height: 0 !important; overflow: hidden !important; padding: 12mm 15mm 10mm !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}</style>
+</head>
+<body><svg style="position:absolute;width:0;height:0;"><defs><filter id="wavy"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="0"/></filter></defs></svg>
+
+<div class="page">
+  <div class="kat-badge k2">LB 5 &middot; Daten und Zufall</div>
+  <div class="sequenz-badge">Daten und Zufall &middot; 10I</div>
+  <div class="pg-title">Bedingte Wahrscheinlichkeit P(A|B)</div>
+  <div class="tr-badge ohne"><svg width="16" height="18" viewBox="0 0 16 18" style="display:inline-block;vertical-align:middle;margin-right:4px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="14" height="16" rx="2" fill="none" stroke="#1C5F96" stroke-width="1.5"/>
+  <rect x="3" y="3" width="10" height="4" rx="1" fill="#1C5F96" opacity="0.3"/>
+  <rect x="3" y="9" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <rect x="6.5" y="9" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <rect x="10" y="9" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <rect x="3" y="13" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <rect x="6.5" y="13" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <rect x="10" y="13" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <line x1="0" y1="18" x2="16" y2="0" stroke="#E0302A" stroke-width="2" stroke-linecap="round"/>
+</svg>ohne Taschenrechner</div>
+
+  <div class="tape-box">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <strong>Paradoxon:</strong> &bdquo;Wenn ich wei&szlig;, dass Ereignis B eingetreten ist &mdash; &auml;ndert das
+    die Wahrscheinlichkeit von A?&ldquo;
+    Beispiel: Eine Klasse hat 20 Sch&uuml;lerinnen und Sch&uuml;ler. 12 machen Sport (S), 8 nicht.
+    Von den Sportlern haben 9 eine gute Note in Mathe. Von den Nicht-Sportlern nur 2.
+    <br><br>
+    <strong>Frage:</strong> Wie gro&szlig; ist die Wahrscheinlichkeit, eine gute Mathe-Note zu haben,
+    wenn bekannt ist, dass die Person Sport macht?
+    <div class="ll"><div class="l"></div></div>
+  </div>
+
+  <div class="sec-hdr k2">Definition: Bedingte Wahrscheinlichkeit</div>
+  <div class="def-tape">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <div class="def-row">
+      <div class="def-left">P(A|B)</div>
+      <div>Die Wahrscheinlichkeit von A unter der Bedingung, dass B bereits eingetreten ist.
+      Gesprochen: <em>&bdquo;Wahrscheinlichkeit von A gegeben B&ldquo;</em></div>
+    </div>
+    <div class="def-row">
+      <div class="def-left">Am Baum</div>
+      <div>P(A|B) steht an den &Auml;sten der <strong>zweiten Stufe</strong> &mdash; auf dem Ast nach B.
+      Diese Werte &auml;ndern sich je nach Ergebnis der ersten Stufe.</div>
+    </div>
+    <div class="def-row">
+      <div class="def-left">Beispiel</div>
+      <div>P(gute Note | Sport) = <span class="b"><span class="z">9</span><span class="n">12</span></span> = <span class="b"><span class="z">3</span><span class="n">4</span></span> &nbsp;&nbsp; P(gute Note | kein Sport) = <span class="b"><span class="z">2</span><span class="n">8</span></span> = <span class="b"><span class="z">1</span><span class="n">4</span></span></div>
+    </div>
+  </div>
+
+  <div class="auf">
+    <div class="auf-label"><svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="14" rx="2.5" fill="#CF7C09"/><circle cx="4.5" cy="4.5" r="1.2" fill="white"/><circle cx="11.5" cy="4.5" r="1.2" fill="white"/><circle cx="8" cy="8" r="1.2" fill="white"/><circle cx="4.5" cy="11.5" r="1.2" fill="white"/><circle cx="11.5" cy="11.5" r="1.2" fill="white"/></svg><svg width="32" height="22" viewBox="0 0 40 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="6" r="5.5" fill="#CF7C09"/><circle cx="7.8" cy="5.2" r="1" fill="white"/><circle cx="12.2" cy="5.2" r="1" fill="white"/><path d="M7 8 Q10 10 13 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="3" y="13" width="14" height="12" rx="5" fill="#CF7C09" opacity="0.75"/><line x1="3" y1="16" x2="0" y2="21" stroke="#CF7C09" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/><circle cx="30" cy="6" r="5" fill="#CF7C09" opacity="0.6"/><circle cx="28" cy="5.2" r="0.9" fill="white"/><circle cx="32" cy="5.2" r="0.9" fill="white"/><path d="M27 8 Q30 10 33 8" stroke="white" stroke-width="1.1" fill="none" stroke-linecap="round"/><rect x="23" y="13" width="13" height="11" rx="4.5" fill="#CF7C09" opacity="0.5"/><line x1="36" y1="16" x2="40" y2="21" stroke="#CF7C09" stroke-width="2" stroke-linecap="round" opacity="0.5"/></svg>Aufgabe 1: Klasse Sport und Mathe<span class="sterne s1">&#9733;</span></div>
+    <div class="auf-body">
+      Nutze die Situation aus dem Einstieg (20 Sch&uuml;lerinnen/Sch&uuml;ler, 12 Sport, 8 kein Sport;
+      9 Sportler mit guter Note, 2 Nicht-Sportler mit guter Note).
+      <div class="teil"><span class="tn">a)</span><span>Zeichne das Baumdiagramm. Trage an Stufe 1 P(S) und P(NS) ein. Trage an Stufe 2 die bedingten Wahrscheinlichkeiten P(G|S) und P(G|NS) ein.</span></div>
+      <div class="draw-box draw-box-baum" style="height:145px;"></div>
+      <div class="teil" style="margin-top:8px;"><span class="tn">b)</span><span>Berechne P(S und G) = <span class="ln" style="min-width:100px;"></span></span></div>
+      <div class="teil"><span class="tn">c)</span><span>Berechne P(gute Note) = P(S,G) + P(NS,G) = <span class="ln" style="min-width:130px;"></span></span></div>
+    </div>
+  </div>
+  <div class="qr-box"><span class="qr-box-label">✔ Lösung</span><div id="qr_k23_1" style="width:80px;height:80px;"></div><script>new QRCode(document.getElementById("qr_k23_1"),{text:"https://mathtastic.github.io/mathe/K2-3_Bedingte_Wahrscheinlichkeit.html#loesung",width:80,height:80,colorDark:"#1a1a1a",colorLight:"#ffffff"});</script></div>
+  <div class="seiten-nr">10I &middot; Daten und Zufall &middot; K2-3</div>
+</div>
+
+<div class="page">
+  <div class="kat-badge k2">LB 5 &middot; Daten und Zufall</div>
+  <div class="sequenz-badge">Daten und Zufall &middot; 10I</div>
+  <div class="pg-title">Bedingte Wahrscheinlichkeit P(A|B)</div>
+  <div class="tr-badge ohne"><svg width="16" height="18" viewBox="0 0 16 18" style="display:inline-block;vertical-align:middle;margin-right:4px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="14" height="16" rx="2" fill="none" stroke="#1C5F96" stroke-width="1.5"/>
+  <rect x="3" y="3" width="10" height="4" rx="1" fill="#1C5F96" opacity="0.3"/>
+  <rect x="3" y="9" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <rect x="6.5" y="9" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <rect x="10" y="9" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <rect x="3" y="13" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <rect x="6.5" y="13" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <rect x="10" y="13" width="2.5" height="2" rx="0.5" fill="#1C5F96"/>
+  <line x1="0" y1="18" x2="16" y2="0" stroke="#E0302A" stroke-width="2" stroke-linecap="round"/>
+</svg>ohne Taschenrechner</div>
+
+  <div class="auf">
+    <div class="auf-label"><svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="14" rx="2.5" fill="#CF7C09"/><circle cx="4.5" cy="4.5" r="1.2" fill="white"/><circle cx="11.5" cy="4.5" r="1.2" fill="white"/><circle cx="8" cy="8" r="1.2" fill="white"/><circle cx="4.5" cy="11.5" r="1.2" fill="white"/><circle cx="11.5" cy="11.5" r="1.2" fill="white"/></svg><svg width="32" height="22" viewBox="0 0 40 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="6" r="5.5" fill="#CF7C09"/><circle cx="7.8" cy="5.2" r="1" fill="white"/><circle cx="12.2" cy="5.2" r="1" fill="white"/><path d="M7 8 Q10 10 13 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="3" y="13" width="14" height="12" rx="5" fill="#CF7C09" opacity="0.75"/><line x1="3" y1="16" x2="0" y2="21" stroke="#CF7C09" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/><circle cx="30" cy="6" r="5" fill="#CF7C09" opacity="0.6"/><circle cx="28" cy="5.2" r="0.9" fill="white"/><circle cx="32" cy="5.2" r="0.9" fill="white"/><path d="M27 8 Q30 10 33 8" stroke="white" stroke-width="1.1" fill="none" stroke-linecap="round"/><rect x="23" y="13" width="13" height="11" rx="4.5" fill="#CF7C09" opacity="0.5"/><line x1="36" y1="16" x2="40" y2="21" stroke="#CF7C09" stroke-width="2" stroke-linecap="round" opacity="0.5"/></svg>Aufgabe 2: Schwimmkurs und Abiturnote (Pr&uuml;fungsformat)<span class="sterne s2">&#9733;&#9733;</span></div>
+    <div class="auf-body">
+      Aus einer Gruppe von Sch&uuml;lerinnen und Sch&uuml;lern haben <span class="b"><span class="z">3</span><span class="n">8</span></span> einen Schwimmkurs besucht (S),
+      die anderen nicht (NS).
+      Von den Schwimm&shy;kurs-Teilnehmern haben <span class="b"><span class="z">5</span><span class="n">7</span></span> das Abitur gemacht (G = guter Abschluss).
+      Von den anderen nur <span class="b"><span class="z">3</span><span class="n">7</span></span>.
+      <div class="teil"><span class="tn">a)</span><span>Zeichne das vollst&auml;ndige Baumdiagramm mit allen Wahrscheinlichkeiten.</span></div>
+      <div class="draw-box draw-box-baum" style="height:160px;"></div>
+      <div class="teil" style="margin-top:8px;"><span class="tn">b)</span><span>Berechne P(G) = P(S,G) + P(NS,G) = <span class="ln" style="min-width:150px;"></span></span></div>
+      <div class="teil"><span class="tn">c)</span><span>Welche bedingte Wahrscheinlichkeit P(G|S) steht an Stufe 2? Was bedeutet sie?</span></div>
+      <div class="ll"><div class="l"></div></div>
+    </div>
+  </div>
+
+  <div class="auf">
+    <div class="auf-label"><svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="14" rx="2.5" fill="#CF7C09"/><circle cx="4.5" cy="4.5" r="1.2" fill="white"/><circle cx="11.5" cy="4.5" r="1.2" fill="white"/><circle cx="8" cy="8" r="1.2" fill="white"/><circle cx="4.5" cy="11.5" r="1.2" fill="white"/><circle cx="11.5" cy="11.5" r="1.2" fill="white"/></svg><svg width="32" height="22" viewBox="0 0 40 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="6" r="5.5" fill="#CF7C09"/><circle cx="7.8" cy="5.2" r="1" fill="white"/><circle cx="12.2" cy="5.2" r="1" fill="white"/><path d="M7 8 Q10 10 13 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="3" y="13" width="14" height="12" rx="5" fill="#CF7C09" opacity="0.75"/><line x1="3" y1="16" x2="0" y2="21" stroke="#CF7C09" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/><circle cx="30" cy="6" r="5" fill="#CF7C09" opacity="0.6"/><circle cx="28" cy="5.2" r="0.9" fill="white"/><circle cx="32" cy="5.2" r="0.9" fill="white"/><path d="M27 8 Q30 10 33 8" stroke="white" stroke-width="1.1" fill="none" stroke-linecap="round"/><rect x="23" y="13" width="13" height="11" rx="4.5" fill="#CF7C09" opacity="0.5"/><line x1="36" y1="16" x2="40" y2="21" stroke="#CF7C09" stroke-width="2" stroke-linecap="round" opacity="0.5"/></svg>Aufgabe 3: Baum lesen (Pr&uuml;fungsformat Teil A)<span class="sterne s2">&#9733;&#9733;</span></div>
+    <div class="auf-body">
+      Ein Baumdiagramm zeigt: Auf dem oberen Ast steht R mit P(R) = <span class="b"><span class="z">2</span><span class="n">5</span></span>.
+      Auf den Folgeast P(G|R) = <span class="b"><span class="z">3</span><span class="n">4</span></span>.
+      <div class="teil"><span class="tn">a)</span><span>Berechne P(R und G) = <span class="ln" style="min-width:100px;"></span></span></div>
+      <div class="teil"><span class="tn">b)</span><span>Was bedeutet P(G|R) in Worten f&uuml;r diesen Kontext?</span></div>
+      <div class="ll"><div class="l"></div></div>
+      <div class="teil"><span class="tn">c)</span><span>Wenn P(R&#773;) = <span class="b"><span class="z">3</span><span class="n">5</span></span> und P(G|R&#773;) = <span class="b"><span class="z">1</span><span class="n">4</span></span>, berechne P(G) vollst&auml;ndig.</span></div>
+      <div class="ll"><div class="l"></div></div>
+    </div>
+  </div>
+
+  <div class="merk-box">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <div class="merk-label">Merksatz: Bedingte Wahrscheinlichkeit</div>
+    P(A|B) ist die Wahrscheinlichkeit von A unter der Bedingung, dass
+    <span class="luecke" style="min-width:80px;"></span> bereits eingetreten ist.
+    Am Baumdiagramm steht P(A|B) an den &Auml;sten der
+    <span class="luecke" style="min-width:80px;"></span> nach B.
+    Die Pfad-Wahrscheinlichkeit P(A und B) =
+    <span class="luecke" style="min-width:60px;"></span> &middot; <span class="luecke" style="min-width:60px;"></span>.
+  </div>
+  <div class="qr-box"><span class="qr-box-label">✔ Lösung</span><div id="qr_k23_2" style="width:80px;height:80px;"></div><script>new QRCode(document.getElementById("qr_k23_2"),{text:"https://mathtastic.github.io/mathe/K2-3_Bedingte_Wahrscheinlichkeit.html#loesung",width:80,height:80,colorDark:"#1a1a1a",colorLight:"#ffffff"});</script></div>
+  <div class="seiten-nr">10I &middot; Daten und Zufall &middot; K2-3</div>
+</div>
+
+<!-- LOE_SEP -->
+<div class="page page-loe" id="loesung">
+  <div class="loe-badge">&#10004; L&ouml;sungsblatt</div>
+  <div class="sequenz-badge">Daten und Zufall &middot; 10I</div>
+  <div class="pg-title">Bedingte Wahrscheinlichkeit &mdash; L&ouml;sungsblatt</div>
+  <div class="pg-sub k2">L&ouml;sungsblatt &middot; nur f&uuml;r den Lehrer</div>
+
+  <div class="sec-hdr k2">A1: Klasse Sport/Mathe</div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">Baum:</span><span>Stufe 1: P(S)=<span class="b"><span class="z">12</span><span class="n">20</span></span>=<span class="b"><span class="z">3</span><span class="n">5</span></span>, P(NS)=<span class="b"><span class="z">8</span><span class="n">20</span></span>=<span class="b"><span class="z">2</span><span class="n">5</span></span>. Stufe 2: P(G|S)=<span class="b"><span class="z">9</span><span class="n">12</span></span>=<span class="b"><span class="z">3</span><span class="n">4</span></span>, P(G|NS)=<span class="b"><span class="z">2</span><span class="n">8</span></span>=<span class="b"><span class="z">1</span><span class="n">4</span></span>.</span></div>
+    <div class="teil"><span class="tn">b)</span><span>P(S,G) = <span class="b"><span class="z">3</span><span class="n">5</span></span> &middot; <span class="b"><span class="z">3</span><span class="n">4</span></span> = <span class="sol"><span class="b"><span class="z">9</span><span class="n">20</span></span></span></span></div>
+    <div class="teil"><span class="tn">c)</span><span>P(G) = <span class="b"><span class="z">9</span><span class="n">20</span></span> + <span class="b"><span class="z">2</span><span class="n">5</span></span> &middot; <span class="b"><span class="z">1</span><span class="n">4</span></span> = <span class="b"><span class="z">9</span><span class="n">20</span></span> + <span class="b"><span class="z">2</span><span class="n">20</span></span> = <span class="sol"><span class="b"><span class="z">11</span><span class="n">20</span></span></span></span></div>
+  </div>
+
+  <div class="sec-hdr k2">A2: Schwimmkurs</div>
+  <p style="font-family:Nunito,sans-serif;font-size:10px;color:#666;margin:6px 0 3px;font-style:italic;">Musterlösung A2 — Schwimmkurs/Abi (S=Schwimmer):</p><div style="background:#FAFAFA;border:1px solid #ddd;border-radius:5px;padding:10px 8px;margin:4px 0 8px;"><svg width="260" height="155" style="display:block;margin:0 auto;"><text x="18" y="74" font-family="Nunito,sans-serif" font-size="13" fill="#CF7C09" font-weight="700" text-anchor="middle">S</text><line x1="26" y1="70" x2="82" y2="28" stroke="#2471A3" stroke-width="1.6"/><rect x="42" y="41.0" width="25" height="14" fill="white" rx="2"/><text x="54" y="53.0" font-family="Nunito,sans-serif" font-size="9" fill="#2471A3" font-weight="700" text-anchor="middle">3/8</text><text x="90" y="32" font-family="Nunito,sans-serif" font-size="12" fill="#2471A3" font-weight="700" text-anchor="middle">S</text><line x1="98" y1="28" x2="158" y2="14" stroke="#1A7A50" stroke-width="1.6"/><rect x="116" y="13.0" width="25" height="14" fill="white" rx="2"/><text x="128" y="25.0" font-family="Nunito,sans-serif" font-size="9" fill="#1A7A50" font-weight="700" text-anchor="middle">5/7</text><text x="166" y="18" font-family="Nunito,sans-serif" font-size="12" fill="#1A7A50" font-weight="700" text-anchor="middle">G</text><line x1="98" y1="28" x2="158" y2="42" stroke="#C0392B" stroke-width="1.6"/><rect x="116" y="27.0" width="25" height="14" fill="white" rx="2"/><text x="128" y="39.0" font-family="Nunito,sans-serif" font-size="9" fill="#C0392B" font-weight="700" text-anchor="middle">2/7</text><text x="166" y="46" font-family="Nunito,sans-serif" font-size="12" fill="#C0392B" font-weight="700" text-anchor="middle">NG</text><line x1="26" y1="70" x2="82" y2="112" stroke="#1A7A50" stroke-width="1.6"/><rect x="42" y="83.0" width="25" height="14" fill="white" rx="2"/><text x="54" y="95.0" font-family="Nunito,sans-serif" font-size="9" fill="#1A7A50" font-weight="700" text-anchor="middle">5/8</text><text x="90" y="116" font-family="Nunito,sans-serif" font-size="12" fill="#1A7A50" font-weight="700" text-anchor="middle">NS</text><line x1="98" y1="112" x2="158" y2="98" stroke="#1A7A50" stroke-width="1.6"/><rect x="116" y="97.0" width="25" height="14" fill="white" rx="2"/><text x="128" y="109.0" font-family="Nunito,sans-serif" font-size="9" fill="#1A7A50" font-weight="700" text-anchor="middle">3/7</text><text x="166" y="102" font-family="Nunito,sans-serif" font-size="12" fill="#1A7A50" font-weight="700" text-anchor="middle">G</text><line x1="98" y1="112" x2="158" y2="126" stroke="#C0392B" stroke-width="1.6"/><rect x="116" y="111.0" width="25" height="14" fill="white" rx="2"/><text x="128" y="123.0" font-family="Nunito,sans-serif" font-size="9" fill="#C0392B" font-weight="700" text-anchor="middle">4/7</text><text x="166" y="130" font-family="Nunito,sans-serif" font-size="12" fill="#C0392B" font-weight="700" text-anchor="middle">NG</text></svg></div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">b)</span><span>P(S,G) = <span class="b"><span class="z">3</span><span class="n">8</span></span> &middot; <span class="b"><span class="z">5</span><span class="n">7</span></span> = <span class="b"><span class="z">15</span><span class="n">56</span></span> &nbsp;|&nbsp; P(NS,G) = <span class="b"><span class="z">5</span><span class="n">8</span></span> &middot; <span class="b"><span class="z">3</span><span class="n">7</span></span> = <span class="b"><span class="z">15</span><span class="n">56</span></span><br>P(G) = <span class="b"><span class="z">15</span><span class="n">56</span></span> + <span class="b"><span class="z">15</span><span class="n">56</span></span> = <span class="sol"><span class="b"><span class="z">30</span><span class="n">56</span></span> = <span class="b"><span class="z">15</span><span class="n">28</span></span></span></span></div>
+    <div class="teil"><span class="tn">c)</span><span>P(G|S) = <span class="b"><span class="z">5</span><span class="n">7</span></span>: Unter den Schwimmkurs-Teilnehmern haben <span class="b"><span class="z">5</span><span class="n">7</span></span> einen guten Abschluss.</span></div>
+  </div>
+
+  <div class="sec-hdr k2">A3: Baum lesen</div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">a)</span><span>P(R,G) = <span class="b"><span class="z">2</span><span class="n">5</span></span> &middot; <span class="b"><span class="z">3</span><span class="n">4</span></span> = <span class="sol"><span class="b"><span class="z">6</span><span class="n">20</span></span> = <span class="b"><span class="z">3</span><span class="n">10</span></span></span></span></div>
+    <div class="teil"><span class="tn">b)</span><span>P(G|R) = <span class="b"><span class="z">3</span><span class="n">4</span></span>: Wenn R eingetreten ist, betr&auml;gt die Wahrscheinlichkeit von G <span class="b"><span class="z">3</span><span class="n">4</span></span>.</span></div>
+    <div class="teil"><span class="tn">c)</span><span>P(R&#773;,G) = <span class="b"><span class="z">3</span><span class="n">5</span></span> &middot; <span class="b"><span class="z">1</span><span class="n">4</span></span> = <span class="b"><span class="z">3</span><span class="n">20</span></span> &nbsp;&rarr;&nbsp; P(G) = <span class="b"><span class="z">3</span><span class="n">10</span></span> + <span class="b"><span class="z">3</span><span class="n">20</span></span> = <span class="b"><span class="z">6</span><span class="n">20</span></span> + <span class="b"><span class="z">3</span><span class="n">20</span></span> = <span class="sol"><span class="b"><span class="z">9</span><span class="n">20</span></span></span></span></div>
+  </div>
+  <div class="loe-hinweis">Merksatz-L&uuml;cken: B &mdash; zweiten Stufe &mdash; P(B) &mdash; P(A|B).</div>
+  <div class="seiten-nr">10I &middot; K2-3 &middot; L&ouml;sungsblatt</div>
+</div>
+</body>
+</html>
