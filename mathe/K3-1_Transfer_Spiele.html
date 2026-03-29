@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="de">
+<head><meta charset="UTF-8"><title>K3-1 Transfer Spiele 10I</title><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 13px; color: #1a1a1a; line-height: 1.65; padding: 30px 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+.page { width: 210mm; min-height: 297mm; background: #fff; margin: 0 auto 40px; padding: 10mm 15mm 10mm; box-shadow: 0 4px 24px rgba(0,0,0,.10); display: flex; flex-direction: column; position: relative; }
+.page-loe { border-top: 5px solid #1A7A50; }
+.page-loe .sec-hdr { border-left-color: #1A7A50; }
+.page-loe .auf-label::before { display: none; }
+.kat-badge { position: absolute; top: 10mm; right: 17mm; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; padding: 3px 10px 3px 8px; border-radius: 0 4px 4px 0; background: #1C5F96; display: flex; align-items: center; gap: 5px; }
+.kat-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; }
+.loe-badge { position: absolute; top: 10mm; right: 17mm; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; padding: 3px 10px 3px 8px; border-radius: 0 4px 4px 0; background: #1A7A50; }
+.sequenz-badge { font-family: 'Nunito', sans-serif; font-size: 10.5px; font-weight: 700; color: #5A5A5A; text-transform: uppercase; letter-spacing: .10em; text-align: center; margin-bottom: 3px; }
+.pg-title { text-align: center; font-family: 'Lora', serif; font-size: 19px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+.pg-sub { text-align: center; font-family: 'Nunito', sans-serif; font-size: 11px; color: #1C5F96; font-style: italic; margin-bottom: 14px; }
+.datum-row { display: none; }
+
+.klasse-tag { display: none; }
+.tape-tl, .tape-tr { position: absolute; width: 36px; height: 20px; background: rgba(235,222,175,0.90); filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.55)); clip-path: polygon(0% 0%,9% 20%,2% 45%,10% 70%,3% 90%,0% 100%,100% 100%,97% 80%,100% 55%,91% 30%,98% 10%,92% 0%); }
+.tape-tl { top: -4px; left: -2px; transform: rotate(-38deg); }
+.tape-tr { top: -4px; right: -2px; transform: rotate(38deg); }
+.tape-box { position: relative; background: #FDFAF0; border: 1.5px solid #D0C898; border-radius: 5px; padding: 14px 15px 13px; margin-bottom: 18px; font-family: 'Lora', serif; font-size: 12.5px; line-height: 1.68; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.tape-box .ll { margin-top: 16px !important; gap: 54px !important; }
+.tape-box .l { padding-bottom: 6px; }
+.merk-box { position: relative; background: #FFFDE6; border: 1.5px solid #E8D84A; border-radius: 5px; padding: 15px 13px 14px; margin-bottom: 15px; font-family: 'Lora', serif; font-size: 12.5px; line-height: 2.2; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.merk-box .tape-tl, .merk-box .tape-tr { all: unset; position: absolute; width: 15px; height: 22px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 32'%3E%3Ccircle cx='11' cy='11' r='9.5' fill='%23E8821A' stroke='%231a1a1a' stroke-width='2'/%3E%3Crect x='10' y='19' width='2' height='11' rx='1' fill='%23999'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: contain; top: -12px; }
+.merk-box .tape-tl { left: 14px; transform: rotate(-28deg); }
+.merk-box .tape-tr { right: 14px; transform: rotate(28deg); }
+.merk-label { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; font-style: italic; color: #6B5A00; margin-bottom: 4px; text-decoration: underline; text-underline-offset: 3px; }
+.tipp-box { background: #F0F7FF; border: 1.5px solid #88BBE0; border-left: 4px solid #5599CC; border-radius: 5px; padding: 9px 12px 9px 34px; margin: 9px 0; font-family: 'Nunito', sans-serif; font-size: 12px; color: #1A3A5C; position: relative; }
+.tipp-box::before { content: '💡'; position: absolute; left: 9px; top: 50%; transform: translateY(-50%); }
+.video-box { display: flex; align-items: center; gap: 12px; background: #FAFAFA; border: 1.5px solid #E0DDD5; border-left: 4px solid #E0302A; border-radius: 6px; padding: 11px 14px; margin-bottom: 16px; }
+.video-icon { width: 36px; height: 36px; background: #E0302A; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; color: white; }
+.video-info { flex: 1; }
+.video-info .video-titel { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 3px; }
+.video-info .video-link { font-family: 'Nunito', sans-serif; font-size: 11px; color: #E0302A; font-weight: 700; }
+.video-info .video-desc { font-family: 'Nunito', sans-serif; font-size: 11px; color: #666; margin-top: 3px; }
+.exp-block { background: #FFF5EB; border: 1.5px solid #D4892A; border-left: 4px solid #E8821A; border-radius: 5px; padding: 12px 13px; margin-bottom: 16px; position: relative; }
+.exp-header { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; color: #8B4500; margin-bottom: 6px; }
+.exp-body { font-family: 'Nunito', sans-serif; font-size: 12.5px; line-height: 1.75; }
+.exp-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; font-family: 'Nunito', sans-serif; }
+.exp-tbl th { background: #E8821A; color: white; padding: 5px 8px; text-align: center; font-weight: 700; }
+.exp-tbl td { border: 1px solid #EAC08A; padding: 5px 8px; text-align: center; }
+.exp-tbl tr:nth-child(even) td { background: #FEF3E2; }
+.sec-hdr { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: #1a1a1a; margin: 18px 0 10px; padding: 4px 0 4px 11px; border-left: 4px solid #1C5F96; border-bottom: 1px solid #E0DDD5; display: block; }
+.auf { margin-bottom: 20px; }
+.auf-label { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+.auf-label::before { display: none; }
+.sterne { margin-left: auto; font-size: 11px; flex-shrink: 0; }
+.sterne.s1 { color: #1A7A50; } .sterne.s2 { color: #CF7C09; } .sterne.s3 { color: #A31515; }
+.auf-body { font-family: 'Nunito', sans-serif; font-size: 12.5px; line-height: 1.82; }
+.teil { display: flex; gap: 7px; margin-top: 12px; font-size: 12.5px; align-items: flex-start; }
+.tn { font-weight: 700; color: #555; min-width: 21px; flex-shrink: 0; }
+.ll { display: flex; flex-direction: column; gap: 52px; margin-top: 18px; }
+.ll .l { border-bottom: 1.5px solid #bbb; width: 100%; min-height: 28px; display: block; }
+.ln { border-bottom: 1px solid #aaa; display: inline-block; min-width: 80px; height: 14px; vertical-align: bottom; }
+.luecke { display: inline-block; border-bottom: 1.5px solid #C8A800; min-width: 70px; height: 16px; vertical-align: bottom; margin: 0 3px; }
+.draw-box { border: 1.5px dashed #bbb; border-radius: 4px; background-color: #FAFAFA; display: flex; align-items: center; justify-content: center; margin-top: 7px; }
+.draw-box-baum { background-color: #FAFEFA; background-image:
+    repeating-linear-gradient(to right, #E8F0EC 0px, #E8F0EC 0.5px, transparent 0.5px, transparent 10px),
+    repeating-linear-gradient(to bottom, #E8F0EC 0px, #E8F0EC 0.5px, transparent 0.5px, transparent 10px),
+    repeating-linear-gradient(to right, transparent 0px, transparent calc(33% - 1px), #A8D4C0 calc(33% - 1px), #A8D4C0 calc(33% + 1px), transparent calc(33% + 1px), transparent calc(66% - 1px), #A8D4C0 calc(66% - 1px), #A8D4C0 calc(66% + 1px), transparent calc(66% + 1px), transparent 100%); }
+.b { display: inline-flex; flex-direction: column; align-items: stretch; vertical-align: middle; line-height: 1.2; margin: 0 3px; font-size: 0.92em; text-align: center; }
+.b .z { border-bottom: 1.4px solid currentColor; padding: 1px 4px 2px; display: block; white-space: nowrap; width: 100%; box-sizing: border-box; }
+.b .n { padding: 2px 4px 0; display: block; white-space: nowrap; width: 100%; box-sizing: border-box; }
+.def-tape { position: relative; background: #FDFAF0; border: 1.5px solid #D0C898; border-radius: 5px; padding: 10px 13px; margin-bottom: 15px; box-shadow: 3px 4px 0px rgba(0,0,0,.07); }
+.def-row { display: grid; grid-template-columns: 90px 1fr; gap: 8px; align-items: start; padding: 8px 0; border-bottom: 1px dashed #D0C898; font-size: 12.5px; font-family: 'Nunito', sans-serif; }
+.def-row:last-child { border-bottom: none; padding-bottom: 0; }
+.def-left { font-family: 'Caveat', cursive; font-size: 14px; font-weight: 700; color: #1C5F96; line-height: 1.3; }
+.tr-badge { display: inline-flex; align-items: center; gap: 5px; font-family: 'Nunito', sans-serif; font-size: 9.5px; font-weight: 700; padding: 2px 8px; border-radius: 20px; background: #E8F0FA; color: #1C5F96; border: 1px solid #A8C4E0; margin-bottom: 10px; }
+.loe-antwort { background: #E8F5EE; border: 1.5px solid #1A7A50; border-radius: 5px; padding: 10px 13px; margin: 5px 0; font-family: 'Nunito', sans-serif; font-size: 12.5px; line-height: 1.75; }
+.loe-antwort .sol { font-weight: 700; color: #0D5C35; }
+.loe-antwort .teil { display: flex; gap: 7px; margin-top: 5px; font-size: 12.5px; align-items: flex-start; }
+.loe-antwort .tn { font-weight: 700; color: #0D5C35; min-width: 21px; flex-shrink: 0; }
+.loe-hinweis { font-family: 'Lora', serif; font-size: 11.5px; font-style: italic; color: #555; border-left: 3px solid #A8D4B8; padding-left: 9px; margin: 6px 0 0; line-height: 1.6; }
+.loe-sol { color: #A31515; font-weight: 700; }
+.seiten-nr { font-family: 'Nunito', sans-serif; font-size: 9px; color: #bbb; text-align: center; margin-top: auto; padding-top: 10px; }
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body { background: white !important; padding: 0 !important; margin: 0 !important; }
+  .page { box-shadow: none !important; margin: 0 !important; page-break-after: always !important; break-after: page !important; width: 210mm !important; height: 297mm !important; min-height: 0 !important; overflow: hidden !important; padding: 12mm 15mm 10mm !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}</style>
+</head>
+<body><svg style="position:absolute;width:0;height:0;"><defs><filter id="wavy"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="0"/></filter></defs></svg>
+
+<div class="page">
+  <div class="kat-badge k3">LB 5 &middot; Daten und Zufall</div>
+  <div class="sequenz-badge">Daten und Zufall &middot; 10I</div>
+  <div class="pg-title">Transfer &mdash; Gesellschaftsspiele</div>
+  <div class="tr-badge mit"><svg width="16" height="18" viewBox="0 0 16 18" style="display:inline-block;vertical-align:middle;margin-right:4px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="14" height="16" rx="2" fill="none" stroke="#CF7C09" stroke-width="1.5"/>
+  <rect x="3" y="3" width="10" height="4" rx="1" fill="#CF7C09" opacity="0.3"/>
+  <rect x="3" y="9" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+  <rect x="6.5" y="9" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+  <rect x="10" y="9" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+  <rect x="3" y="13" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+  <rect x="6.5" y="13" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+  <rect x="10" y="13" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+</svg>Taschenrechner erlaubt</div>
+
+  <div class="tape-box">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <strong>Welche Strategie ist mathematisch besser?</strong>
+    Bei vielen Spielen steckt mehr Mathematik drin, als man denkt.
+    In dieser Stunde analysiert ihr bekannte Gesellschaftsspiele mit dem Baumdiagramm
+    und findet die mathematisch optimale Strategie.
+  </div>
+
+  <div class="sec-hdr k3">Aufgaben</div>
+
+  <div class="auf">
+    <div class="auf-label"><svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="14" rx="2.5" fill="#C2571A"/><circle cx="4.5" cy="4.5" r="1.2" fill="white"/><circle cx="11.5" cy="4.5" r="1.2" fill="white"/><circle cx="8" cy="8" r="1.2" fill="white"/><circle cx="4.5" cy="11.5" r="1.2" fill="white"/><circle cx="11.5" cy="11.5" r="1.2" fill="white"/></svg><svg width="44" height="22" viewBox="0 0 54 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="7" r="4.5" fill="#C2571A" opacity="0.55"/><circle cx="6.2" cy="6.3" r="0.8" fill="white"/><circle cx="9.8" cy="6.3" r="0.8" fill="white"/><rect x="2" y="14" width="12" height="10" rx="4" fill="#C2571A" opacity="0.45"/><circle cx="27" cy="5.5" r="5.5" fill="#C2571A"/><circle cx="24.8" cy="4.7" r="1" fill="white"/><circle cx="29.2" cy="4.7" r="1" fill="white"/><path d="M23.5 7.5 Q27 9.5 30.5 7.5" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="19" y="13" width="16" height="12" rx="5" fill="#C2571A" opacity="0.8"/><line x1="19" y1="16" x2="14" y2="21" stroke="#C2571A" stroke-width="2" stroke-linecap="round" opacity="0.7"/><line x1="35" y1="16" x2="40" y2="21" stroke="#C2571A" stroke-width="2" stroke-linecap="round" opacity="0.7"/><circle cx="46" cy="7" r="4.5" fill="#C2571A" opacity="0.55"/><circle cx="44.2" cy="6.3" r="0.8" fill="white"/><circle cx="47.8" cy="6.3" r="0.8" fill="white"/><rect x="40" y="14" width="12" height="10" rx="4" fill="#C2571A" opacity="0.45"/></svg>Aufgabe 1: Kniffel &mdash; Die 6 zweimal w&uuml;rfeln<span class="sterne s2">&#9733;&#9733;</span></div>
+    <div class="auf-body">
+      Bei Kniffel m&ouml;chte ein Spieler zweimal hintereinander eine 6 w&uuml;rfeln (unabh&auml;ngig).
+      <div class="teil"><span class="tn">a)</span><span>Zeichne das Baumdiagramm und berechne P(zweimal eine 6).<br>P(6,6) = <span class="ln" style="min-width:100px;"></span></span></div>
+      <div class="draw-box draw-box-baum" style="height:145px;"></div>
+      <div class="teil" style="margin-top:8px;"><span class="tn">b)</span><span>Wie gro&szlig; ist P(mindestens einmal keine 6)? &nbsp; P = <span class="ln" style="min-width:100px;"></span></span></div>
+      <div class="teil"><span class="tn">c)</span><span>Ein Spieler behauptet: &bdquo;Ich w&uuml;rfle so lange, bis ich eine 6 habe.&ldquo;
+      Nach 6 Versuchen hat er noch keine. Ist die Chance beim 7. Wurf h&ouml;her? Begr&uuml;nde.</span></div>
+      <div class="ll"><div class="l"></div></div>
+    </div>
+  </div>
+
+  <div class="auf">
+    <div class="auf-label"><svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="14" rx="2.5" fill="#C2571A"/><circle cx="4.5" cy="4.5" r="1.2" fill="white"/><circle cx="11.5" cy="4.5" r="1.2" fill="white"/><circle cx="8" cy="8" r="1.2" fill="white"/><circle cx="4.5" cy="11.5" r="1.2" fill="white"/><circle cx="11.5" cy="11.5" r="1.2" fill="white"/></svg><svg width="44" height="22" viewBox="0 0 54 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="7" r="4.5" fill="#C2571A" opacity="0.55"/><circle cx="6.2" cy="6.3" r="0.8" fill="white"/><circle cx="9.8" cy="6.3" r="0.8" fill="white"/><rect x="2" y="14" width="12" height="10" rx="4" fill="#C2571A" opacity="0.45"/><circle cx="27" cy="5.5" r="5.5" fill="#C2571A"/><circle cx="24.8" cy="4.7" r="1" fill="white"/><circle cx="29.2" cy="4.7" r="1" fill="white"/><path d="M23.5 7.5 Q27 9.5 30.5 7.5" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="19" y="13" width="16" height="12" rx="5" fill="#C2571A" opacity="0.8"/><line x1="19" y1="16" x2="14" y2="21" stroke="#C2571A" stroke-width="2" stroke-linecap="round" opacity="0.7"/><line x1="35" y1="16" x2="40" y2="21" stroke="#C2571A" stroke-width="2" stroke-linecap="round" opacity="0.7"/><circle cx="46" cy="7" r="4.5" fill="#C2571A" opacity="0.55"/><circle cx="44.2" cy="6.3" r="0.8" fill="white"/><circle cx="47.8" cy="6.3" r="0.8" fill="white"/><rect x="40" y="14" width="12" height="10" rx="4" fill="#C2571A" opacity="0.45"/></svg>Aufgabe 2: Sch&uuml;ttelbecher (Yahtzee)<span class="sterne s2">&#9733;&#9733;</span></div>
+    <div class="auf-body">
+      Im Spiel Yahtzee wirfst du mit 5 W&uuml;rfeln. Du willst wissen: Wie gro&szlig; ist die Chance,
+      beim ersten Wurf eines von f&uuml;nf W&uuml;rfeln als &bdquo;6&ldquo; zu erhalten?
+      Betrachte <strong>einen einzelnen W&uuml;rfel</strong>:
+      <div class="teil"><span class="tn">a)</span><span>P(dieser W&uuml;rfel zeigt eine 6) = <span class="ln" style="min-width:80px;"></span></span></div>
+      <div class="teil"><span class="tn">b)</span><span>P(dieser W&uuml;rfel zeigt keine 6) = <span class="ln" style="min-width:80px;"></span></span></div>
+      <div class="teil"><span class="tn">c)</span><span>P(keiner der 5 W&uuml;rfel zeigt eine 6) = <span class="ln" style="min-width:50px;"></span><sup>5</sup> = <span class="ln" style="min-width:80px;"></span> (TR verwenden)</span></div>
+      <div class="teil"><span class="tn">d)</span><span>P(mindestens eine 6 unter 5 W&uuml;rfeln) = 1 &minus; <span class="ln" style="min-width:100px;"></span> = <span class="ln" style="min-width:80px;"></span></span></div>
+    </div>
+  </div>
+  <div class="qr-box"><span class="qr-box-label">💡 Tipp</span><div id="qr_k31_1" style="width:80px;height:80px;"></div><script>new QRCode(document.getElementById("qr_k31_1"),{text:"https://mathtastic.github.io/mathe/K3-1_Transfer_Spiele.html#tipp",width:80,height:80,colorDark:"#1a1a1a",colorLight:"#ffffff"});</script></div>
+  <div class="seiten-nr">10I &middot; Daten und Zufall &middot; K3-1</div>
+</div>
+
+<div class="page">
+  <div class="kat-badge k3">LB 5 &middot; Daten und Zufall</div>
+  <div class="sequenz-badge">Daten und Zufall &middot; 10I</div>
+  <div class="pg-title">Transfer &mdash; Gesellschaftsspiele</div>
+  <div class="tr-badge mit"><svg width="16" height="18" viewBox="0 0 16 18" style="display:inline-block;vertical-align:middle;margin-right:4px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="14" height="16" rx="2" fill="none" stroke="#CF7C09" stroke-width="1.5"/>
+  <rect x="3" y="3" width="10" height="4" rx="1" fill="#CF7C09" opacity="0.3"/>
+  <rect x="3" y="9" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+  <rect x="6.5" y="9" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+  <rect x="10" y="9" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+  <rect x="3" y="13" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+  <rect x="6.5" y="13" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+  <rect x="10" y="13" width="2.5" height="2" rx="0.5" fill="#CF7C09"/>
+</svg>Taschenrechner erlaubt</div>
+
+  <div class="auf">
+    <div class="auf-label"><svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="14" rx="2.5" fill="#C2571A"/><circle cx="4.5" cy="4.5" r="1.2" fill="white"/><circle cx="11.5" cy="4.5" r="1.2" fill="white"/><circle cx="8" cy="8" r="1.2" fill="white"/><circle cx="4.5" cy="11.5" r="1.2" fill="white"/><circle cx="11.5" cy="11.5" r="1.2" fill="white"/></svg><svg width="44" height="22" viewBox="0 0 54 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="7" r="4.5" fill="#C2571A" opacity="0.55"/><circle cx="6.2" cy="6.3" r="0.8" fill="white"/><circle cx="9.8" cy="6.3" r="0.8" fill="white"/><rect x="2" y="14" width="12" height="10" rx="4" fill="#C2571A" opacity="0.45"/><circle cx="27" cy="5.5" r="5.5" fill="#C2571A"/><circle cx="24.8" cy="4.7" r="1" fill="white"/><circle cx="29.2" cy="4.7" r="1" fill="white"/><path d="M23.5 7.5 Q27 9.5 30.5 7.5" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="19" y="13" width="16" height="12" rx="5" fill="#C2571A" opacity="0.8"/><line x1="19" y1="16" x2="14" y2="21" stroke="#C2571A" stroke-width="2" stroke-linecap="round" opacity="0.7"/><line x1="35" y1="16" x2="40" y2="21" stroke="#C2571A" stroke-width="2" stroke-linecap="round" opacity="0.7"/><circle cx="46" cy="7" r="4.5" fill="#C2571A" opacity="0.55"/><circle cx="44.2" cy="6.3" r="0.8" fill="white"/><circle cx="47.8" cy="6.3" r="0.8" fill="white"/><rect x="40" y="14" width="12" height="10" rx="4" fill="#C2571A" opacity="0.45"/></svg>Aufgabe 3: Mensch &auml;rgere dich nicht<span class="sterne s3">&#9733;&#9733;&#9733;</span></div>
+    <div class="auf-body">
+      Bei &bdquo;Mensch &auml;rgere dich nicht&ldquo; muss ein Spieler eine 6 w&uuml;rfeln, um eine Figur herauszusetzen.
+      Er hat pro Runde maximal 2 Versuche, falls er zuerst eine 6 w&uuml;rfelt.
+      <div class="teil"><span class="tn">a)</span><span>Zeichne das Baumdiagramm. Erster Ast: Hat der Spieler im 1. Versuch eine 6 oder nicht?
+      Zweiter Ast: Hat er im 2. Versuch eine 6 oder nicht (nur m&ouml;glich falls 1. Versuch keine 6)?</span></div>
+      <div class="draw-box draw-box-baum" style="height:145px;"></div>
+      <div class="teil" style="margin-top:8px;"><span class="tn">b)</span><span>P(Figur raus nach genau 1 Wurf) = <span class="ln" style="min-width:80px;"></span></span></div>
+      <div class="teil"><span class="tn">c)</span><span>P(Figur raus nach genau 2 Versuchen) = <span class="ln" style="min-width:100px;"></span></span></div>
+      <div class="teil"><span class="tn">d)</span><span>P(Figur in dieser Runde raus) = P(1 Versuch) + P(2 Versuche) = <span class="ln" style="min-width:120px;"></span></span></div>
+    </div>
+  </div>
+
+  <div class="auf">
+    <div class="auf-label"><svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="14" rx="2.5" fill="#C2571A"/><circle cx="4.5" cy="4.5" r="1.2" fill="white"/><circle cx="11.5" cy="4.5" r="1.2" fill="white"/><circle cx="8" cy="8" r="1.2" fill="white"/><circle cx="4.5" cy="11.5" r="1.2" fill="white"/><circle cx="11.5" cy="11.5" r="1.2" fill="white"/></svg><svg width="44" height="22" viewBox="0 0 54 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="7" r="4.5" fill="#C2571A" opacity="0.55"/><circle cx="6.2" cy="6.3" r="0.8" fill="white"/><circle cx="9.8" cy="6.3" r="0.8" fill="white"/><rect x="2" y="14" width="12" height="10" rx="4" fill="#C2571A" opacity="0.45"/><circle cx="27" cy="5.5" r="5.5" fill="#C2571A"/><circle cx="24.8" cy="4.7" r="1" fill="white"/><circle cx="29.2" cy="4.7" r="1" fill="white"/><path d="M23.5 7.5 Q27 9.5 30.5 7.5" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><rect x="19" y="13" width="16" height="12" rx="5" fill="#C2571A" opacity="0.8"/><line x1="19" y1="16" x2="14" y2="21" stroke="#C2571A" stroke-width="2" stroke-linecap="round" opacity="0.7"/><line x1="35" y1="16" x2="40" y2="21" stroke="#C2571A" stroke-width="2" stroke-linecap="round" opacity="0.7"/><circle cx="46" cy="7" r="4.5" fill="#C2571A" opacity="0.55"/><circle cx="44.2" cy="6.3" r="0.8" fill="white"/><circle cx="47.8" cy="6.3" r="0.8" fill="white"/><rect x="40" y="14" width="12" height="10" rx="4" fill="#C2571A" opacity="0.45"/></svg>Aufgabe 4: Euer eigenes Spiel &#9733;&#9733;&#9733;<span class="sterne s3"></span></div>
+    <div class="auf-body">
+      Erf&auml;hlt in eurer Gruppe eine Spielsituation aus einem Spiel, das ihr kennt.
+      Beschreibt die Situation und berechnet die Gewinnwahrscheinlichkeit mit einem Baumdiagramm.
+      <div class="draw-box" style="height:100px;"></div>
+      <div class="ll"><div class="l"></div></div>
+    </div>
+  </div>
+
+  <div class="merk-box">
+    <span class="tape-tl"></span><span class="tape-tr"></span>
+    <div class="merk-label">Merksatz: Transfer und Strategie</div>
+    Bei mehrstufigen Zufallsexperimenten kann man die Wahrscheinlichkeit eines Ereignisses berechnen, indem man
+    <span class="luecke" style="min-width:100px;"></span> zeichnet und die
+    <span class="luecke" style="min-width:80px;"></span> anwendet.
+    Das Gegenereignis ist oft der einfachste Weg: P(mind. einmal) = 1 &minus;
+    <span class="luecke" style="min-width:100px;"></span>.
+  </div>
+  <div class="qr-box"><span class="qr-box-label">✔ Lösung</span><div id="qr_k31_2" style="width:80px;height:80px;"></div><script>new QRCode(document.getElementById("qr_k31_2"),{text:"https://mathtastic.github.io/mathe/K3-1_Transfer_Spiele.html#loesung",width:80,height:80,colorDark:"#1a1a1a",colorLight:"#ffffff"});</script></div>
+  <div class="seiten-nr">10I &middot; Daten und Zufall &middot; K3-1</div>
+</div>
+
+<!-- LOE_SEP -->
+<div class="page page-loe" id="tipp">
+  <div class="loe-badge">&#10004; L&ouml;sungsblatt</div>
+  <div class="sequenz-badge">Daten und Zufall &middot; 10I</div>
+  <div class="pg-title">Transfer Spiele &mdash; L&ouml;sungsblatt</div>
+  <div class="pg-sub k3">L&ouml;sungsblatt &middot; nur f&uuml;r den Lehrer</div>
+
+  <div class="tipp-box" style="margin-bottom:12px;">
+    <strong>💡 Tipp A2c:</strong> P(kein 6 bei 5 W&uuml;rfeln) = (<span class="b"><span class="z">5</span><span class="n">6</span></span>)<sup>5</sup> &asymp; 0,402. TR verwenden.
+  </div>
+
+  <div class="sec-hdr k3" id="loesung">A1: Kniffel</div>
+  <p style="font-family:Nunito,sans-serif;font-size:10px;color:#666;margin:6px 0 3px;font-style:italic;">Musterlösung A1 — Kniffel zweimal eine 6:</p><div style="background:#FAFAFA;border:1px solid #ddd;border-radius:5px;padding:10px 8px;margin:4px 0 8px;"><svg width="250" height="145" style="display:block;margin:0 auto;"><text x="18" y="69" font-family="Nunito,sans-serif" font-size="13" fill="#C2571A" font-weight="700" text-anchor="middle">S</text><line x1="26" y1="65" x2="82" y2="22" stroke="#C2571A" stroke-width="1.6"/><rect x="42" y="35.5" width="25" height="14" fill="white" rx="2"/><text x="54" y="47.5" font-family="Nunito,sans-serif" font-size="9" fill="#C2571A" font-weight="700" text-anchor="middle">1/6</text><text x="90" y="26" font-family="Nunito,sans-serif" font-size="12" fill="#C2571A" font-weight="700" text-anchor="middle">6</text><line x1="98" y1="22" x2="158" y2="8" stroke="#C2571A" stroke-width="1.6"/><rect x="116" y="7.0" width="25" height="14" fill="white" rx="2"/><text x="128" y="19.0" font-family="Nunito,sans-serif" font-size="9" fill="#C2571A" font-weight="700" text-anchor="middle">1/6</text><text x="166" y="12" font-family="Nunito,sans-serif" font-size="12" fill="#C2571A" font-weight="700" text-anchor="middle">6</text><line x1="98" y1="22" x2="158" y2="36" stroke="#777" stroke-width="1.6"/><rect x="116" y="21.0" width="25" height="14" fill="white" rx="2"/><text x="128" y="33.0" font-family="Nunito,sans-serif" font-size="9" fill="#777" font-weight="700" text-anchor="middle">5/6</text><text x="166" y="40" font-family="Nunito,sans-serif" font-size="12" fill="#777" font-weight="700" text-anchor="middle">k.6</text><line x1="26" y1="65" x2="82" y2="108" stroke="#777" stroke-width="1.6"/><rect x="42" y="78.5" width="25" height="14" fill="white" rx="2"/><text x="54" y="90.5" font-family="Nunito,sans-serif" font-size="9" fill="#777" font-weight="700" text-anchor="middle">5/6</text><text x="90" y="112" font-family="Nunito,sans-serif" font-size="12" fill="#777" font-weight="700" text-anchor="middle">k.6</text><line x1="98" y1="108" x2="158" y2="94" stroke="#C2571A" stroke-width="1.6"/><rect x="116" y="93.0" width="25" height="14" fill="white" rx="2"/><text x="128" y="105.0" font-family="Nunito,sans-serif" font-size="9" fill="#C2571A" font-weight="700" text-anchor="middle">1/6</text><text x="166" y="98" font-family="Nunito,sans-serif" font-size="12" fill="#C2571A" font-weight="700" text-anchor="middle">6</text><line x1="98" y1="108" x2="158" y2="122" stroke="#777" stroke-width="1.6"/><rect x="116" y="107.0" width="25" height="14" fill="white" rx="2"/><text x="128" y="119.0" font-family="Nunito,sans-serif" font-size="9" fill="#777" font-weight="700" text-anchor="middle">5/6</text><text x="166" y="126" font-family="Nunito,sans-serif" font-size="12" fill="#777" font-weight="700" text-anchor="middle">k.6</text></svg></div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">a)</span><span>P(6,6) = <span class="b"><span class="z">1</span><span class="n">6</span></span> &middot; <span class="b"><span class="z">1</span><span class="n">6</span></span> = <span class="sol"><span class="b"><span class="z">1</span><span class="n">36</span></span> &asymp; 0,028</span></span></div>
+    <div class="teil"><span class="tn">b)</span><span>P(mind. keine 6) = 1 &minus; <span class="b"><span class="z">1</span><span class="n">36</span></span> = <span class="sol"><span class="b"><span class="z">35</span><span class="n">36</span></span> &asymp; 0,972</span></span></div>
+    <div class="teil"><span class="tn">c)</span><span>Nein &mdash; jeder Wurf ist unabh&auml;ngig. Die Chance bleibt immer <span class="b"><span class="z">1</span><span class="n">6</span></span>. (Irrtum des Spielers)</span></div>
+  </div>
+
+  <div class="sec-hdr k3">A2: Yahtzee</div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">a)</span><span><span class="b"><span class="z">1</span><span class="n">6</span></span></span></div>
+    <div class="teil"><span class="tn">b)</span><span><span class="b"><span class="z">5</span><span class="n">6</span></span></span></div>
+    <div class="teil"><span class="tn">c)</span><span>(<span class="b"><span class="z">5</span><span class="n">6</span></span>)<sup>5</sup> &asymp; <span class="sol">0,402</span></span></div>
+    <div class="teil"><span class="tn">d)</span><span>P(mind. eine 6) = 1 &minus; 0,402 = <span class="sol">0,598 &asymp; 60&nbsp;%</span></span></div>
+  </div>
+
+  <div class="sec-hdr k3">A3: Mensch &auml;rgere dich</div>
+  <p style="font-family:Nunito,sans-serif;font-size:10px;color:#666;margin:6px 0 3px;font-style:italic;">Musterlösung A3 — Mensch ärgere dich:</p><div style="background:#FAFAFA;border:1px solid #ddd;border-radius:5px;padding:10px 8px;margin:4px 0 8px;"><svg width="250" height="120" style="display:block;margin:0 auto;"><text x="18" y="59" font-family="Nunito,sans-serif" font-size="13" fill="#C2571A" font-weight="700" text-anchor="middle">S</text><line x1="26" y1="55" x2="80" y2="22" stroke="#1A7A50" stroke-width="1.6"/><rect x="40" y="30.5" width="25" height="14" fill="white" rx="2"/><text x="53" y="42.5" font-family="Nunito,sans-serif" font-size="9" fill="#1A7A50" font-weight="700" text-anchor="middle">1/6</text><text x="88" y="26" font-family="Nunito,sans-serif" font-size="12" fill="#1A7A50" font-weight="700" text-anchor="middle">6</text><line x1="96" y1="22" x2="155" y2="12" stroke="#1A7A50" stroke-width="1.6"/><rect x="113" y="9.0" width="25" height="14" fill="white" rx="2"/><text x="126" y="21.0" font-family="Nunito,sans-serif" font-size="9" fill="#1A7A50" font-weight="700" text-anchor="middle">1/6</text><text x="163" y="16" font-family="Nunito,sans-serif" font-size="12" fill="#1A7A50" font-weight="700" text-anchor="middle">6</text><line x1="96" y1="22" x2="155" y2="32" stroke="#C0392B" stroke-width="1.6"/><rect x="113" y="19.0" width="25" height="14" fill="white" rx="2"/><text x="126" y="31.0" font-family="Nunito,sans-serif" font-size="9" fill="#C0392B" font-weight="700" text-anchor="middle">5/6</text><text x="163" y="36" font-family="Nunito,sans-serif" font-size="12" fill="#C0392B" font-weight="700" text-anchor="middle">k.6</text><line x1="26" y1="55" x2="80" y2="88" stroke="#C0392B" stroke-width="1.6"/><rect x="40" y="63.5" width="25" height="14" fill="white" rx="2"/><text x="53" y="75.5" font-family="Nunito,sans-serif" font-size="9" fill="#C0392B" font-weight="700" text-anchor="middle">5/6</text><text x="88" y="92" font-family="Nunito,sans-serif" font-size="12" fill="#C0392B" font-weight="700" text-anchor="middle">k.6</text><line x1="96" y1="88" x2="155" y2="78" stroke="#1A7A50" stroke-width="1.6"/><rect x="113" y="75.0" width="25" height="14" fill="white" rx="2"/><text x="126" y="87.0" font-family="Nunito,sans-serif" font-size="9" fill="#1A7A50" font-weight="700" text-anchor="middle">1/6</text><text x="163" y="82" font-family="Nunito,sans-serif" font-size="12" fill="#1A7A50" font-weight="700" text-anchor="middle">6</text><line x1="96" y1="88" x2="155" y2="98" stroke="#C0392B" stroke-width="1.6"/><rect x="113" y="85.0" width="25" height="14" fill="white" rx="2"/><text x="126" y="97.0" font-family="Nunito,sans-serif" font-size="9" fill="#C0392B" font-weight="700" text-anchor="middle">5/6</text><text x="163" y="102" font-family="Nunito,sans-serif" font-size="12" fill="#C0392B" font-weight="700" text-anchor="middle">k.6</text></svg></div>
+  <div class="loe-antwort">
+    <div class="teil"><span class="tn">b)</span><span>P(1 Versuch) = <span class="sol"><span class="b"><span class="z">1</span><span class="n">6</span></span></span></span></div>
+    <div class="teil"><span class="tn">c)</span><span>P(2 Versuche) = <span class="b"><span class="z">5</span><span class="n">6</span></span> &middot; <span class="b"><span class="z">1</span><span class="n">6</span></span> = <span class="sol"><span class="b"><span class="z">5</span><span class="n">36</span></span></span></span></div>
+    <div class="teil"><span class="tn">d)</span><span><span class="b"><span class="z">1</span><span class="n">6</span></span> + <span class="b"><span class="z">5</span><span class="n">36</span></span> = <span class="b"><span class="z">6</span><span class="n">36</span></span> + <span class="b"><span class="z">5</span><span class="n">36</span></span> = <span class="sol"><span class="b"><span class="z">11</span><span class="n">36</span></span> &asymp; 30,6&nbsp;%</span></span></div>
+  </div>
+  <div class="loe-hinweis">Merksatz-L&uuml;cken: ein Baumdiagramm &mdash; Pfadregeln &mdash; P(kein einziges Mal).</div>
+  <div class="seiten-nr">10I &middot; K3-1 &middot; L&ouml;sungsblatt</div>
+</div>
+</body>
+</html>
