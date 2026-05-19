@@ -13,7 +13,7 @@
 body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; color: #1a1a1a; line-height: 1.65; padding: 30px 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
 
 /* ── SEITE ───────────────────────────────────────────────── */
-.page { width: 210mm; min-height: 297mm; background: #fff; margin: 0 auto 40px; padding: 10mm 15mm 10mm; box-shadow: 0 4px 24px rgba(0,0,0,.10); display: flex; flex-direction: column; position: relative; }
+.page { width: 210mm; height: 297mm; overflow: hidden; background: #fff; margin: 0 auto 40px; padding: 10mm 15mm 10mm; box-shadow: 0 4px 24px rgba(0,0,0,.10); display: flex; flex-direction: column; position: relative; }
 .page-loe { border-top: 5px solid #1A7A50; }
 
 /* ── KOPFZEILE ───────────────────────────────────────────── */
@@ -92,6 +92,8 @@ body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; 
 
 /* ── ZEICHENFLÄCHEN ──────────────────────────────────────── */
 .draw-box { background-color: #FAFAFA; background-image: repeating-linear-gradient(to right, #D0D0D0 0, #D0D0D0 0.6px, transparent 0.6px, transparent 20px), repeating-linear-gradient(to bottom, #D0D0D0 0, #D0D0D0 0.6px, transparent 0.6px, transparent 20px); border: 1.5px solid #A8A8A8; border-radius: 2px; margin-top: 14px; }
+.draw-box[data-kosy="1"] { background-color: transparent !important; background-image: none !important; border: none !important; }
+.draw-box[data-svg="1"] { background-color: transparent !important; background-image: none !important; border: none !important; border-radius: 0 !important; }
 .draw-box-baum { background-color: #FAFEFA; background-image: repeating-linear-gradient(to right, #E8F0EC 0, #E8F0EC 0.5px, transparent 0.5px, transparent 10px), repeating-linear-gradient(to bottom, #E8F0EC 0, #E8F0EC 0.5px, transparent 0.5px, transparent 10px), repeating-linear-gradient(to right, transparent 0, transparent calc(33% - 1px), #A8D4C0 calc(33% - 1px), #A8D4C0 calc(33% + 1px), transparent calc(33% + 1px), transparent calc(66% - 1px), #A8D4C0 calc(66% - 1px), #A8D4C0 calc(66% + 1px), transparent calc(66% + 1px), transparent 100%); border: 1px solid #B8D8C8; border-radius: 4px; margin-top: 14px; height: 140px; }
 
 /* ── BRÜCHE ──────────────────────────────────────────────── */
@@ -161,6 +163,8 @@ body { background: white !important; padding: 0 !important; margin: 0 !important
 .tipp-dots span { background: #E8E8E8 !important; border-color: #ccc !important; }
 .exp-block { background: #F8F5F0 !important; border-left-color: #888 !important; border-color: #bbb !important; }
 .draw-box { background-image: repeating-linear-gradient(to right, #bbb 0, #bbb 0.5px, transparent 0.5px, transparent 20px), repeating-linear-gradient(to bottom, #bbb 0, #bbb 0.5px, transparent 0.5px, transparent 20px) !important; border-color: #999 !important; border-radius: 2px !important; }
+.draw-box[data-kosy="1"] { background-color: transparent !important; background-image: none !important; border: none !important; }
+.draw-box[data-svg="1"] { background-color: transparent !important; background-image: none !important; border: none !important; border-radius: 0 !important; }
 .draw-box-baum { background-color: #F8FAF8 !important; }
 .data-card { border-color: #ccc !important; background: #F8F8F8 !important; }
 .mt-tbl th { background: #E8E8E8 !important; color: #333 !important; border-color: #bbb !important; }
@@ -189,19 +193,19 @@ body { background: white !important; padding: 0 !important; margin: 0 !important
     <div class="auf-body">
       <div class="teil"><span class="tn">a)</span><span>Ein fairer Gl&uuml;cksrad hat drei gleich gro&szlig;e Felder: <strong>Rot (R)</strong>, <strong>Blau (B)</strong> und <strong>Gr&uuml;n (G)</strong>. Du drehst das Rad zweimal. Zeichne das Baumdiagramm und notiere alle Ergebnisse des Ergebnisraums &Omega;.</span></div>
 
-      <div class="draw-box" style="height:160px;"></div>
+      <div class="draw-box" data-svg="1" style="height:160px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 42.33" preserveAspectRatio="none" style="display:block;"><rect width="180" height="42.33" fill="#FAFAFA"/><path d="M5,0 V42.33M10,0 V42.33M15,0 V42.33M20,0 V42.33M25,0 V42.33M30,0 V42.33M35,0 V42.33M40,0 V42.33M45,0 V42.33M50,0 V42.33M55,0 V42.33M60,0 V42.33M65,0 V42.33M70,0 V42.33M75,0 V42.33M80,0 V42.33M85,0 V42.33M90,0 V42.33M95,0 V42.33M100,0 V42.33M105,0 V42.33M110,0 V42.33M115,0 V42.33M120,0 V42.33M125,0 V42.33M130,0 V42.33M135,0 V42.33M140,0 V42.33M145,0 V42.33M150,0 V42.33M155,0 V42.33M160,0 V42.33M165,0 V42.33M170,0 V42.33M175,0 V42.33M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180M0,30 H180M0,35 H180M0,40 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="41.93" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
 
       <div class="teil"><span class="tn">b)</span><span>Bestimme <em>g</em> und <em>m</em>. Berechne dann P(<strong>E</strong>&#8321;) f&uuml;r Ereignis <strong>E</strong>&#8321;: &bdquo;Beide Male dieselbe Farbe.&ldquo;</span></div>
 
-      <div class="draw-box" style="height:100px;"></div>
+      <div class="draw-box" data-svg="1" style="height:100px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 26.46" preserveAspectRatio="none" style="display:block;"><rect width="180" height="26.46" fill="#FAFAFA"/><path d="M5,0 V26.46M10,0 V26.46M15,0 V26.46M20,0 V26.46M25,0 V26.46M30,0 V26.46M35,0 V26.46M40,0 V26.46M45,0 V26.46M50,0 V26.46M55,0 V26.46M60,0 V26.46M65,0 V26.46M70,0 V26.46M75,0 V26.46M80,0 V26.46M85,0 V26.46M90,0 V26.46M95,0 V26.46M100,0 V26.46M105,0 V26.46M110,0 V26.46M115,0 V26.46M120,0 V26.46M125,0 V26.46M130,0 V26.46M135,0 V26.46M140,0 V26.46M145,0 V26.46M150,0 V26.46M155,0 V26.46M160,0 V26.46M165,0 V26.46M170,0 V26.46M175,0 V26.46M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="26.06" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
 
       <div class="teil"><span class="tn">c)</span><span>Berechne P(<strong>E</strong>&#8322;) f&uuml;r Ereignis <strong>E</strong>&#8322;: &bdquo;Mindestens einmal Rot.&ldquo; Markiere zun&auml;chst die g&uuml;nstigen Ergebnisse in deinem Baumdiagramm.</span></div>
 
-      <div class="draw-box" style="height:100px;"></div>
+      <div class="draw-box" data-svg="1" style="height:100px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 26.46" preserveAspectRatio="none" style="display:block;"><rect width="180" height="26.46" fill="#FAFAFA"/><path d="M5,0 V26.46M10,0 V26.46M15,0 V26.46M20,0 V26.46M25,0 V26.46M30,0 V26.46M35,0 V26.46M40,0 V26.46M45,0 V26.46M50,0 V26.46M55,0 V26.46M60,0 V26.46M65,0 V26.46M70,0 V26.46M75,0 V26.46M80,0 V26.46M85,0 V26.46M90,0 V26.46M95,0 V26.46M100,0 V26.46M105,0 V26.46M110,0 V26.46M115,0 V26.46M120,0 V26.46M125,0 V26.46M130,0 V26.46M135,0 V26.46M140,0 V26.46M145,0 V26.46M150,0 V26.46M155,0 V26.46M160,0 V26.46M165,0 V26.46M170,0 V26.46M175,0 V26.46M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="26.06" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
 
       <div class="teil"><span class="tn">d)</span><span><strong>[Beurteilen]</strong> Max sagt: &bdquo;P(beide Male Rot)&nbsp;=&nbsp;<span class="b"><span class="z">1</span><span class="n">3</span></span>, weil 1 von 3 Feldern rot ist.&ldquo; Hat Max recht? Begr&uuml;nde mithilfe des Baumdiagramms.</span></div>
 
-      <div class="draw-box" style="height:80px;"></div>
+      <div class="draw-box" data-svg="1" style="height:80px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 21.17" preserveAspectRatio="none" style="display:block;"><rect width="180" height="21.17" fill="#FAFAFA"/><path d="M5,0 V21.17M10,0 V21.17M15,0 V21.17M20,0 V21.17M25,0 V21.17M30,0 V21.17M35,0 V21.17M40,0 V21.17M45,0 V21.17M50,0 V21.17M55,0 V21.17M60,0 V21.17M65,0 V21.17M70,0 V21.17M75,0 V21.17M80,0 V21.17M85,0 V21.17M90,0 V21.17M95,0 V21.17M100,0 V21.17M105,0 V21.17M110,0 V21.17M115,0 V21.17M120,0 V21.17M125,0 V21.17M130,0 V21.17M135,0 V21.17M140,0 V21.17M145,0 V21.17M150,0 V21.17M155,0 V21.17M160,0 V21.17M165,0 V21.17M170,0 V21.17M175,0 V21.17M0,5 H180M0,10 H180M0,15 H180M0,20 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="20.77" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
 
     </div>
   </div>
@@ -239,19 +243,19 @@ padding:6px 12px;margin:4px 0 10px;font-family:'Nunito',sans-serif;font-size:12p
     <div class="auf-body">
       <div class="teil"><span class="tn">a)</span><span>Ein fairer Gl&uuml;cksrad hat drei gleich gro&szlig;e Felder mit den Zahlen <strong>1</strong>, <strong>2</strong> und <strong>3</strong>. Du drehst das Rad zweimal. Zeichne das Baumdiagramm und notiere alle Ergebnisse des Ergebnisraums &Omega;.</span></div>
 
-      <div class="draw-box" style="height:160px;"></div>
+      <div class="draw-box" data-svg="1" style="height:160px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 42.33" preserveAspectRatio="none" style="display:block;"><rect width="180" height="42.33" fill="#FAFAFA"/><path d="M5,0 V42.33M10,0 V42.33M15,0 V42.33M20,0 V42.33M25,0 V42.33M30,0 V42.33M35,0 V42.33M40,0 V42.33M45,0 V42.33M50,0 V42.33M55,0 V42.33M60,0 V42.33M65,0 V42.33M70,0 V42.33M75,0 V42.33M80,0 V42.33M85,0 V42.33M90,0 V42.33M95,0 V42.33M100,0 V42.33M105,0 V42.33M110,0 V42.33M115,0 V42.33M120,0 V42.33M125,0 V42.33M130,0 V42.33M135,0 V42.33M140,0 V42.33M145,0 V42.33M150,0 V42.33M155,0 V42.33M160,0 V42.33M165,0 V42.33M170,0 V42.33M175,0 V42.33M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180M0,30 H180M0,35 H180M0,40 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="41.93" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
 
       <div class="teil"><span class="tn">b)</span><span>Bestimme <em>g</em> und <em>m</em>. Berechne dann P(<strong>E</strong>&#8321;) f&uuml;r Ereignis <strong>E</strong>&#8321;: &bdquo;Beide Male dieselbe Zahl.&ldquo;</span></div>
 
-      <div class="draw-box" style="height:80px;"></div>
+      <div class="draw-box" data-svg="1" style="height:80px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 21.17" preserveAspectRatio="none" style="display:block;"><rect width="180" height="21.17" fill="#FAFAFA"/><path d="M5,0 V21.17M10,0 V21.17M15,0 V21.17M20,0 V21.17M25,0 V21.17M30,0 V21.17M35,0 V21.17M40,0 V21.17M45,0 V21.17M50,0 V21.17M55,0 V21.17M60,0 V21.17M65,0 V21.17M70,0 V21.17M75,0 V21.17M80,0 V21.17M85,0 V21.17M90,0 V21.17M95,0 V21.17M100,0 V21.17M105,0 V21.17M110,0 V21.17M115,0 V21.17M120,0 V21.17M125,0 V21.17M130,0 V21.17M135,0 V21.17M140,0 V21.17M145,0 V21.17M150,0 V21.17M155,0 V21.17M160,0 V21.17M165,0 V21.17M170,0 V21.17M175,0 V21.17M0,5 H180M0,10 H180M0,15 H180M0,20 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="20.77" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
 
       <div class="teil"><span class="tn">c)</span><span>Berechne P(<strong>E</strong>&#8322;) f&uuml;r Ereignis <strong>E</strong>&#8322;: &bdquo;Die Summe beider Ergebnisse betr&auml;gt mindestens 4.&ldquo; Markiere zun&auml;chst die g&uuml;nstigen Ergebnisse in deinem Baumdiagramm.</span></div>
 
-      <div class="draw-box" style="height:100px;"></div>
+      <div class="draw-box" data-svg="1" style="height:100px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 26.46" preserveAspectRatio="none" style="display:block;"><rect width="180" height="26.46" fill="#FAFAFA"/><path d="M5,0 V26.46M10,0 V26.46M15,0 V26.46M20,0 V26.46M25,0 V26.46M30,0 V26.46M35,0 V26.46M40,0 V26.46M45,0 V26.46M50,0 V26.46M55,0 V26.46M60,0 V26.46M65,0 V26.46M70,0 V26.46M75,0 V26.46M80,0 V26.46M85,0 V26.46M90,0 V26.46M95,0 V26.46M100,0 V26.46M105,0 V26.46M110,0 V26.46M115,0 V26.46M120,0 V26.46M125,0 V26.46M130,0 V26.46M135,0 V26.46M140,0 V26.46M145,0 V26.46M150,0 V26.46M155,0 V26.46M160,0 V26.46M165,0 V26.46M170,0 V26.46M175,0 V26.46M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="26.06" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
 
       <div class="teil"><span class="tn">d)</span><span><strong>[Beurteilen]</strong> Jana sagt: &bdquo;P(beide Male 1)&nbsp;=&nbsp;<span class="b"><span class="z">1</span><span class="n">3</span></span>, weil 1 von 3 Zahlen die 1 ist.&ldquo; Hat Jana recht? Begr&uuml;nde mithilfe des Baumdiagramms.</span></div>
 
-      <div class="draw-box" style="height:80px;"></div>
+      <div class="draw-box" data-svg="1" style="height:80px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 21.17" preserveAspectRatio="none" style="display:block;"><rect width="180" height="21.17" fill="#FAFAFA"/><path d="M5,0 V21.17M10,0 V21.17M15,0 V21.17M20,0 V21.17M25,0 V21.17M30,0 V21.17M35,0 V21.17M40,0 V21.17M45,0 V21.17M50,0 V21.17M55,0 V21.17M60,0 V21.17M65,0 V21.17M70,0 V21.17M75,0 V21.17M80,0 V21.17M85,0 V21.17M90,0 V21.17M95,0 V21.17M100,0 V21.17M105,0 V21.17M110,0 V21.17M115,0 V21.17M120,0 V21.17M125,0 V21.17M130,0 V21.17M135,0 V21.17M140,0 V21.17M145,0 V21.17M150,0 V21.17M155,0 V21.17M160,0 V21.17M165,0 V21.17M170,0 V21.17M175,0 V21.17M0,5 H180M0,10 H180M0,15 H180M0,20 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="20.77" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
 
     </div>
   </div>
