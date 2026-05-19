@@ -52,6 +52,7 @@ body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; 
 .ln { border-bottom: 1.5px solid #aaa; display: inline-block; min-width: 80px; height: 14px; vertical-align: bottom; margin: 0 2px; }
 .luecke { display: inline-block; border-bottom: 1.5px solid #C8A800; min-width: 70px; height: 16px; vertical-align: bottom; margin: 0 3px; }
 .draw-box { background-color: #FAFAFA; background-image: repeating-linear-gradient(to right, #D0D0D0 0, #D0D0D0 0.6px, transparent 0.6px, transparent 20px), repeating-linear-gradient(to bottom, #D0D0D0 0, #D0D0D0 0.6px, transparent 0.6px, transparent 20px); border: 1.5px solid #A8A8A8; border-radius: 2px; margin-top: 14px; }
+.draw-box[data-svg="1"] { background-color: transparent !important; background-image: none !important; border: none !important; border-radius: 0 !important; }
 .draw-box-baum { background-color: #FAFEFA; background-image: repeating-linear-gradient(to right, #E8F0EC 0, #E8F0EC 0.5px, transparent 0.5px, transparent 10px), repeating-linear-gradient(to bottom, #E8F0EC 0, #E8F0EC 0.5px, transparent 0.5px, transparent 10px), repeating-linear-gradient(to right, transparent 0, transparent calc(33% - 1px), #A8D4C0 calc(33% - 1px), #A8D4C0 calc(33% + 1px), transparent calc(33% + 1px), transparent calc(66% - 1px), #A8D4C0 calc(66% - 1px), #A8D4C0 calc(66% + 1px), transparent calc(66% + 1px), transparent 100%); border: 1px solid #B8D8C8; border-radius: 4px; margin-top: 14px; }
 .b { display: inline-flex; flex-direction: column; align-items: stretch; vertical-align: middle; line-height: 1.2; margin: 0 3px; font-size: 0.92em; text-align: center; }
 .b .z { border-bottom: 1.4px solid currentColor; padding: 1px 4px 2px; display: block; white-space: nowrap; width: 100%; box-sizing: border-box; }
@@ -81,6 +82,7 @@ body { background: white !important; padding: 0 !important; margin: 0 !important
 .tipp-dots span { background: #E8E8E8 !important; border-color: #ccc !important; }
 .exp-block { background: #F8F5F0 !important; border-left-color: #888 !important; border-color: #bbb !important; }
 .draw-box { background-image: repeating-linear-gradient(to right, #bbb 0, #bbb 0.5px, transparent 0.5px, transparent 20px), repeating-linear-gradient(to bottom, #bbb 0, #bbb 0.5px, transparent 0.5px, transparent 20px) !important; border-color: #999 !important; }
+.draw-box[data-svg="1"] { background-color: transparent !important; background-image: none !important; border: none !important; border-radius: 0 !important; }
 .draw-box-baum { background-color: #F8FAF8 !important; }
 .qr-box { background: #F0F4F0 !important; border-color: #aaa !important; }
 .mt-tbl th { background: #E8E8E8 !important; color: #333 !important; border-color: #bbb !important; }
@@ -109,7 +111,7 @@ body { background: white !important; padding: 0 !important; margin: 0 !important
       <div class="teil"><span class="tn">a)</span><span>Zeichne das vollst&auml;ndige Baumdiagramm. Beachte: Nach dem 1.&nbsp;Zug sind nur noch <strong>9 Karten</strong> im Stapel.</span></div>
       <div class="draw-box-baum" style="height:160px;"></div>
       <div class="teil"><span class="tn">b)</span><span>Berechne P(RR) und P(SS) mit der Pfadregel I.</span></div>
-      <div class="draw-box" style="height:80px;"></div>
+      <div class="draw-box" data-svg="1" style="height:80px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 21.17" preserveAspectRatio="none" style="display:block;"><rect width="180" height="21.17" fill="#FAFAFA"/><path d="M5,0 V21.17M10,0 V21.17M15,0 V21.17M20,0 V21.17M25,0 V21.17M30,0 V21.17M35,0 V21.17M40,0 V21.17M45,0 V21.17M50,0 V21.17M55,0 V21.17M60,0 V21.17M65,0 V21.17M70,0 V21.17M75,0 V21.17M80,0 V21.17M85,0 V21.17M90,0 V21.17M95,0 V21.17M100,0 V21.17M105,0 V21.17M110,0 V21.17M115,0 V21.17M120,0 V21.17M125,0 V21.17M130,0 V21.17M135,0 V21.17M140,0 V21.17M145,0 V21.17M150,0 V21.17M155,0 V21.17M160,0 V21.17M165,0 V21.17M170,0 V21.17M175,0 V21.17M0,5 H180M0,10 H180M0,15 H180M0,20 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="20.77" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
       <div class="teil"><span class="tn">c)</span><span>Berechne P(mindestens 1 rote Karte) mit dem Gegenereignis.</span></div>
       <div class="ll"><span class="l"></span></div>
       <div class="teil"><span class="tn">d)</span><span>Berechne P(beide Karten gleiche Farbe). Ist das wahrscheinlicher oder unwahrscheinlicher als P(verschiedene Farben)?</span></div>
@@ -151,7 +153,7 @@ body { background: white !important; padding: 0 !important; margin: 0 !important
     </div>
     <div class="auf-body" style="margin-top:10px;">
       <div class="teil"><span class="tn">b)</span><span>Berechne P(beide Spiele gewonnen) und P(beide Spiele verloren).</span></div>
-      <div class="draw-box" style="height:80px;"></div>
+      <div class="draw-box" data-svg="1" style="height:80px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 21.17" preserveAspectRatio="none" style="display:block;"><rect width="180" height="21.17" fill="#FAFAFA"/><path d="M5,0 V21.17M10,0 V21.17M15,0 V21.17M20,0 V21.17M25,0 V21.17M30,0 V21.17M35,0 V21.17M40,0 V21.17M45,0 V21.17M50,0 V21.17M55,0 V21.17M60,0 V21.17M65,0 V21.17M70,0 V21.17M75,0 V21.17M80,0 V21.17M85,0 V21.17M90,0 V21.17M95,0 V21.17M100,0 V21.17M105,0 V21.17M110,0 V21.17M115,0 V21.17M120,0 V21.17M125,0 V21.17M130,0 V21.17M135,0 V21.17M140,0 V21.17M145,0 V21.17M150,0 V21.17M155,0 V21.17M160,0 V21.17M165,0 V21.17M170,0 V21.17M175,0 V21.17M0,5 H180M0,10 H180M0,15 H180M0,20 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="20.77" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
       <div class="teil"><span class="tn">c)</span><span>Berechne P(mindestens 1 Sieg) mit dem Gegenereignis.</span></div>
       <div class="ll"><span class="l"></span></div>
       <div class="teil"><span class="tn">d)</span><span>Emma sagt: &bdquo;Da Team A &ouml;fter gewinnt als verliert, wird es sicher auch beide Spiele gewinnen.&ldquo; Hat Emma recht? Begr&uuml;nde mit deinen Ergebnissen.</span></div>
