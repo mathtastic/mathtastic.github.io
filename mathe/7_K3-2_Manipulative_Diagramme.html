@@ -2,6 +2,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
+.draw-box[data-svg="1"] { background-color: transparent !important; background-image: none !important; border: none !important; border-radius: 0 !important; }
 /* ── RESET ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; color: #1a1a1a; line-height: 1.65; padding: 30px 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
@@ -166,11 +167,11 @@ body { background: white !important; padding: 0 !important; margin: 0 !important
         </div>
         <div class="col-main" style="padding-left:14px;">
           <div class="teil" style="margin-top:0;"><span class="tn">a)</span><span>Lies die genauen Werte ab. Wie gro&szlig; ist der tats&auml;chliche Unterschied?</span></div>
-          <div class="draw-box" style="height:300px;"></div>
+          <div class="draw-box" data-svg="1" style="height:300px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 79.38" preserveAspectRatio="none" style="display:block;"><rect width="180" height="79.38" fill="#FAFAFA"/><path d="M5,0 V79.38M10,0 V79.38M15,0 V79.38M20,0 V79.38M25,0 V79.38M30,0 V79.38M35,0 V79.38M40,0 V79.38M45,0 V79.38M50,0 V79.38M55,0 V79.38M60,0 V79.38M65,0 V79.38M70,0 V79.38M75,0 V79.38M80,0 V79.38M85,0 V79.38M90,0 V79.38M95,0 V79.38M100,0 V79.38M105,0 V79.38M110,0 V79.38M115,0 V79.38M120,0 V79.38M125,0 V79.38M130,0 V79.38M135,0 V79.38M140,0 V79.38M145,0 V79.38M150,0 V79.38M155,0 V79.38M160,0 V79.38M165,0 V79.38M170,0 V79.38M175,0 V79.38M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180M0,30 H180M0,35 H180M0,40 H180M0,45 H180M0,50 H180M0,55 H180M0,60 H180M0,65 H180M0,70 H180M0,75 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="78.98" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
         </div>
       </div>
       <div class="teil"><span class="tn">b)</span><span>Berechne: Wie viel Prozent Wachstum sind das wirklich?</span></div>
-      <div class="draw-box" style="height:240px;"></div>
+      <div class="draw-box" data-svg="1" style="height:240px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 63.5" preserveAspectRatio="none" style="display:block;"><rect width="180" height="63.5" fill="#FAFAFA"/><path d="M5,0 V63.5M10,0 V63.5M15,0 V63.5M20,0 V63.5M25,0 V63.5M30,0 V63.5M35,0 V63.5M40,0 V63.5M45,0 V63.5M50,0 V63.5M55,0 V63.5M60,0 V63.5M65,0 V63.5M70,0 V63.5M75,0 V63.5M80,0 V63.5M85,0 V63.5M90,0 V63.5M95,0 V63.5M100,0 V63.5M105,0 V63.5M110,0 V63.5M115,0 V63.5M120,0 V63.5M125,0 V63.5M130,0 V63.5M135,0 V63.5M140,0 V63.5M145,0 V63.5M150,0 V63.5M155,0 V63.5M160,0 V63.5M165,0 V63.5M170,0 V63.5M175,0 V63.5M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180M0,30 H180M0,35 H180M0,40 H180M0,45 H180M0,50 H180M0,55 H180M0,60 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="63.10" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
       <div class="teil"><span class="tn">c)</span><span>Welcher Trick macht den 2023-Balken so riesig aussehen? Markiere ihn im Diagramm und erkl&auml;re.</span></div>
       <div class="ll"><div class="l"></div><div class="l"></div></div>
     </div>
@@ -196,7 +197,7 @@ body { background: white !important; padding: 0 !important; margin: 0 !important
           <div class="teil" style="margin-top:0;"><span class="tn">a)</span><span>Sammelt alle Manipulations-Tricks, die ihr kennt oder euch vorstellen k&ouml;nnt. Notiert mindestens 3.</span></div>
           <div class="ll"><div class="l"></div><div class="l"></div><div class="l"></div></div>
           <div class="teil"><span class="tn">b)</span><span>Skizziert das <strong>gleiche Diagramm</strong> aus Aufgabe 1 &bdquo;ehrlich&ldquo; &mdash; Y-Achse beginnt bei 0. Was f&auml;llt euch auf?</span></div>
-          <div class="draw-box" style="height:220px;"></div>
+          <div class="draw-box" data-svg="1" style="height:220px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 58.21" preserveAspectRatio="none" style="display:block;"><rect width="180" height="58.21" fill="#FAFAFA"/><path d="M5,0 V58.21M10,0 V58.21M15,0 V58.21M20,0 V58.21M25,0 V58.21M30,0 V58.21M35,0 V58.21M40,0 V58.21M45,0 V58.21M50,0 V58.21M55,0 V58.21M60,0 V58.21M65,0 V58.21M70,0 V58.21M75,0 V58.21M80,0 V58.21M85,0 V58.21M90,0 V58.21M95,0 V58.21M100,0 V58.21M105,0 V58.21M110,0 V58.21M115,0 V58.21M120,0 V58.21M125,0 V58.21M130,0 V58.21M135,0 V58.21M140,0 V58.21M145,0 V58.21M150,0 V58.21M155,0 V58.21M160,0 V58.21M165,0 V58.21M170,0 V58.21M175,0 V58.21M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180M0,30 H180M0,35 H180M0,40 H180M0,45 H180M0,50 H180M0,55 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="57.81" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
         </div>
         <div class="tipp-side" style="width:125px;flex-shrink:0;">
           <div class="tipp-bubble"><svg width="16" height="16" viewBox="0 0 100 100" style="flex-shrink:0;margin-top:1px;" xmlns="http://www.w3.org/2000/svg"><path d="M50 10 C28 10 18 26 18 40 C18 54 26 62 34 68 L34 74 L66 74 L66 68 C74 62 82 54 82 40 C82 26 72 10 50 10 Z" fill="#2A2A2A"/><path d="M50 13 C30 13 21 28 21 40 C21 53 29 61 37 67 L37 72 L63 72 L63 67 C71 61 79 53 79 40 C79 28 70 13 50 13 Z" fill="#F5C030"/><rect x="36" y="74" width="28" height="14" rx="2" fill="#888" stroke="#2A2A2A" stroke-width="2"/></svg><span style="font-family:'Nunito',sans-serif;font-size:11px;line-height:1.4;color:#1C3A5A;">Eine Y-Achse beginnt idealerweise bei 0. Ausnahmen brauchen eine klare Begründung!</span></div>

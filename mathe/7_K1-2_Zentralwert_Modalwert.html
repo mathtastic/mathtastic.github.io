@@ -6,6 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
+.draw-box[data-svg="1"] { background-color: transparent !important; background-image: none !important; border: none !important; border-radius: 0 !important; }
 /* ── RESET ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; color: #1a1a1a; line-height: 1.65; padding: 30px 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
@@ -150,13 +151,13 @@ iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8
           <div class="dc-label">Schuhgr&ouml;&szlig;en von 11 Sch&uuml;lern</div>
           <div style="margin:6px 0 4px;font-size:12px;color:#444;">37, 38, 36, 40, 38, 39, 38, 41, 37, 36, 38</div>
           <div style="font-size:11.5px;color:#555;margin-bottom:6px;">Sortiere zuerst die Datenreihe, dann berechne:</div>
-          <div class="draw-box" style="height:160px;"></div>
+          <div class="draw-box" data-svg="1" style="height:160px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 42.33" preserveAspectRatio="none" style="display:block;"><rect width="180" height="42.33" fill="#FAFAFA"/><path d="M5,0 V42.33M10,0 V42.33M15,0 V42.33M20,0 V42.33M25,0 V42.33M30,0 V42.33M35,0 V42.33M40,0 V42.33M45,0 V42.33M50,0 V42.33M55,0 V42.33M60,0 V42.33M65,0 V42.33M70,0 V42.33M75,0 V42.33M80,0 V42.33M85,0 V42.33M90,0 V42.33M95,0 V42.33M100,0 V42.33M105,0 V42.33M110,0 V42.33M115,0 V42.33M120,0 V42.33M125,0 V42.33M130,0 V42.33M135,0 V42.33M140,0 V42.33M145,0 V42.33M150,0 V42.33M155,0 V42.33M160,0 V42.33M165,0 V42.33M170,0 V42.33M175,0 V42.33M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180M0,30 H180M0,35 H180M0,40 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="41.93" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
         </div>
         <div class="data-card">
           <div class="dc-label">Schulnoten (Englisch, 13 Sch&uuml;ler)</div>
           <div style="margin:6px 0 4px;font-size:12px;color:#444;">2, 4, 3, 1, 5, 3, 2, 3, 4, 2, 3, 6, 2</div>
           <div style="font-size:11.5px;color:#555;margin-bottom:6px;">Sortiere zuerst die Datenreihe, dann berechne:</div>
-          <div class="draw-box" style="height:160px;"></div>
+          <div class="draw-box" data-svg="1" style="height:160px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 42.33" preserveAspectRatio="none" style="display:block;"><rect width="180" height="42.33" fill="#FAFAFA"/><path d="M5,0 V42.33M10,0 V42.33M15,0 V42.33M20,0 V42.33M25,0 V42.33M30,0 V42.33M35,0 V42.33M40,0 V42.33M45,0 V42.33M50,0 V42.33M55,0 V42.33M60,0 V42.33M65,0 V42.33M70,0 V42.33M75,0 V42.33M80,0 V42.33M85,0 V42.33M90,0 V42.33M95,0 V42.33M100,0 V42.33M105,0 V42.33M110,0 V42.33M115,0 V42.33M120,0 V42.33M125,0 V42.33M130,0 V42.33M135,0 V42.33M140,0 V42.33M145,0 V42.33M150,0 V42.33M155,0 V42.33M160,0 V42.33M165,0 V42.33M170,0 V42.33M175,0 V42.33M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180M0,30 H180M0,35 H180M0,40 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="41.93" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
         </div>
       </div>
     </div>
@@ -168,7 +169,7 @@ iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8
       <div class="row-split">
         <div class="col-main">
           Bei den Schulnoten (Aufgabe 1) ist die 6 ein sogenannter <strong>Ausrei&szlig;er</strong>. Berechne den Zentralwert nochmals ohne diesen Wert und vergleiche. Was f&auml;llt dir auf?
-          <div class="draw-box" style="height:160px;margin-top:10px;"></div>
+          <div class="draw-box" data-svg="1" style="height:160px;margin-top:10px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 42.33" preserveAspectRatio="none" style="display:block;"><rect width="180" height="42.33" fill="#FAFAFA"/><path d="M5,0 V42.33M10,0 V42.33M15,0 V42.33M20,0 V42.33M25,0 V42.33M30,0 V42.33M35,0 V42.33M40,0 V42.33M45,0 V42.33M50,0 V42.33M55,0 V42.33M60,0 V42.33M65,0 V42.33M70,0 V42.33M75,0 V42.33M80,0 V42.33M85,0 V42.33M90,0 V42.33M95,0 V42.33M100,0 V42.33M105,0 V42.33M110,0 V42.33M115,0 V42.33M120,0 V42.33M125,0 V42.33M130,0 V42.33M135,0 V42.33M140,0 V42.33M145,0 V42.33M150,0 V42.33M155,0 V42.33M160,0 V42.33M165,0 V42.33M170,0 V42.33M175,0 V42.33M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180M0,30 H180M0,35 H180M0,40 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="41.93" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
         </div>
         <div class="tipp-side" style="width:125px;flex-shrink:0;">
           <div class="tipp-bubble"><svg width="16" height="16" viewBox="0 0 100 100" style="flex-shrink:0;margin-top:1px;" xmlns="http://www.w3.org/2000/svg"><path d="M50 10 C28 10 18 26 18 40 C18 54 26 62 34 68 L34 74 L66 74 L66 68 C74 62 82 54 82 40 C82 26 72 10 50 10 Z" fill="#2A2A2A"/><path d="M50 13 C30 13 21 28 21 40 C21 53 29 61 37 67 L37 72 L63 72 L63 67 C71 61 79 53 79 40 C79 28 70 13 50 13 Z" fill="#F5C030"/><rect x="36" y="74" width="28" height="14" rx="2" fill="#888" stroke="#2A2A2A" stroke-width="2"/></svg><span style="font-family:'Nunito',sans-serif;font-size:11px;line-height:1.4;color:#1C3A5A;">Streich die 6 aus der sortierten Liste — welcher Wert steht jetzt in der Mitte?</span></div>
@@ -200,12 +201,12 @@ iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8
         <div class="data-card">
           <div class="dc-label">Ich erkl&auml;re dem Partner: Zentralwert</div>
           <div style="font-size:11.5px;margin-bottom:4px;">Was ist der Zentralwert? Wie berechnet man ihn bei ungerader und gerader Anzahl von Werten?</div>
-          <div class="draw-box" style="height:160px;"></div>
+          <div class="draw-box" data-svg="1" style="height:160px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 42.33" preserveAspectRatio="none" style="display:block;"><rect width="180" height="42.33" fill="#FAFAFA"/><path d="M5,0 V42.33M10,0 V42.33M15,0 V42.33M20,0 V42.33M25,0 V42.33M30,0 V42.33M35,0 V42.33M40,0 V42.33M45,0 V42.33M50,0 V42.33M55,0 V42.33M60,0 V42.33M65,0 V42.33M70,0 V42.33M75,0 V42.33M80,0 V42.33M85,0 V42.33M90,0 V42.33M95,0 V42.33M100,0 V42.33M105,0 V42.33M110,0 V42.33M115,0 V42.33M120,0 V42.33M125,0 V42.33M130,0 V42.33M135,0 V42.33M140,0 V42.33M145,0 V42.33M150,0 V42.33M155,0 V42.33M160,0 V42.33M165,0 V42.33M170,0 V42.33M175,0 V42.33M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180M0,30 H180M0,35 H180M0,40 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="41.93" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
         </div>
         <div class="data-card">
           <div class="dc-label">Der Partner erkl&auml;rt mir: Modalwert</div>
           <div style="font-size:11.5px;margin-bottom:4px;">Was ist der Modalwert? Kann es mehrere geben? Wann gibt es gar keinen?</div>
-          <div class="draw-box" style="height:160px;"></div>
+          <div class="draw-box" data-svg="1" style="height:160px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 42.33" preserveAspectRatio="none" style="display:block;"><rect width="180" height="42.33" fill="#FAFAFA"/><path d="M5,0 V42.33M10,0 V42.33M15,0 V42.33M20,0 V42.33M25,0 V42.33M30,0 V42.33M35,0 V42.33M40,0 V42.33M45,0 V42.33M50,0 V42.33M55,0 V42.33M60,0 V42.33M65,0 V42.33M70,0 V42.33M75,0 V42.33M80,0 V42.33M85,0 V42.33M90,0 V42.33M95,0 V42.33M100,0 V42.33M105,0 V42.33M110,0 V42.33M115,0 V42.33M120,0 V42.33M125,0 V42.33M130,0 V42.33M135,0 V42.33M140,0 V42.33M145,0 V42.33M150,0 V42.33M155,0 V42.33M160,0 V42.33M165,0 V42.33M170,0 V42.33M175,0 V42.33M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180M0,30 H180M0,35 H180M0,40 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="41.93" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
         </div>
       </div>
     </div>
@@ -219,7 +220,7 @@ iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8
     </div>
     <div class="auf-body">
       Erfinde selbst einen Datensatz mit 8 Werten. Berechne Zentralwert und Modalwert mit vollst&auml;ndigem Rechenweg. Gestalte den Datensatz so, dass der Zentralwert und der Modalwert <em>verschieden</em> sind.
-      <div class="draw-box" style="height:100px;margin-top:10px;"></div>
+      <div class="draw-box" data-svg="1" style="height:100px;margin-top:10px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 26.46" preserveAspectRatio="none" style="display:block;"><rect width="180" height="26.46" fill="#FAFAFA"/><path d="M5,0 V26.46M10,0 V26.46M15,0 V26.46M20,0 V26.46M25,0 V26.46M30,0 V26.46M35,0 V26.46M40,0 V26.46M45,0 V26.46M50,0 V26.46M55,0 V26.46M60,0 V26.46M65,0 V26.46M70,0 V26.46M75,0 V26.46M80,0 V26.46M85,0 V26.46M90,0 V26.46M95,0 V26.46M100,0 V26.46M105,0 V26.46M110,0 V26.46M115,0 V26.46M120,0 V26.46M125,0 V26.46M130,0 V26.46M135,0 V26.46M140,0 V26.46M145,0 V26.46M150,0 V26.46M155,0 V26.46M160,0 V26.46M165,0 V26.46M170,0 V26.46M175,0 V26.46M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="26.06" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
     </div>
   </div>
 
