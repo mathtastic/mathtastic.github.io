@@ -1,569 +1,233 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<title>5 K1-1 Daten sammeln und ordnen</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<html lang="de"><head><meta charset="UTF-8"><title>5 K1-1 Daten sammeln und ordnen</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
-.draw-box[data-svg="1"] { background-color: transparent !important; background-image: none !important; border: none !important; border-radius: 0 !important; }
 /* ── RESET ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ── BODY ───────────────────────────────────────────────── */
-body {
-  background: #F0EDE8;
-  font-family: 'Nunito', sans-serif;
-  font-size: 13px;
-  color: #1a1a1a;
-  line-height: 1.65;
-  padding: 30px 20px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
+body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; color: #1a1a1a; line-height: 1.65; padding: 30px 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
 
 /* ── SEITE ───────────────────────────────────────────────── */
-.page {
-  width: 210mm;
-  min-height: 297mm;
-  background: #fff;
-  margin: 0 auto 40px;
-  padding: 10mm 15mm 10mm;
-  box-shadow: 0 4px 24px rgba(0,0,0,.10);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-.page-loe { border-top: 5px solid #1A7A50; }
-.page-loe .sec-hdr { border-left-color: #1A7A50; }
-.page-loe .auf-label::before { display: none; }
+.page { width: 210mm; height: 297mm; overflow: hidden; background: #fff; margin: 0 auto 40px; padding: 10mm 15mm 20mm; box-shadow: 0 4px 24px rgba(0,0,0,.10); display: flex; flex-direction: column; position: relative; }
+/* Bottom-Padding 20mm (statt 10mm) — Drucker-Sicherheits-Rand, Basti 2026-05-26 */
+.page-loe { /* kein border-top mehr — loe-badge oben rechts reicht als Marker */ }
 
 /* ── KOPFZEILE ───────────────────────────────────────────── */
-.kat-badge {
-  position: absolute; top: 10mm; right: 17mm;
-  font-family: 'Nunito', sans-serif; font-size: 9.5px;
-  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
-  color: white; padding: 3px 10px 3px 8px;
-  border-radius: 0 4px 4px 0;
-  display: flex; align-items: center; gap: 5px;
-}
-.kat-badge.k1 { background: #1C5F96; }
-.kat-badge::before {
-  content: ''; display: inline-block;
-  width: 6px; height: 6px;
-  background: rgba(255,255,255,0.7); border-radius: 50%;
-}
-.loe-badge {
-  position: absolute; top: 10mm; right: 17mm;
-  font-family: 'Nunito', sans-serif; font-size: 9.5px;
-  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
-  color: white; padding: 3px 10px 3px 8px;
-  border-radius: 0 4px 4px 0; background: #1A7A50;
-}
-.sequenz-badge {
-  font-family: 'Nunito', sans-serif; font-size: 10.5px;
-  font-weight: 700; color: #5A5A5A;
-  text-transform: uppercase; letter-spacing: .10em;
-  text-align: center; margin-bottom: 3px;
-}
-.pg-title {
-  text-align: center; font-family: 'Lora', serif;
-  font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px;
-}
-.pg-sub {
-  text-align: center; font-family: 'Nunito', sans-serif;
-  font-size: 11px; font-style: italic; margin-bottom: 14px;
-}
-.datum-row { display: none; }
+.loe-badge { position: absolute; top: 10mm; right: 17mm; font-family: 'Nunito', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; padding: 3px 10px 3px 8px; border-radius: 0 4px 4px 0; background: #1A7A50; }
+.sequenz-badge { font-family: 'Nunito', sans-serif; font-size: 10px; font-weight: 700; color: #5A5A5A; text-transform: uppercase; letter-spacing: .10em; text-align: center; margin-bottom: 3px; }
+.pg-title { text-align: center; font-family: 'Lora', serif; font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 18px; }
+
+.pg-head-compact { text-align: center; margin-bottom: 14px; font-family: 'Lora', serif; font-size: 17px; font-weight: 600; color: #1a1a1a; }
+.pg-head-compact .phc-badge { font-family: 'Nunito', sans-serif; font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: .08em; }
+
+.tr-badge { display: inline-flex; align-items: center; gap: 5px; font-family: 'Nunito', sans-serif; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-bottom: 10px; }
+.tr-badge.ohne { background: #E8F0FA; color: #1C5F96; border: 1px solid #A8C4E0; }
+.tr-badge.mit  { background: #FEF9EE; color: #CF7C09; border: 1px solid #E8C870; }
 
 /* ── SCOTCH-TAPE ─────────────────────────────────────────── */
-.tape-tl, .tape-tr {
-  position: absolute; width: 36px; height: 20px;
-  background: rgba(235,222,175,0.90);
-  filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.55));
-  clip-path: polygon(0% 0%,9% 20%,2% 45%,10% 70%,3% 90%,0% 100%,
-    100% 100%,97% 80%,100% 55%,91% 30%,98% 10%,92% 0%);
-}
+.tape-tl, .tape-tr, .tape-bl, .tape-br { position: absolute; width: 36px; height: 20px; background: rgba(235,222,175,0.90); filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.55)); clip-path: polygon(0% 0%,9% 20%,2% 45%,10% 70%,3% 90%,0% 100%,100% 100%,97% 80%,100% 55%,91% 30%,98% 10%,92% 0%); }
 .tape-tl { top: -4px; left: -2px; transform: rotate(-38deg); }
 .tape-tr { top: -4px; right: -2px; transform: rotate(38deg); }
+.tape-bl { bottom: -4px; left: -2px; transform: rotate(38deg); }
+.tape-br { bottom: -4px; right: -2px; transform: rotate(-38deg); }
+/* Kleinere Variante (für kompakte Karten): füge zusätzlich Klasse .tape-mini hinzu */
+.tape-tl.tape-mini, .tape-tr.tape-mini, .tape-bl.tape-mini, .tape-br.tape-mini { width: 26px; height: 14px; }
 
 /* ── BOXEN ───────────────────────────────────────────────── */
-.tape-box {
-  position: relative; background: #FDFAF0; border: 1.5px solid #D0C898;
-  border-radius: 5px; padding: 14px 15px 13px; margin-bottom: 18px;
-  font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.68;
-  box-shadow: 3px 4px 0px rgba(0,0,0,.07);
-}
-.tape-box .ll { margin-top: 16px !important; gap: 54px !important; }
-.tape-box .l  { padding-bottom: 6px; }
+.tape-box { position: relative; background: #FDFAF0; border: 1.5px solid #D0C898; border-radius: 5px; padding: 12px 14px 11px; margin-bottom: 24px; font-family: 'Lora', serif; font-size: 14px; line-height: 1.65; }
 
-.def-tape {
-  position: relative; background: #FDFAF0; border: 1.5px solid #D0C898;
-  border-radius: 5px; padding: 10px 13px; margin-bottom: 15px;
-  box-shadow: 3px 4px 0px rgba(0,0,0,.07);
-}
-.def-row {
-  display: grid; grid-template-columns: 90px 1fr; gap: 8px;
-  align-items: start; padding: 8px 0;
-  border-bottom: 1px dashed #D0C898;
-  font-size: 13.5px; font-family: 'Nunito', sans-serif;
-}
+.def-tape { position: relative; background: #FDFAF0; border: 1.5px solid #D0C898; border-radius: 5px; padding: 10px 13px; margin-bottom: 15px; }
+.def-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; align-items: start; padding: 8px 0; border-bottom: 1px dashed #D0C898; font-size: 14px; font-family: 'Nunito', sans-serif; }
 .def-row:last-child { border-bottom: none; padding-bottom: 0; }
-.def-left {
-  font-family: 'Caveat', cursive; font-size: 15px;
-  font-weight: 700; color: #1C5F96; line-height: 1.3;
-}
+.def-left { font-family: 'Caveat', cursive; font-size: 14px; font-weight: 700; color: #1C5F96; line-height: 1.3; }
 
-.merk-box {
-  position: relative; background: #FFFDE6; border: 1.5px solid #E8D84A;
-  border-radius: 5px; padding: 15px 13px 14px; margin-bottom: 15px;
-  font-family: 'Lora', serif; font-size: 13.5px; line-height: 2.2;
-  box-shadow: 3px 4px 0px rgba(0,0,0,.07);
-}
-.merk-box .tape-tl, .merk-box .tape-tr {
-  all: unset; position: absolute; width: 15px; height: 22px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 32'%3E%3Ccircle cx='11' cy='11' r='9.5' fill='%23E8821A' stroke='%231a1a1a' stroke-width='2'/%3E%3Crect x='10' y='19' width='2' height='11' rx='1' fill='%23999'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-size: contain; top: -12px;
-}
-.merk-box .tape-tl { left: 14px; transform: rotate(-28deg); }
-.merk-box .tape-tr { right: 14px; transform: rotate(28deg); }
-.merk-label {
-  font-family: 'Lora', serif; font-size: 13px; font-weight: 700;
-  font-style: italic; color: #6B5A00; margin-bottom: 4px;
-  text-decoration: underline; text-underline-offset: 3px;
-}
+.merk-box { position: relative; background: #FFFDE6; border: 1.5px solid #E8D84A; border-radius: 5px; padding: 14px 13px 13px; font-family: 'Lora', serif; font-size: 14px; line-height: 2.2; margin-top: 18px; }
+.merk-label { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; font-style: italic; color: #6B5A00; margin-bottom: 4px; text-decoration: underline; text-underline-offset: 3px; }
 
-.tipp-box {
-  background: #F0F7FF; border: 1.5px solid #88BBE0;
-  border-left: 4px solid #5599CC; border-radius: 5px;
-  padding: 9px 12px 9px 34px; margin: 9px 0;
-  font-family: 'Nunito', sans-serif; font-size: 12px;
-  color: #1A3A5C; position: relative;
-}
-.tipp-box::before { content: '💡'; position: absolute; left: 9px; top: 50%; transform: translateY(-50%); }
+.spick-box { position: relative; background: #FFF9C4; background-image: linear-gradient(to right, transparent 20px, #E0A0A0 20px, #E0A0A0 21.5px, transparent 21.5px), repeating-linear-gradient(to bottom, transparent 0, transparent 19px, #C0D8EC 19px, #C0D8EC 20px); background-position: 0 26px; border: 1px solid #E8D880; border-radius: 3px; padding: 7px 9px 7px 27px; font-family: 'Caveat', cursive; font-size: 14px; font-weight: 600; line-height: 1.45; color: #2A4A6A; }
+.spick-box .spick-label { font-family: 'Caveat', cursive; font-size: 14px; font-weight: 700; color: #C0392B; margin-bottom: 1px; }
 
-.exp-block {
-  background: #FFF5EB; border: 1.5px solid #D4892A;
-  border-left: 4px solid #E8821A; border-radius: 5px;
-  padding: 12px 13px; margin-bottom: 16px; position: relative;
-}
-.exp-header { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; color: #8B4500; margin-bottom: 6px; }
-.exp-body   { font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.75; }
+.tipp-box { background: #F2F6FC; border: 1.5px solid #B8CCE4; border-left: 3px solid #5599CC; border-radius: 5px; padding: 7px 11px; margin: 7px 0; font-family: 'Nunito', sans-serif; font-size: 12px; color: #1C3A5A; position: relative; display: flex; align-items: flex-start; gap: 8px; }
+/* tipp-box: Pinguin 'Tipp' als <img> im HTML statt CSS-Icon */
 
-/* ── SECTION HEADER ──────────────────────────────────────── */
-.sec-hdr {
-  font-family: 'Lora', serif; font-size: 15px; font-weight: 700;
-  color: #1a1a1a; margin: 18px 0 10px; padding: 4px 0 4px 11px;
-  border-left: 4px solid #1C5F96; border-bottom: 1px solid #E0DDD5; display: block;
-}
-.sec-hdr.k1 { border-left-color: #1C5F96; }
+/* ── TIPP-BUBBLE (Gedankenblase) ────────────────────── */
+.tipp-side { display: flex; flex-direction: column; align-items: center; }
+.tipp-bubble { background: #F2F6FC; border: 1.5px solid #B8CCE4; border-radius: 10px; padding: 8px 10px; font-family: 'Nunito', sans-serif; font-size: 12px; line-height: 1.45; color: #1C3A5A; position: relative; text-align: left; display: flex; align-items: flex-start; gap: 5px; }
+/* tipp-bubble::after: entfernt (v2.1) — nur .dot1 verwenden */
+.tipp-dots { display: flex; flex-direction: column; align-items: flex-start; padding-left: 20px; gap: 2px; margin: 2px 0; }
+.tipp-dots span { display: block; background: #C8D8EC; border: 1px solid #B8CCE4; border-radius: 50%; }
+.tipp-dots .dot1 { width: 6px; height: 6px; }
+/* .tipp-dots .dot2: ENTFERNT (v2.2) — nur .dot1 verwenden */
+
+.exp-block { background: #FFF5EB; border: 1.5px solid #D4892A; border-left: 4px solid #E8821A; border-radius: 5px; padding: 12px 13px; margin-bottom: 16px; position: relative; }
+.exp-header { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: #8B4500; margin-bottom: 6px; }
+.exp-body { font-family: 'Nunito', sans-serif; font-size: 14px; line-height: 1.75; }
+
+.video-box { display: flex; align-items: center; gap: 12px; background: #FAFAFA; border: 1.5px solid #E0DDD5; border-left: 4px solid #E0302A; border-radius: 6px; padding: 11px 14px; margin-bottom: 16px; }
+.video-icon { width: 36px; height: 36px; background: #E0302A; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 17px; color: white; }
+.video-info { flex: 1; }
+.video-info .video-titel { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 3px; }
+.video-info .video-link { font-family: 'Nunito', sans-serif; font-size: 12px; color: #E0302A; font-weight: 700; }
+.video-info .video-desc { font-family: 'Nunito', sans-serif; font-size: 12px; color: #666; margin-top: 3px; }
+
+/* ── SEC-HDR (NUR Lösungsblatt) ──────────────────────────── */
+.sec-hdr { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: #1a1a1a; margin: 14px 0 6px; padding: 4px 0 4px 8px; display: flex; align-items: center; gap: 10px; }
+.sec-hdr::before { content: '\2713'; display: inline-flex; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #2A8B5C 0%, #1A7A50 60%); color: white; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; align-items: center; justify-content: center; box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 1px 1px 1.5px rgba(255,255,255,0.30); flex-shrink: 0; }
 
 /* ── AUFGABEN ────────────────────────────────────────────── */
-.auf { margin-bottom: 20px; }
-.auf-label {
-  font-family: 'Lora', serif; font-size: 14px; font-weight: 700;
-  margin-bottom: 5px; display: flex; align-items: center; gap: 6px;
-}
-.auf-label::before { display: none; }
-.sterne { margin-left: auto; font-size: 12px; flex-shrink: 0; }
-.sterne.s1 { color: #1A7A50; }
-.sterne.s2 { color: #CF7C09; }
-.sterne.s3 { color: #A31515; }
-.auf-body { font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.82; }
-.teil { display: flex; gap: 7px; margin-top: 12px; font-size: 13.5px; align-items: flex-start; }
-.tn  { font-weight: 700; color: #555; min-width: 21px; flex-shrink: 0; }
+.auf { margin-bottom: 30px; }  /* Wendy-Abstand minimal reduziert (war 34, davor 28) — Basti 2026-05-27 */
+.auf:last-of-type { margin-bottom: 0; }
+.auf-label { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; margin-bottom: 5px; line-height: 1.65; }
+/* .sterne: ENTFERNT (v2.1) — kein Sterne-System mehr */
+.auf-body { font-family: 'Nunito', sans-serif; font-size: 14px; line-height: 1.75; }
+.teil { display: flex; gap: 6px; margin-top: 18px; font-size: 14px; align-items: flex-start; }
+/* Wendy-Abstände: Teilaufgaben kompakter (18px), erste nah am Aufg-Titel (10px) — Basti 2026-05-27 */
+.teil:first-of-type { margin-top: 10px; }
+.tn { font-weight: 700; color: #555; min-width: 20px; flex-shrink: 0; }
+.sf { font-style: italic; color: #777; font-size: 12px; }
 
 /* ── SCHREIBLINIEN ───────────────────────────────────────── */
-.ll   { display: flex; flex-direction: column; gap: 52px; margin-top: 18px; }
-.ll .l { border-bottom: 1.5px solid #bbb; width: 100%; min-height: 28px; display: block; }
-.ln   { border-bottom: 1px solid #aaa; display: inline-block; min-width: 80px; height: 14px; vertical-align: bottom; }
+.ll { display: flex; flex-direction: column; gap: 26px; margin-top: 16px; }
+.ll .l { border-bottom: 1.5px solid #bbb; width: 100%; min-height: 18px; display: block; }
+.ll-compact { gap: 22px; margin-top: 12px; }
+.ln { border-bottom: 1.5px solid #aaa; display: inline-block; min-width: 80px; height: 14px; vertical-align: bottom; margin: 0 2px; }
 .luecke { display: inline-block; border-bottom: 1.5px solid #C8A800; min-width: 70px; height: 16px; vertical-align: bottom; margin: 0 3px; }
 
 /* ── ZEICHENFLÄCHEN ──────────────────────────────────────── */
-.draw-box {
-  background-color: #FAFAFA;
-  background-image:
-    repeating-linear-gradient(to right,  #E0E0E0 0, #E0E0E0 0.6px, transparent 0.6px, transparent 20px),
-    repeating-linear-gradient(to bottom, #E0E0E0 0, #E0E0E0 0.6px, transparent 0.6px, transparent 20px);
-  border: 1.5px solid #C8C8C8;
-  border-radius: 4px;
-  margin-top: 8px;
-}
+.draw-box { background-color: #FAFAFA; background-image: repeating-linear-gradient(to right, #D0D0D0 0, #D0D0D0 0.6px, transparent 0.6px, transparent 20px), repeating-linear-gradient(to bottom, #D0D0D0 0, #D0D0D0 0.6px, transparent 0.6px, transparent 20px); border: 1.5px solid #A8A8A8; border-radius: 2px; margin-top: 14px; }
+.draw-box[data-kosy="1"] { background-color: transparent !important; background-image: none !important; border: none !important; }
+.draw-box[data-svg="1"] { background-color: transparent !important; background-image: none !important; border: none !important; border-radius: 0 !important; }
+.draw-box-baum { background-color: #FAFEFA; background-image: repeating-linear-gradient(to right, #E8F0EC 0, #E8F0EC 0.5px, transparent 0.5px, transparent 10px), repeating-linear-gradient(to bottom, #E8F0EC 0, #E8F0EC 0.5px, transparent 0.5px, transparent 10px), repeating-linear-gradient(to right, transparent 0, transparent calc(33% - 1px), #A8D4C0 calc(33% - 1px), #A8D4C0 calc(33% + 1px), transparent calc(33% + 1px), transparent calc(66% - 1px), #A8D4C0 calc(66% - 1px), #A8D4C0 calc(66% + 1px), transparent calc(66% + 1px), transparent 100%); border: 1px solid #B8D8C8; border-radius: 4px; margin-top: 14px; height: 140px; }
 
 /* ── BRÜCHE ──────────────────────────────────────────────── */
-.b {
-  display: inline-flex; flex-direction: column; align-items: stretch;
-  vertical-align: middle; line-height: 1.2; margin: 0 3px;
-  font-size: 0.92em; text-align: center;
-}
-.b .z {
-  border-bottom: 1.4px solid currentColor;
-  padding: 1px 4px 2px; display: block; white-space: nowrap;
-  width: 100%; box-sizing: border-box;
-}
-.b .n {
-  padding: 2px 4px 0; display: block; white-space: nowrap;
-  width: 100%; box-sizing: border-box;
-}
+.b { display: inline-flex; flex-direction: column; align-items: stretch; vertical-align: middle; line-height: 1.2; margin: 0 3px; font-size: 0.92em; text-align: center; }
+.b .z { border-bottom: 1.4px solid currentColor; padding: 1px 4px 2px; display: block; white-space: nowrap; width: 100%; box-sizing: border-box; }
+.b .n { padding: 2px 4px 0; display: block; white-space: nowrap; width: 100%; box-sizing: border-box; }
 
 /* ── TABELLEN ────────────────────────────────────────────── */
-.mt-tbl {
-  width: 100%; border-collapse: collapse;
-  font-size: 12px; margin: 8px 0; font-family: 'Nunito', sans-serif;
-}
-.mt-tbl th {
-  background: #F0F4F8; padding: 5px 8px;
-  border: 1px solid #C8D4E0; font-weight: 700; text-align: center;
-}
-.mt-tbl td {
-  border: 1px solid #D0D8E0; padding: 5px 8px; text-align: center;
-}
-.mt-tbl td.fill { background: #FFFEF8; min-width: 40px; }
-.mt-tbl tr:nth-child(even) td { background: #F8FAFC; }
-.mt-tbl td.fill:nth-child(even) { background: #FFFBF0; }
-.mt-tbl td.label-cell { text-align: left; font-weight: 600; background: #F8FAFC; }
+.mt-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin: 6px 0; font-family: 'Nunito', sans-serif; }
+.mt-tbl th { background: #D6E6F2; padding: 5px 7px; border: 1px solid #A8C4DD; font-weight: 700; text-align: center; color: #1C5F96; font-size: 12px; }
+.mt-tbl td { border: 1px solid #D0D8E0; padding: 6px 7px; text-align: center; font-size: 12px; }
+.mt-tbl td.fill { background: #FFFEF8; min-width: 36px; }
+.mt-tbl td.label-cell { text-align: left; font-weight: 600; background: #F8FAFC; font-size: 12px; vertical-align: middle; }
 
-/* Lösungs-Tabelle */
-.loe-tbl {
-  width: 100%; border-collapse: collapse;
-  font-size: 11.5px; margin: 6px 0; font-family: 'Nunito', sans-serif;
-}
-.loe-tbl th { background: #C8E8D4; padding: 4px 8px; border: 1px solid #8AC4A4; font-weight: 700; text-align: center; }
-.loe-tbl td { border: 1px solid #A8D4B8; padding: 4px 8px; text-align: center; }
-.loe-tbl td.sol { background: #D4EFE0; font-weight: 700; color: #0D5C35; }
+/* ── CHECKBOX ────────────────────────────────────────────── */
+.cb { display: inline-block; width: 13px; height: 13px; border: 1.5px solid #999; border-radius: 2px; vertical-align: middle; margin: 0 2px; }
 
-/* ── LÖSUNGSBLATT ────────────────────────────────────────── */
-.loe-antwort {
-  background: #E8F5EE; border: 1.5px solid #1A7A50;
-  border-radius: 5px; padding: 10px 13px; margin: 5px 0;
-  font-family: 'Nunito', sans-serif; font-size: 13.5px; line-height: 1.75;
-}
+/* ── VIERFELDERTAFEL ─────────────────────────────────────── */
+.vft { border-collapse: collapse; width: 95%; font-size: 12px; margin: 8px 0; font-family: 'Nunito', sans-serif; }
+.vft th, .vft td { border: 1px solid #bbb; padding: 6px 8px; text-align: center; }
+.vft thead th { background: #F0F4F8; font-weight: 700; font-size: 12px; border-bottom: 2.5px solid #333; }
+.vft .vft-row-hdr { background: #F0F4F8; font-weight: 700; text-align: left; border-right: 2.5px solid #333; }
+.vft .vft-sum-row td { background: #F5F5F5; font-weight: 700; border-top: 2.5px solid #333; }
+.vft .vft-sum-cell { background: #EEEEF0; font-weight: 700; border-left: 2.5px solid #333; }
+.vft .vft-fill { background: #FFFEF8; color: #888; font-size: 14px; }
+
+/* ── LAYOUTS ─────────────────────────────────────────────── */
+.row-split { display: flex; gap: 14px; align-items: flex-start; }
+.row-split .col-main { flex: 1; min-width: 0; }
+.row-split .col-side { flex: 0 0 auto; }
+
+.auf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; align-items: stretch; }
+.grid-cell { font-size: 12.5px; line-height: 1.65; font-family: 'Nunito', sans-serif; }
+.grid-cell .gc-label { font-weight: 700; font-size: 12.5px; margin-bottom: 4px; }
+
+.data-card { background: #F8FAFC; border: 1px solid #E0E4EA; border-radius: 4px; padding: 8px 10px; font-size: 12.5px; line-height: 1.65; display: flex; flex-direction: column; }
+.data-card .dc-label { font-weight: 700; color: #1C5F96; font-size: 12px; margin-bottom: 3px; font-family: 'Nunito', sans-serif; }
+
+.ico { display: inline-block; vertical-align: middle; margin: 0 3px; flex-shrink: 0; }
+
+/* ── LÖSUNG ──────────────────────────────────────────────── */
+.loe-antwort { position: relative; background: #F4FBF7; border: 1.4px dashed #1A7A50; border-radius: 6px; padding: 11px 14px 11px; margin: 6px 0 14px; font-family: 'Nunito', sans-serif; font-size: 14px; line-height: 1.75; }
 .loe-antwort .sol { font-weight: 700; color: #0D5C35; }
-.loe-antwort .loe-sol { color: #A31515; font-weight: 700; }
-.loe-antwort .teil { display: flex; gap: 7px; margin-top: 5px; font-size: 13.5px; align-items: flex-start; }
-.loe-antwort .tn   { font-weight: 700; color: #0D5C35; min-width: 21px; flex-shrink: 0; }
-.loe-hinweis {
-  font-family: 'Lora', serif; font-size: 11.5px; font-style: italic;
-  color: #555; border-left: 3px solid #A8D4B8;
-  padding-left: 9px; margin: 6px 0 0; line-height: 1.6;
-}
+.loe-antwort .teil { display: flex; gap: 6px; margin-top: 4px; font-size: 14px; align-items: flex-start; }
+.loe-antwort .tn { font-weight: 700; color: #0D5C35; min-width: 20px; flex-shrink: 0; }
+.loe-hinweis { font-family: 'Lora', serif; font-size: 12px; font-style: italic; color: #555; border-left: 3px solid #A8D4B8; padding-left: 8px; margin: 5px 0 0; line-height: 1.55; }
 
 /* ── QR-BOX ──────────────────────────────────────────────── */
-.qr-box {
-  display: flex; align-items: center; gap: 10px;
-  background: #F8FAF8; border: 1px solid #B8D4C0;
-  border-radius: 5px; padding: 8px 12px; margin-top: auto;
-  margin-bottom: 8px; align-self: flex-start;
-}
-.qr-box-label {
-  font-family: 'Nunito', sans-serif; font-size: 10px;
-  font-weight: 700; color: #1A7A50;
-}
+.qr-box { display: flex; align-items: center; gap: 10px; background: #F8FAF8; border: 1px solid #B8D4C0; border-radius: 5px; padding: 8px 12px; margin-top: auto; margin-bottom: 8px; align-self: flex-start; }
+.qr-box-label { font-family: 'Nunito', sans-serif; font-size: 10px; font-weight: 700; color: #1A7A50; }
 
-/* ── SEITENUMMER ─────────────────────────────────────────── */
-.seiten-nr {
-  font-family: 'Nunito', sans-serif; font-size: 9px;
-  color: #bbb; text-align: center; margin-top: auto; padding-top: 10px;
-}
+/* ── SEITENNUMMER ────────────────────────────────────────── */
+.seiten-nr { font-family: 'Nunito', sans-serif; font-size: 10px; color: #bbb; text-align: center; margin-top: auto; padding-top: 8px; }
 
-/* ── DRUCK ───────────────────────────────────────────────── */
+/* ── DRUCK ────────────────────────────────────────────────── */
 @media print {
-  @page { size: A4 portrait; margin: 0; }
-  body { background: white !important; padding: 0 !important; margin: 0 !important; }
-  .page {
-    box-shadow: none !important; margin: 0 !important;
-    page-break-after: always !important; break-after: page !important;
-    width: 210mm !important; height: 297mm !important;
-    min-height: 0 !important; overflow: hidden !important;
-    padding: 12mm 15mm 10mm !important;
-  }
-  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-  .kat-badge, .loe-badge   { background: #444 !important; }
-  .sec-hdr                 { border-left-color: #555 !important; }
-  .tape-box, .def-tape     { background: #F8F8F5 !important; border-color: #ccc !important; }
-  .merk-box                { background: #FAFAF0 !important; border-color: #bbb !important; }
-  .tipp-box                { background: #F4F4F8 !important; border-color: #999 !important; border-left-color: #666 !important; }
-  .draw-box                { background-image: repeating-linear-gradient(to right, #ccc 0, #ccc 0.5px, transparent 0.5px, transparent 20px), repeating-linear-gradient(to bottom, #ccc 0, #ccc 0.5px, transparent 0.5px, transparent 20px) !important; }
-  .exp-block               { background: #F8F5F0 !important; border-left-color: #888 !important; border-color: #bbb !important; }
+@page { size: A4 portrait; margin: 0; }
+body { background: white !important; padding: 0 !important; margin: 0 !important; }
+.page { box-shadow: none !important; margin: 0 !important; page-break-after: always !important; break-after: page !important; width: 210mm !important; height: 297mm !important; min-height: 0 !important; overflow: hidden !important; padding: 12mm 15mm 20mm !important; }
+* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+.loe-badge { background: #444 !important; }
+/* (Lösungsblatt-spezifische Überschreibung weggefallen — sec-hdr nutzt jetzt einheitlich das ::before-Häkchen-Sticker-Design) */
+.tape-box, .def-tape, .merk-box { background: #F8F8F5 !important; border-color: #ccc !important; }
+.spick-box { background: #F5F0C8 !important; border-color: #ccc !important; }
+.tipp-box { background: #F2F6FC !important; border-left-color: #5599CC !important; border-color: #B8CCE4 !important; }
+.tipp-bubble { background: #F2F6FC !important; border-color: #B8CCE4 !important; }
+.tipp-dots span { background: #E8E8E8 !important; border-color: #ccc !important; }
+.exp-block { background: #F8F5F0 !important; border-left-color: #888 !important; border-color: #bbb !important; }
+.draw-box { background-image: repeating-linear-gradient(to right, #bbb 0, #bbb 0.5px, transparent 0.5px, transparent 20px), repeating-linear-gradient(to bottom, #bbb 0, #bbb 0.5px, transparent 0.5px, transparent 20px) !important; border-color: #999 !important; border-radius: 2px !important; }
+.draw-box[data-kosy="1"] { background-color: transparent !important; background-image: none !important; border: none !important; }
+.draw-box[data-svg="1"] { background-color: transparent !important; background-image: none !important; border: none !important; border-radius: 0 !important; }
+.draw-box-baum { background-color: #F8FAF8 !important; }
+.data-card { border-color: #ccc !important; background: #F8F8F8 !important; }
+.mt-tbl th { background: #E8E8E8 !important; color: #333 !important; border-color: #bbb !important; }
+
 }
-</style>
-</head>
 
+
+/* Typo-Reform 2026-05-20 — Tape-Box auf Sans-Serif */
+.tape-box { font-family: 'Nunito', sans-serif !important; line-height: 1.6 !important; }
+</style></head>
 <body>
-<!-- Wavy-Filter deaktiviert -->
-<svg style="position:absolute;width:0;height:0;">
-  <defs>
-    <filter id="wavy">
-      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="5"/>
-      <feDisplacementMap in="SourceGraphic" scale="0"/>
-    </filter>
-  </defs>
-</svg>
-
-
-<!-- ══════════════════════════════════════════════════════════
-     SEITE 1 — SCHÜLER
-     ══════════════════════════════════════════════════════════ -->
 <div class="page">
-
-  <div class="kat-badge k1">LB 6 &middot; Auswertung von Daten</div>
-
-  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
+  <div class="sequenz-badge">Klasse 5 &middot; Auswertung von Daten &middot; K1-1</div>
   <div class="pg-title">Daten sammeln und ordnen</div>
-
-  <!-- ── EINSTIEG ──────────────────────────────────── -->
   <div class="tape-box">
     <span class="tape-tl"></span><span class="tape-tr"></span>
-    <strong>Eure Lehrkraft behauptet:</strong> &bdquo;In dieser Klasse hat mehr als die H&auml;lfte braune Haare.&ldquo;
-    <div class="tipp-box" style="margin-top:10px;">Stimmt das? Um diese Frage zu beantworten, brauchen wir <strong>Daten</strong>. Aber wie sammelt und ordnet man Daten richtig?</div>
+    <img src="data:image/png;base64,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" width="50" class="ico" alt="" style="float:right;margin:0 0 4px 10px;margin-top:-8px;z-index:2;position:relative"><strong>Eure Lehrkraft behauptet:</strong> &bdquo;In dieser Klasse hat <strong>mehr als die Hälfte</strong> braune Haare.&ldquo; <span style="color:#1F7A3D;font-weight:700;">Stimmt das?</span> Um es herauszufinden, braucht ihr <strong>Daten</strong> &mdash; aber wie sammelt und ordnet man Daten richtig?
   </div>
-
-  <!-- ── GRUNDBEGRIFFE ──────────────────────────────── -->
-  <div class="sec-hdr k1">Grundbegriffe</div>
-  <div class="def-tape">
-    <span class="tape-tl"></span><span class="tape-tr"></span>
-    <div class="def-row">
-      <div class="def-left">Merkmal</div>
-      <div>Eine Eigenschaft, die man untersucht &mdash; zum Beispiel Haarfarbe, Schulweg oder Lieblingstier.</div>
-    </div>
-    <div class="def-row">
-      <div class="def-left">Strichliste</div>
-      <div>Eine Methode zum Sammeln von Daten: F&uuml;r jede Beobachtung ein Strich. Jeder f&uuml;nfte Strich geht quer durch die vier vorherigen:
-        <svg width="38" height="22" viewBox="0 0 38 22" style="display:inline-block;vertical-align:middle;margin:0 6px;" xmlns="http://www.w3.org/2000/svg"><line x1="4" y1="2" x2="4" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="11" y1="2" x2="11" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="2" x2="18" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="25" y1="2" x2="25" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="15" x2="28" y2="5" stroke="#C2571A" stroke-width="2.2" stroke-linecap="round"/></svg>&thinsp;=&thinsp;5 &nbsp;&nbsp;
-        <svg width="48" height="22" viewBox="0 0 52 22" style="display:inline-block;vertical-align:middle;margin:0 3px;" xmlns="http://www.w3.org/2000/svg"><line x1="4" y1="2" x2="4" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="11" y1="2" x2="11" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="2" x2="18" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="25" y1="2" x2="25" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="15" x2="28" y2="5" stroke="#C2571A" stroke-width="2.2" stroke-linecap="round"/><line x1="36" y1="2" x2="36" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="43" y1="2" x2="43" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/><line x1="50" y1="2" x2="50" y2="20" stroke="#1C5F96" stroke-width="2" stroke-linecap="round"/></svg>&thinsp;=&thinsp;8
-      </div>
-    </div>
-    <div class="def-row">
-      <div class="def-left">Tabelle</div>
-      <div>Ordnet die gesammelten Daten &uuml;bersichtlich in Zeilen und Spalten.</div>
-    </div>
-  </div>
-
-  <!-- ── AUFGABEN ─────────────────────────────────── -->
-  <div class="sec-hdr k1">Aufgaben</div>
-
-  <!-- AUFGABE 1 — PA ★ -->
-  <div class="auf">
-    <div class="auf-label">
-      <!-- Sequenz-Icon: Balkendiagramm -->
-      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#1C5F96"/>
-        <rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#1C5F96"/>
-        <rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#1C5F96"/>
-        <line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#1C5F96" stroke-width="1" stroke-linecap="round"/>
-      </svg>
-      <!-- PA-Icon -->
-      <svg width="32" height="22" viewBox="0 0 40 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="10" cy="6" r="5.5" fill="#1C5F96"/>
-        <circle cx="7.8" cy="5.2" r="1" fill="white"/>
-        <circle cx="12.2" cy="5.2" r="1" fill="white"/>
-        <path d="M7 8 Q10 10 13 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <rect x="3" y="13" width="14" height="12" rx="5" fill="#1C5F96" opacity="0.75"/>
-        <line x1="3" y1="16" x2="0" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
-        <circle cx="30" cy="6" r="5" fill="#1C5F96" opacity="0.6"/>
-        <circle cx="28" cy="5.2" r="0.9" fill="white"/>
-        <circle cx="32" cy="5.2" r="0.9" fill="white"/>
-        <path d="M27 8 Q30 10 33 8" stroke="white" stroke-width="1.1" fill="none" stroke-linecap="round"/>
-        <rect x="23" y="13" width="13" height="11" rx="4.5" fill="#1C5F96" opacity="0.5"/>
-        <line x1="36" y1="16" x2="40" y2="21" stroke="#1C5F96" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-      </svg>
-      Aufgabe 1: Haarfarbe der Klasse <span class="sterne s1">&#9733;</span>
-    </div>
-    <div class="auf-body">
-      Pr&uuml;ft gemeinsam die Behauptung eurer Lehrkraft. F&uuml;hrt dazu eine Umfrage in der Klasse durch.
-      <div class="teil"><span class="tn">a)</span><span>Befrage alle Sch&uuml;lerinnen und Sch&uuml;ler nach ihrer Haarfarbe. Trage f&uuml;r jede Antwort einen Strich in die passende Zeile der Strichliste ein.</span></div>
-      <table class="mt-tbl" style="margin-top:10px;">
-        <thead>
-          <tr><th style="width:22%;">Haarfarbe</th><th style="width:48%;">Strichliste</th><th style="width:30%;">Anzahl</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="label-cell">blond</td><td class="fill"></td><td class="fill"></td></tr>
-          <tr><td class="label-cell">braun</td><td class="fill"></td><td class="fill"></td></tr>
-          <tr><td class="label-cell">schwarz</td><td class="fill"></td><td class="fill"></td></tr>
-          <tr><td class="label-cell">rot</td><td class="fill"></td><td class="fill"></td></tr>
-          <tr><td class="label-cell">andere</td><td class="fill"></td><td class="fill"></td></tr>
-        </tbody>
-      </table>
-      <div class="teil"><span class="tn">b)</span><span>Z&auml;hle die Striche in jeder Zeile und trage die Anzahl in die rechte Spalte ein.</span></div>
-      <div class="teil"><span class="tn">c)</span><span>Hatte eure Lehrkraft recht? Begr&uuml;nde deine Antwort mit den Daten aus der Tabelle.</span></div>
-      <div class="draw-box" data-svg="1" style="height:80px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 21.17" preserveAspectRatio="none" style="display:block;"><rect width="180" height="21.17" fill="#FAFAFA"/><path d="M5,0 V21.17M10,0 V21.17M15,0 V21.17M20,0 V21.17M25,0 V21.17M30,0 V21.17M35,0 V21.17M40,0 V21.17M45,0 V21.17M50,0 V21.17M55,0 V21.17M60,0 V21.17M65,0 V21.17M70,0 V21.17M75,0 V21.17M80,0 V21.17M85,0 V21.17M90,0 V21.17M95,0 V21.17M100,0 V21.17M105,0 V21.17M110,0 V21.17M115,0 V21.17M120,0 V21.17M125,0 V21.17M130,0 V21.17M135,0 V21.17M140,0 V21.17M145,0 V21.17M150,0 V21.17M155,0 V21.17M160,0 V21.17M165,0 V21.17M170,0 V21.17M175,0 V21.17M0,5 H180M0,10 H180M0,15 H180M0,20 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="20.77" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
-    </div>
-  </div>
-
-  <div class="seiten-nr">5 &middot; Auswertung von Daten &middot; K1-1 &nbsp;&nbsp; &copy; mathtastic</div>
+<div style="background:#F0FAF5;border:1.3px solid #1A7A50;border-radius:6px;padding:11px 14px;"><div style="font-family:Nunito,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1A7A50;margin-bottom:5px;">Grundbegriffe</div><div style="display:flex;align-items:flex-start;gap:10px;padding:7px 2px;border-bottom:1.3px solid rgba(31,122,61,0.22);"><span style="flex:none;width:96px;font-family:Nunito,sans-serif;font-weight:800;font-size:12.5px;color:#1F7A3D;">Merkmal</span><div style="flex:1;font-family:Lora,serif;font-size:12.5px;line-height:1.5;">Die Eigenschaft, die man untersucht &mdash; z.&nbsp;B. Haarfarbe, Schulweg, Lieblingstier.</div></div><div style="display:flex;align-items:flex-start;gap:10px;padding:7px 2px;border-bottom:1.3px solid rgba(31,122,61,0.22);"><span style="flex:none;width:96px;font-family:Nunito,sans-serif;font-weight:800;font-size:12.5px;color:#1F7A3D;">Strichliste</span><div style="flex:1;font-family:Lora,serif;font-size:12.5px;line-height:1.5;">Für jede Beobachtung ein Strich. Jeder <strong>fünfte</strong> Strich geht quer durch die vier vorherigen: <svg width="27" height="20" viewBox="0 0 27 20" style="vertical-align:middle;"><line x1="2" y1="3" x2="2" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="7" y1="3" x2="7" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="12" y1="3" x2="12" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="17" y1="3" x2="17" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="0" y1="16" x2="19" y2="4" stroke="#1a1a1a" stroke-width="1.2"/></svg>&nbsp;= 5.</div></div><div style="display:flex;align-items:flex-start;gap:10px;padding:7px 2px;"><span style="flex:none;width:96px;font-family:Nunito,sans-serif;font-weight:800;font-size:12.5px;color:#1F7A3D;">Tabelle</span><div style="flex:1;font-family:Lora,serif;font-size:12.5px;line-height:1.5;">Ordnet die gesammelten Daten übersichtlich in <strong>Zeilen und Spalten</strong>.</div></div></div><div class="auf" style="margin-top:14px;"><div class="auf-label" style="display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;font-family:Lora,serif;font-weight:700;margin-bottom:6px;"><span>Aufgabe 1 &mdash; Haarfarbe der Klasse</span><img src="data:image/png;base64,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" width="50" class="ico" style="flex-shrink:0;"></div><div style="font-family:Lora,serif;font-size:12.5px;line-height:1.55;margin-bottom:4px;">Prüft gemeinsam die Behauptung eurer Lehrkraft. Führt dazu eine Umfrage in der Klasse durch.</div><div style="display:flex;align-items:flex-start;gap:9px;margin-top:6px;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#1A7A50;color:#fff;font-family:Nunito,sans-serif;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px;">a</span><div style="flex:1;font-family:Lora,serif;font-size:12.5px;line-height:1.5;">Befrage alle Mitschülerinnen und Mitschüler nach ihrer Haarfarbe. Trage für jede Antwort einen Strich in die passende Zeile ein. <strong>b)</strong> Zähle danach die Striche und trage die Anzahl ein.</div></div><table style="border-collapse:collapse;margin:6px 0;width:100%;"><thead><tr><th style="background:#FAEBC8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12.5px;font-weight:700;padding:5px 8px;">Haarfarbe</th><th style="background:#FAEBC8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12.5px;font-weight:700;padding:5px 8px;min-width:250px;">Strichliste</th><th style="background:#FAEBC8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12.5px;font-weight:700;padding:5px 8px;min-width:70px;">Anzahl</th></tr></thead><tbody><tr><td style="border:1px solid #1a1a1a;height:30px;font-family:Lora,serif;font-size:13px;font-weight:600;text-align:left;padding:2px 10px;min-width:110px;">blond</td><td style="border:1px solid #1a1a1a;background:#fff;min-width:250px;"></td><td style="border:1px solid #1a1a1a;background:#fff;min-width:70px;"></td></tr><tr><td style="border:1px solid #1a1a1a;height:30px;font-family:Lora,serif;font-size:13px;font-weight:600;text-align:left;padding:2px 10px;min-width:110px;">braun</td><td style="border:1px solid #1a1a1a;background:#fff;min-width:250px;"></td><td style="border:1px solid #1a1a1a;background:#fff;min-width:70px;"></td></tr><tr><td style="border:1px solid #1a1a1a;height:30px;font-family:Lora,serif;font-size:13px;font-weight:600;text-align:left;padding:2px 10px;min-width:110px;">schwarz</td><td style="border:1px solid #1a1a1a;background:#fff;min-width:250px;"></td><td style="border:1px solid #1a1a1a;background:#fff;min-width:70px;"></td></tr><tr><td style="border:1px solid #1a1a1a;height:30px;font-family:Lora,serif;font-size:13px;font-weight:600;text-align:left;padding:2px 10px;min-width:110px;">rot</td><td style="border:1px solid #1a1a1a;background:#fff;min-width:250px;"></td><td style="border:1px solid #1a1a1a;background:#fff;min-width:70px;"></td></tr><tr><td style="border:1px solid #1a1a1a;height:30px;font-family:Lora,serif;font-size:13px;font-weight:600;text-align:left;padding:2px 10px;min-width:110px;">andere</td><td style="border:1px solid #1a1a1a;background:#fff;min-width:250px;"></td><td style="border:1px solid #1a1a1a;background:#fff;min-width:70px;"></td></tr><tr><td style="border:1px solid #1a1a1a;height:30px;font-family:Lora,serif;font-size:13px;font-weight:700;text-align:left;padding:2px 10px;background:#FBF6EA;">Gesamt</td><td style="border:1px solid #1a1a1a;background:#FBF6EA;"></td><td style="border:1px solid #1a1a1a;background:#fff;"></td></tr></tbody></table><div style="display:flex;align-items:flex-start;gap:9px;margin-top:6px;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#1A7A50;color:#fff;font-family:Nunito,sans-serif;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px;">c</span><div style="flex:1;font-family:Lora,serif;font-size:12.5px;line-height:1.5;">Hatte eure Lehrkraft recht? <strong>Begründe</strong> deine Antwort mit den Daten aus der Tabelle.</div></div>      <div class="ll"><div class="l"></div><div class="l"></div></div>
+</div>  <div class="seiten-nr">5 &middot; Auswertung von Daten &middot; K1-1 &nbsp;&nbsp; &copy; mathtastic</div>
 </div>
 
-
-<!-- ══════════════════════════════════════════════════════════
-     SEITE 2 — SCHÜLER (+ Merksatz am Ende)
-     ══════════════════════════════════════════════════════════ -->
 <div class="page">
-
-  <div class="kat-badge k1">LB 6 &middot; Auswertung von Daten</div>
-  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
-  <div class="pg-title">Daten sammeln und ordnen</div>
-
-  <!-- AUFGABE 2 — EA ★★ -->
-  <div class="auf">
-    <div class="auf-label">
-      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#1C5F96"/>
-        <rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#1C5F96"/>
-        <rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#1C5F96"/>
-        <line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#1C5F96" stroke-width="1" stroke-linecap="round"/>
-      </svg>
-      <!-- EA-Icon -->
-      <svg width="18" height="22" viewBox="0 0 24 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="6" r="5.5" fill="#1C5F96"/>
-        <circle cx="9.8" cy="5.2" r="1" fill="white"/>
-        <circle cx="14.2" cy="5.2" r="1" fill="white"/>
-        <path d="M9 8 Q12 10 15 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <rect x="5" y="13" width="14" height="12" rx="5" fill="#1C5F96" opacity="0.75"/>
-        <line x1="5" y1="16" x2="0" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
-        <line x1="19" y1="16" x2="24" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
-      </svg>
-      Aufgabe 2: Schulwege der Klasse 5a <span class="sterne s2">&#9733;&#9733;</span>
-    </div>
-    <div class="auf-body">
-      Die Klasse 5a hat ihre Schulwege untersucht. Hier sind die Ergebnisse: 8&nbsp;Sch&uuml;ler kommen mit dem <strong>Bus</strong>, 6&nbsp;fahren mit dem <strong>Fahrrad</strong>, 5&nbsp;werden mit dem <strong>Auto</strong> gebracht, 3&nbsp;kommen <strong>zu Fu&szlig;</strong> und 2&nbsp;fahren mit dem <strong>Roller</strong>.
-      <div class="teil"><span class="tn">a)</span><span>&Uuml;bertrage die Daten aus dem Text in die Strichliste und erg&auml;nze die Anzahl.</span></div>
-      <table class="mt-tbl" style="margin-top:10px;">
-        <thead>
-          <tr><th style="width:22%;">Schulweg</th><th style="width:48%;">Strichliste</th><th style="width:30%;">Anzahl</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="label-cell">Bus</td><td class="fill"></td><td class="fill"></td></tr>
-          <tr><td class="label-cell">Fahrrad</td><td class="fill"></td><td class="fill"></td></tr>
-          <tr><td class="label-cell">Auto</td><td class="fill"></td><td class="fill"></td></tr>
-          <tr><td class="label-cell">zu Fu&szlig;</td><td class="fill"></td><td class="fill"></td></tr>
-          <tr><td class="label-cell">Roller</td><td class="fill"></td><td class="fill"></td></tr>
-        </tbody>
-      </table>
-      <div class="teil"><span class="tn">b)</span><span>Wie viele Sch&uuml;lerinnen und Sch&uuml;ler hat die Klasse 5a insgesamt? <span class="ln" style="min-width:50px;"></span></span></div>
-      <div class="teil"><span class="tn">c)</span><span>Welcher Schulweg wird am h&auml;ufigsten genutzt, welcher am seltensten?</span></div>
-      <div class="ll"><div class="l"></div></div>
-    </div>
-  </div>
-
-  <!-- AUFGABE 3 — EA ★★★ -->
-  <div class="auf">
-    <div class="auf-label">
-      <svg width="16" height="16" viewBox="0 0 16 16" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1.5" y="9" width="3" height="6" rx="0.5" fill="#1C5F96"/>
-        <rect x="6.5" y="5" width="3" height="10" rx="0.5" fill="#1C5F96"/>
-        <rect x="11.5" y="2" width="3" height="13" rx="0.5" fill="#1C5F96"/>
-        <line x1="0.5" y1="15.5" x2="15.5" y2="15.5" stroke="#1C5F96" stroke-width="1" stroke-linecap="round"/>
-      </svg>
-      <svg width="18" height="22" viewBox="0 0 24 30" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-right:5px;" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="6" r="5.5" fill="#1C5F96"/>
-        <circle cx="9.8" cy="5.2" r="1" fill="white"/>
-        <circle cx="14.2" cy="5.2" r="1" fill="white"/>
-        <path d="M9 8 Q12 10 15 8" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <rect x="5" y="13" width="14" height="12" rx="5" fill="#1C5F96" opacity="0.75"/>
-        <line x1="5" y1="16" x2="0" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
-        <line x1="19" y1="16" x2="24" y2="21" stroke="#1C5F96" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
-      </svg>
-      Aufgabe 3: Deine eigene Umfrage <span class="sterne s3">&#9733;&#9733;&#9733;</span>
-    </div>
-    <div class="auf-body">
-      W&auml;hle ein eigenes Merkmal, das dich interessiert (zum Beispiel: Anzahl der Geschwister, Lieblingsfarbe, Lieblingstier oder Lieblingssportart). Erstelle daf&uuml;r eine eigene Tabelle mit Strichliste und Anzahl.
-      <div class="teil"><span class="tn">a)</span><span>Mein Merkmal: <span class="ln" style="min-width:140px;"></span></span></div>
-      <div class="teil"><span class="tn">b)</span><span>Erstelle deine eigene Tabelle und befrage mindestens 10&nbsp;Mitsch&uuml;lerinnen und Mitsch&uuml;ler.</span></div>
-      <div class="draw-box" data-svg="1" style="height:120px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 31.75" preserveAspectRatio="none" style="display:block;"><rect width="180" height="31.75" fill="#FAFAFA"/><path d="M5,0 V31.75M10,0 V31.75M15,0 V31.75M20,0 V31.75M25,0 V31.75M30,0 V31.75M35,0 V31.75M40,0 V31.75M45,0 V31.75M50,0 V31.75M55,0 V31.75M60,0 V31.75M65,0 V31.75M70,0 V31.75M75,0 V31.75M80,0 V31.75M85,0 V31.75M90,0 V31.75M95,0 V31.75M100,0 V31.75M105,0 V31.75M110,0 V31.75M115,0 V31.75M120,0 V31.75M125,0 V31.75M130,0 V31.75M135,0 V31.75M140,0 V31.75M145,0 V31.75M150,0 V31.75M155,0 V31.75M160,0 V31.75M165,0 V31.75M170,0 V31.75M175,0 V31.75M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180M0,30 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="31.35" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
-      <div class="teil"><span class="tn">c)</span><span>Formuliere eine Frage, die du mit deinen Daten beantworten kannst, und beantworte sie.</span></div>
-      <div class="draw-box" data-svg="1" style="height:80px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 21.17" preserveAspectRatio="none" style="display:block;"><rect width="180" height="21.17" fill="#FAFAFA"/><path d="M5,0 V21.17M10,0 V21.17M15,0 V21.17M20,0 V21.17M25,0 V21.17M30,0 V21.17M35,0 V21.17M40,0 V21.17M45,0 V21.17M50,0 V21.17M55,0 V21.17M60,0 V21.17M65,0 V21.17M70,0 V21.17M75,0 V21.17M80,0 V21.17M85,0 V21.17M90,0 V21.17M95,0 V21.17M100,0 V21.17M105,0 V21.17M110,0 V21.17M115,0 V21.17M120,0 V21.17M125,0 V21.17M130,0 V21.17M135,0 V21.17M140,0 V21.17M145,0 V21.17M150,0 V21.17M155,0 V21.17M160,0 V21.17M165,0 V21.17M170,0 V21.17M175,0 V21.17M0,5 H180M0,10 H180M0,15 H180M0,20 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="20.77" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
-    </div>
-  </div>
-
-  <!-- MERKSATZ -->
-  <div class="merk-box">
+  <div class="pg-head-compact"><span class="phc-badge">Seite 2</span></div>
+<div class="auf" style="margin-top:6px;"><div class="auf-label" style="font-size:14px;font-family:Lora,serif;font-weight:700;margin-bottom:6px;">Aufgabe 2 &mdash; Schulwege der Klasse 5a</div><div style="font-family:Lora,serif;font-size:12.5px;line-height:1.55;margin-bottom:2px;">Die Klasse 5a hat ihre Schulwege untersucht: <strong>8</strong> kommen mit dem Bus, <strong>6</strong> mit dem Fahrrad, <strong>5</strong> werden mit dem Auto gebracht, <strong>3</strong> kommen zu Fuß, <strong>2</strong> mit dem Roller.</div><div style="display:flex;align-items:flex-start;gap:9px;margin-top:5px;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#1A7A50;color:#fff;font-family:Nunito,sans-serif;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px;">a</span><div style="flex:1;font-family:Lora,serif;font-size:12.5px;line-height:1.5;">Übertrage die Daten aus dem Text in die Strichliste und ergänze die Anzahl.</div></div><table style="border-collapse:collapse;margin:6px 0;width:100%;"><thead><tr><th style="background:#FAEBC8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12.5px;font-weight:700;padding:5px 8px;">Schulweg</th><th style="background:#FAEBC8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12.5px;font-weight:700;padding:5px 8px;min-width:250px;">Strichliste</th><th style="background:#FAEBC8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12.5px;font-weight:700;padding:5px 8px;min-width:70px;">Anzahl</th></tr></thead><tbody><tr><td style="border:1px solid #1a1a1a;height:24px;font-family:Lora,serif;font-size:13px;font-weight:600;text-align:left;padding:2px 10px;min-width:110px;">Bus</td><td style="border:1px solid #1a1a1a;background:#fff;min-width:250px;"></td><td style="border:1px solid #1a1a1a;background:#fff;min-width:70px;"></td></tr><tr><td style="border:1px solid #1a1a1a;height:24px;font-family:Lora,serif;font-size:13px;font-weight:600;text-align:left;padding:2px 10px;min-width:110px;">Fahrrad</td><td style="border:1px solid #1a1a1a;background:#fff;min-width:250px;"></td><td style="border:1px solid #1a1a1a;background:#fff;min-width:70px;"></td></tr><tr><td style="border:1px solid #1a1a1a;height:24px;font-family:Lora,serif;font-size:13px;font-weight:600;text-align:left;padding:2px 10px;min-width:110px;">Auto</td><td style="border:1px solid #1a1a1a;background:#fff;min-width:250px;"></td><td style="border:1px solid #1a1a1a;background:#fff;min-width:70px;"></td></tr><tr><td style="border:1px solid #1a1a1a;height:24px;font-family:Lora,serif;font-size:13px;font-weight:600;text-align:left;padding:2px 10px;min-width:110px;">zu Fuß</td><td style="border:1px solid #1a1a1a;background:#fff;min-width:250px;"></td><td style="border:1px solid #1a1a1a;background:#fff;min-width:70px;"></td></tr><tr><td style="border:1px solid #1a1a1a;height:24px;font-family:Lora,serif;font-size:13px;font-weight:600;text-align:left;padding:2px 10px;min-width:110px;">Roller</td><td style="border:1px solid #1a1a1a;background:#fff;min-width:250px;"></td><td style="border:1px solid #1a1a1a;background:#fff;min-width:70px;"></td></tr><tr><td style="border:1px solid #1a1a1a;height:24px;font-family:Lora,serif;font-size:13px;font-weight:700;text-align:left;padding:2px 10px;background:#FBF6EA;">Gesamt</td><td style="border:1px solid #1a1a1a;background:#FBF6EA;"></td><td style="border:1px solid #1a1a1a;background:#fff;"></td></tr></tbody></table><div style="display:flex;align-items:flex-start;gap:9px;margin-top:5px;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#1A7A50;color:#fff;font-family:Nunito,sans-serif;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px;">b</span><div style="flex:1;font-family:Lora,serif;font-size:12.5px;line-height:1.5;">Wie viele Schülerinnen und Schüler hat die Klasse 5a insgesamt?&nbsp;<span class="luecke" style="min-width:70px;"></span></div></div><div style="display:flex;align-items:flex-start;gap:9px;margin-top:6px;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#1A7A50;color:#fff;font-family:Nunito,sans-serif;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px;">c</span><div style="flex:1;font-family:Lora,serif;font-size:12.5px;line-height:1.5;">Welcher Schulweg wird am häufigsten genutzt, welcher am seltensten?</div></div>      <div class="ll"><div class="l"></div><div class="l"></div></div>
+</div><div class="auf" style="margin-top:10px;"><div class="auf-label" style="font-size:14px;font-family:Lora,serif;font-weight:700;margin-bottom:5px;">Aufgabe 3 &mdash; Deine eigene Umfrage</div><div style="display:flex;align-items:flex-start;gap:9px;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#1A7A50;color:#fff;font-family:Nunito,sans-serif;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px;">a</span><div style="flex:1;font-family:Lora,serif;font-size:12.5px;line-height:1.5;">Wähle ein eigenes Merkmal (z.&nbsp;B. Anzahl Geschwister, Lieblingstier, Lieblingssport). Mein Merkmal:&nbsp;<span class="luecke" style="min-width:150px;"></span></div></div><div style="display:flex;align-items:flex-start;gap:9px;margin-top:6px;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#1A7A50;color:#fff;font-family:Nunito,sans-serif;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px;">b</span><div style="flex:1;font-family:Lora,serif;font-size:12.5px;line-height:1.5;">Erstelle hier deine <strong>eigene Tabelle</strong> (Merkmal · Strichliste · Anzahl) und befrage <strong>mindestens 10</strong> Mitschülerinnen und Mitschüler.</div></div>      <div class="draw-box" data-svg="1" style="height:100px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 180 26.46" preserveAspectRatio="none" style="display:block;"><rect width="180" height="26.46" fill="#FAFAFA"/><path d="M5,0 V26.46M10,0 V26.46M15,0 V26.46M20,0 V26.46M25,0 V26.46M30,0 V26.46M35,0 V26.46M40,0 V26.46M45,0 V26.46M50,0 V26.46M55,0 V26.46M60,0 V26.46M65,0 V26.46M70,0 V26.46M75,0 V26.46M80,0 V26.46M85,0 V26.46M90,0 V26.46M95,0 V26.46M100,0 V26.46M105,0 V26.46M110,0 V26.46M115,0 V26.46M120,0 V26.46M125,0 V26.46M130,0 V26.46M135,0 V26.46M140,0 V26.46M145,0 V26.46M150,0 V26.46M155,0 V26.46M160,0 V26.46M165,0 V26.46M170,0 V26.46M175,0 V26.46M0,5 H180M0,10 H180M0,15 H180M0,20 H180M0,25 H180" stroke="#D0D0D0" stroke-width="0.15" fill="none"/><rect x="0.2" y="0.2" width="179.6" height="26.06" fill="none" stroke="#A8A8A8" stroke-width="0.4" rx="0.5"/></svg></div>
+<div style="display:flex;align-items:flex-start;gap:9px;margin-top:5px;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#1A7A50;color:#fff;font-family:Nunito,sans-serif;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px;">c</span><div style="flex:1;font-family:Lora,serif;font-size:12.5px;line-height:1.5;">Formuliere eine Frage, die du mit deinen Daten beantworten kannst &mdash; und beantworte sie.</div></div>      <div class="ll"><div class="l"></div><div class="l"></div></div>
+</div>  <div class="merk-box" style="margin-top:12px;position:relative;padding-right:80px;">
     <span class="tape-tl"></span><span class="tape-tr"></span>
-    <div class="merk-label">Merksatz: Daten sammeln und ordnen</div>
-    Um Daten zu untersuchen, w&auml;hlt man zuerst ein
-    <span class="luecke" style="min-width:80px;"></span>
-    aus, das man untersuchen m&ouml;chte. Die Daten sammelt man mithilfe einer
-    <span class="luecke" style="min-width:100px;"></span>.
-    Anschlie&szlig;end ordnet man die Ergebnisse in einer
-    <span class="luecke" style="min-width:75px;"></span>.
-    So lassen sich die Daten &uuml;bersichtlich
-    <span class="luecke" style="min-width:100px;"></span>
-    und Fragen beantworten.
+    <div class="merk-label">Daten sammeln und ordnen</div>
+    Um Daten zu untersuchen, wählt man zuerst ein <span class="luecke" style="min-width:90px;"></span> aus, das man untersuchen möchte. Die Daten sammelt man mit einer <span class="luecke" style="min-width:90px;"></span>. Anschließend ordnet man die Ergebnisse in einer <span class="luecke" style="min-width:90px;"></span>. So lassen sich die Daten übersichtlich <span class="luecke" style="min-width:90px;"></span> und Fragen beantworten.
+    <img src="data:image/png;base64,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" width="62" alt="" style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);z-index:2;">
   </div>
-
   <div class="seiten-nr">5 &middot; Auswertung von Daten &middot; K1-1 &nbsp;&nbsp; &copy; mathtastic</div>
 </div>
-
 
 <!-- LOE_SEP -->
-<!-- ══════════════════════════════════════════════════════════
-     SEITE 3 — LÖSUNGSBLATT
-     ══════════════════════════════════════════════════════════ -->
-<div class="page page-loe" id="loesung">
-
+<div class="page page-loe">
   <div class="loe-badge">&#10004; L&ouml;sungsblatt</div>
-  <div class="sequenz-badge">Auswertung von Daten &middot; 5</div>
-  <div class="pg-title">Daten sammeln und ordnen &mdash; L&ouml;sungsblatt</div>
-  <div class="pg-sub" style="color:#1A7A50;">L&ouml;sungsblatt &middot; nur f&uuml;r die Lehrkraft</div>
-
-  <!-- Aufgabe 1 -->
-  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe 1: Haarfarbe der Klasse</div>
+  <img src="data:image/png;base64,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" width="50" alt="" style="position:absolute;top:21mm;right:17mm;display:block;">
+  <div class="sequenz-badge">Klasse 5 &middot; K1-1</div>
+  <div class="pg-title" style="padding-right:70px;">Daten sammeln und ordnen &mdash; L&ouml;sung</div>
+  <div class="sec-hdr">Aufgabe 1 &mdash; Haarfarbe der Klasse</div>
   <div class="loe-antwort">
-    <div class="teil"><span class="tn">a+b)</span><span>Individuelle Ergebnisse &mdash; abh&auml;ngig von der jeweiligen Klasse. Beispiel f&uuml;r eine Klasse mit 26&nbsp;Sch&uuml;lern:</span></div>
-    <table class="loe-tbl" style="margin-top:6px;">
-      <thead><tr><th>Haarfarbe</th><th>Strichliste</th><th>Anzahl</th></tr></thead>
-      <tbody>
-        <tr><td>blond</td><td class="sol">|||| |||</td><td class="sol">8</td></tr>
-        <tr><td>braun</td><td class="sol">|||| |||| |</td><td class="sol">11</td></tr>
-        <tr><td>schwarz</td><td class="sol">||||</td><td class="sol">4</td></tr>
-        <tr><td>rot</td><td class="sol">||</td><td class="sol">2</td></tr>
-        <tr><td>andere</td><td class="sol">|</td><td class="sol">1</td></tr>
-      </tbody>
-    </table>
-    <div class="teil"><span class="tn">c)</span><span>Beispielantwort: <span class="sol">Die Lehrkraft hatte nicht recht.</span> Von 26&nbsp;Sch&uuml;lern haben 11 braune Haare. Die H&auml;lfte von 26 ist 13. Da 11&nbsp;&lt;&nbsp;13, hat <em>weniger</em> als die H&auml;lfte braune Haare.</span></div>
+    <strong>a+b)</strong> Individuell &mdash; je nach Klasse. Beispiel für eine Klasse mit 26 Schülern:<table style="border-collapse:collapse;margin:5px 0;"><thead><tr><th style="background:#E3F0E8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;font-weight:700;padding:3px 8px;">Haarfarbe</th><th style="background:#E3F0E8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;font-weight:700;padding:3px 8px;">Strichliste</th><th style="background:#E3F0E8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;font-weight:700;padding:3px 8px;">Anzahl</th></tr></thead><tbody><tr><td style="border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;padding:2px 8px;text-align:left;">blond</td><td style="border:1px solid #1a1a1a;padding:2px 10px;text-align:left;"><svg width="47" height="20" viewBox="0 0 47 20" style="vertical-align:middle;"><line x1="2" y1="3" x2="2" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="7" y1="3" x2="7" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="12" y1="3" x2="12" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="17" y1="3" x2="17" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="0" y1="16" x2="19" y2="4" stroke="#1a1a1a" stroke-width="1.2"/><line x1="27" y1="3" x2="27" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="32" y1="3" x2="32" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="37" y1="3" x2="37" y2="17" stroke="#1a1a1a" stroke-width="1.2"/></svg></td><td style="border:1px solid #1a1a1a;font-size:12px;text-align:center;padding:2px 8px;font-weight:700;">8</td></tr><tr><td style="border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;padding:2px 8px;text-align:left;">braun</td><td style="border:1px solid #1a1a1a;padding:2px 10px;text-align:left;"><svg width="62" height="20" viewBox="0 0 62 20" style="vertical-align:middle;"><line x1="2" y1="3" x2="2" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="7" y1="3" x2="7" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="12" y1="3" x2="12" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="17" y1="3" x2="17" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="0" y1="16" x2="19" y2="4" stroke="#1a1a1a" stroke-width="1.2"/><line x1="27" y1="3" x2="27" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="32" y1="3" x2="32" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="37" y1="3" x2="37" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="42" y1="3" x2="42" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="25" y1="16" x2="44" y2="4" stroke="#1a1a1a" stroke-width="1.2"/><line x1="52" y1="3" x2="52" y2="17" stroke="#1a1a1a" stroke-width="1.2"/></svg></td><td style="border:1px solid #1a1a1a;font-size:12px;text-align:center;padding:2px 8px;font-weight:700;">11</td></tr><tr><td style="border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;padding:2px 8px;text-align:left;">schwarz</td><td style="border:1px solid #1a1a1a;padding:2px 10px;text-align:left;"><svg width="27" height="20" viewBox="0 0 27 20" style="vertical-align:middle;"><line x1="2" y1="3" x2="2" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="7" y1="3" x2="7" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="12" y1="3" x2="12" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="17" y1="3" x2="17" y2="17" stroke="#1a1a1a" stroke-width="1.2"/></svg></td><td style="border:1px solid #1a1a1a;font-size:12px;text-align:center;padding:2px 8px;font-weight:700;">4</td></tr><tr><td style="border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;padding:2px 8px;text-align:left;">rot</td><td style="border:1px solid #1a1a1a;padding:2px 10px;text-align:left;"><svg width="17" height="20" viewBox="0 0 17 20" style="vertical-align:middle;"><line x1="2" y1="3" x2="2" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="7" y1="3" x2="7" y2="17" stroke="#1a1a1a" stroke-width="1.2"/></svg></td><td style="border:1px solid #1a1a1a;font-size:12px;text-align:center;padding:2px 8px;font-weight:700;">2</td></tr><tr><td style="border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;padding:2px 8px;text-align:left;">andere</td><td style="border:1px solid #1a1a1a;padding:2px 10px;text-align:left;"><svg width="12" height="20" viewBox="0 0 12 20" style="vertical-align:middle;"><line x1="2" y1="3" x2="2" y2="17" stroke="#1a1a1a" stroke-width="1.2"/></svg></td><td style="border:1px solid #1a1a1a;font-size:12px;text-align:center;padding:2px 8px;font-weight:700;">1</td></tr></tbody></table><strong>c)</strong> Beispiel: Die Lehrkraft hatte <strong>nicht</strong> recht. Von 26 Schülern haben 11 braune Haare. Die Hälfte von 26 ist 13 &mdash; und 11 &lt; 13, also hat <em>weniger</em> als die Hälfte braune Haare.<br><span style="color:#7a4d00;">Typischer Fehler: &bdquo;mehr als die Hälfte&ldquo; mit &bdquo;die meisten&ldquo; verwechseln. Braun kann die häufigste Farbe sein, ohne über der Hälfte zu liegen &mdash; das ist das zentrale Lernziel.</span>
   </div>
-  <div class="loe-hinweis">Typischer Fehler: Sch&uuml;ler verwechseln &bdquo;mehr als die H&auml;lfte&ldquo; mit &bdquo;die meisten&ldquo;. Braun kann die h&auml;ufigste Farbe sein, ohne &uuml;ber der H&auml;lfte zu liegen. Diese Unterscheidung ist ein wichtiges Lernziel. &mdash; <strong>Zeitplanung:</strong> ca. 15&nbsp;Min. f&uuml;r die Umfrage einplanen (aufstehen, befragen, eintragen).</div>
-
-  <!-- Aufgabe 2 -->
-  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe 2: Schulwege der Klasse 5a</div>
+  <div class="sec-hdr">Aufgabe 2 &mdash; Schulwege der Klasse 5a</div>
   <div class="loe-antwort">
-    <div class="teil"><span class="tn">a)</span><span>Korrekte Strichliste und Anzahl:</span></div>
-    <table class="loe-tbl" style="margin-top:6px;">
-      <thead><tr><th>Schulweg</th><th>Strichliste</th><th>Anzahl</th></tr></thead>
-      <tbody>
-        <tr><td>Bus</td><td class="sol">|||| |||</td><td class="sol">8</td></tr>
-        <tr><td>Fahrrad</td><td class="sol">|||| |</td><td class="sol">6</td></tr>
-        <tr><td>Auto</td><td class="sol">||||</td><td class="sol">5</td></tr>
-        <tr><td>zu Fu&szlig;</td><td class="sol">|||</td><td class="sol">3</td></tr>
-        <tr><td>Roller</td><td class="sol">||</td><td class="sol">2</td></tr>
-      </tbody>
-    </table>
-    <div class="teil"><span class="tn">b)</span><span>Die Klasse 5a hat insgesamt <span class="sol">8 + 6 + 5 + 3 + 2 = 24 Sch&uuml;ler</span>.</span></div>
-    <div class="teil"><span class="tn">c)</span><span>Am h&auml;ufigsten: <span class="sol">Bus (8 Sch&uuml;ler)</span>. Am seltensten: <span class="sol">Roller (2 Sch&uuml;ler)</span>.</span></div>
+    <table style="border-collapse:collapse;margin:5px 0;"><thead><tr><th style="background:#E3F0E8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;font-weight:700;padding:3px 8px;">Schulweg</th><th style="background:#E3F0E8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;font-weight:700;padding:3px 8px;">Strichliste</th><th style="background:#E3F0E8;border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;font-weight:700;padding:3px 8px;">Anzahl</th></tr></thead><tbody><tr><td style="border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;padding:2px 8px;text-align:left;">Bus</td><td style="border:1px solid #1a1a1a;padding:2px 10px;text-align:left;"><svg width="47" height="20" viewBox="0 0 47 20" style="vertical-align:middle;"><line x1="2" y1="3" x2="2" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="7" y1="3" x2="7" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="12" y1="3" x2="12" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="17" y1="3" x2="17" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="0" y1="16" x2="19" y2="4" stroke="#1a1a1a" stroke-width="1.2"/><line x1="27" y1="3" x2="27" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="32" y1="3" x2="32" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="37" y1="3" x2="37" y2="17" stroke="#1a1a1a" stroke-width="1.2"/></svg></td><td style="border:1px solid #1a1a1a;font-size:12px;text-align:center;padding:2px 8px;font-weight:700;">8</td></tr><tr><td style="border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;padding:2px 8px;text-align:left;">Fahrrad</td><td style="border:1px solid #1a1a1a;padding:2px 10px;text-align:left;"><svg width="37" height="20" viewBox="0 0 37 20" style="vertical-align:middle;"><line x1="2" y1="3" x2="2" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="7" y1="3" x2="7" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="12" y1="3" x2="12" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="17" y1="3" x2="17" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="0" y1="16" x2="19" y2="4" stroke="#1a1a1a" stroke-width="1.2"/><line x1="27" y1="3" x2="27" y2="17" stroke="#1a1a1a" stroke-width="1.2"/></svg></td><td style="border:1px solid #1a1a1a;font-size:12px;text-align:center;padding:2px 8px;font-weight:700;">6</td></tr><tr><td style="border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;padding:2px 8px;text-align:left;">Auto</td><td style="border:1px solid #1a1a1a;padding:2px 10px;text-align:left;"><svg width="27" height="20" viewBox="0 0 27 20" style="vertical-align:middle;"><line x1="2" y1="3" x2="2" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="7" y1="3" x2="7" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="12" y1="3" x2="12" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="17" y1="3" x2="17" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="0" y1="16" x2="19" y2="4" stroke="#1a1a1a" stroke-width="1.2"/></svg></td><td style="border:1px solid #1a1a1a;font-size:12px;text-align:center;padding:2px 8px;font-weight:700;">5</td></tr><tr><td style="border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;padding:2px 8px;text-align:left;">zu Fuß</td><td style="border:1px solid #1a1a1a;padding:2px 10px;text-align:left;"><svg width="22" height="20" viewBox="0 0 22 20" style="vertical-align:middle;"><line x1="2" y1="3" x2="2" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="7" y1="3" x2="7" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="12" y1="3" x2="12" y2="17" stroke="#1a1a1a" stroke-width="1.2"/></svg></td><td style="border:1px solid #1a1a1a;font-size:12px;text-align:center;padding:2px 8px;font-weight:700;">3</td></tr><tr><td style="border:1px solid #1a1a1a;font-family:Lora,serif;font-size:12px;padding:2px 8px;text-align:left;">Roller</td><td style="border:1px solid #1a1a1a;padding:2px 10px;text-align:left;"><svg width="17" height="20" viewBox="0 0 17 20" style="vertical-align:middle;"><line x1="2" y1="3" x2="2" y2="17" stroke="#1a1a1a" stroke-width="1.2"/><line x1="7" y1="3" x2="7" y2="17" stroke="#1a1a1a" stroke-width="1.2"/></svg></td><td style="border:1px solid #1a1a1a;font-size:12px;text-align:center;padding:2px 8px;font-weight:700;">2</td></tr></tbody></table><strong>b)</strong> 8 + 6 + 5 + 3 + 2 = <strong>24</strong> Schüler. <strong>c)</strong> Am häufigsten: <strong>Bus</strong> (8). Am seltensten: <strong>Roller</strong> (2).
   </div>
-  <div class="loe-hinweis">Typischer Fehler: Sch&uuml;ler vergessen beim Z&auml;hlen die 5er-B&uuml;ndelung in der Strichliste und verzählen sich. Tipp: &bdquo;Der f&uuml;nfte Strich geht immer quer &mdash; so z&auml;hlt ihr in F&uuml;nferschritten.&ldquo;</div>
-
-  <!-- Aufgabe 3 -->
-  <div class="sec-hdr" style="border-left-color:#1A7A50;">Aufgabe 3: Deine eigene Umfrage</div>
+  <div class="sec-hdr">Aufgabe 3 &mdash; Deine eigene Umfrage</div>
   <div class="loe-antwort">
-    <div class="loe-hinweis" style="margin:0;">Offene Aufgabe &mdash; individuelle L&ouml;sungen akzeptieren. Bewertungskriterien: (1)&nbsp;Merkmal klar benannt, (2)&nbsp;Tabelle mit Spalten Merkmal / Strichliste / Anzahl, (3)&nbsp;mindestens 10&nbsp;Befragte, (4)&nbsp;Frage mathematisch sinnvoll und mit den Daten beantwortbar (z.&nbsp;B. &bdquo;Welche Farbe wurde am h&auml;ufigsten genannt?&ldquo;). <br><br><strong>Differenzierung:</strong> Starke Sch&uuml;ler formulieren Fragen, die einen Vergleich erfordern (&bdquo;Haben mehr Sch&uuml;ler ein Haustier als keins?&ldquo;). Schw&auml;chere Sch&uuml;ler beantworten einfache &bdquo;Was ist am meisten/wenigsten?&ldquo;-Fragen.</div>
+    Offene Aufgabe. Bewertung: (1) Merkmal klar benannt, (2) Tabelle mit Merkmal / Strichliste / Anzahl, (3) mindestens 10 Befragte, (4) Frage sinnvoll und mit den Daten beantwortbar. Differenzierung: Starke formulieren Vergleichsfragen (&bdquo;Haben mehr Schüler ein Haustier als keins?&ldquo;).
   </div>
-
-  <!-- Merksatz-Lücken -->
-  <div class="sec-hdr" style="border-left-color:#1A7A50;">Merksatz-L&uuml;cken</div>
+  <div class="sec-hdr">Merksatz</div>
   <div class="loe-antwort">
-    <span class="sol">Merkmal</span> &mdash;
-    <span class="sol">Strichliste</span> &mdash;
-    <span class="sol">Tabelle</span> &mdash;
-    <span class="sol">vergleichen</span>
+    … zuerst ein <strong>Merkmal</strong> … sammelt man mit einer <strong>Strichliste</strong> … ordnet man in einer <strong>Tabelle</strong> … übersichtlich <strong>vergleichen</strong>.
   </div>
-
-  <div class="loe-hinweis" style="margin-top:14px;">
-    <strong>R&uuml;ckbezug zum Einstieg:</strong> Die Behauptung der Lehrkraft aufzul&ouml;sen ist ein guter Abschluss f&uuml;r die Stunde. Ergebnis im Plenum besprechen: &bdquo;Braun ist vielleicht am h&auml;ufigsten &mdash; aber das hei&szlig;t noch nicht &sbquo;mehr als die H&auml;lfte&lsquo;.&ldquo; Das bereitet die kritische Datenanalyse in K3-1 vor.
-  </div>
-
   <div class="seiten-nr">5 &middot; K1-1 &middot; L&ouml;sungsblatt &nbsp;&nbsp; &copy; mathtastic</div>
 </div>
 
-
-</body>
-</html>
+</body></html>
