@@ -154,6 +154,9 @@ body { background: white !important; padding: 0 !important; margin: 0 !important
 }
 
 [class*="draw-box"]{background:#fff !important;background-image:none !important;border:none !important;overflow:hidden;border-radius:2px;}/* karo-norm-override */
+
+/* loe-paginate-fix 2026-06-15: lange Lösungen fließen auf S.4 statt clippen */
+@media print{.page.page-loe{height:auto !important;min-height:297mm !important;overflow:visible !important;page-break-after:auto !important;break-after:auto !important;}.loe-antwort,.sec-hdr,.loe-hinweis{page-break-inside:avoid !important;break-inside:avoid !important;}}
 </style>
 </head>
 <body>
