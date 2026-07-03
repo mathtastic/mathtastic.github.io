@@ -45,20 +45,11 @@ body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; 
 .merk-box { position: relative; background: #FFFDE6; border: 1.5px solid #E8D84A; border-radius: 5px; padding: 14px 13px 13px; font-family: 'Lora', serif; font-size: 14px; line-height: 2.2; margin-top: 18px; }
 .merk-label { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; font-style: italic; color: #6B5A00; margin-bottom: 4px; text-decoration: underline; text-underline-offset: 3px; }
 
-.spick-box { position: relative; background: #FFF9C4; background-image: linear-gradient(to right, transparent 20px, #E0A0A0 20px, #E0A0A0 21.5px, transparent 21.5px), repeating-linear-gradient(to bottom, transparent 0, transparent 19px, #C0D8EC 19px, #C0D8EC 20px); background-position: 0 26px; border: 1px solid #E8D880; border-radius: 3px; padding: 7px 9px 7px 27px; font-family: 'Caveat', cursive; font-size: 14px; font-weight: 600; line-height: 1.45; color: #2A4A6A; }
-.spick-box .spick-label { font-family: 'Caveat', cursive; font-size: 14px; font-weight: 700; color: #C0392B; margin-bottom: 1px; }
+/* .spick-box (gelber Notizzettel) ENTFERNT 2026-06-22 — abgelöst durch beispiel_box (EDUKI §1.10). */
 
-.tipp-box { background: #F2F6FC; border: 1.5px solid #B8CCE4; border-left: 3px solid #5599CC; border-radius: 5px; padding: 7px 11px; margin: 7px 0; font-family: 'Nunito', sans-serif; font-size: 12px; color: #1C3A5A; position: relative; display: flex; align-items: flex-start; gap: 8px; }
-/* tipp-box: Pinguin 'Tipp' als <img> im HTML statt CSS-Icon */
-
-/* ── TIPP-BUBBLE (Gedankenblase) ────────────────────── */
-.tipp-side { display: flex; flex-direction: column; align-items: center; }
-.tipp-bubble { background: #F2F6FC; border: 1.5px solid #B8CCE4; border-radius: 10px; padding: 8px 10px; font-family: 'Nunito', sans-serif; font-size: 12px; line-height: 1.45; color: #1C3A5A; position: relative; text-align: left; display: flex; align-items: flex-start; gap: 5px; }
-/* tipp-bubble::after: entfernt (v2.1) — nur .dot1 verwenden */
-.tipp-dots { display: flex; flex-direction: column; align-items: flex-start; padding-left: 20px; gap: 2px; margin: 2px 0; }
-.tipp-dots span { display: block; background: #C8D8EC; border: 1px solid #B8CCE4; border-radius: 50%; }
-.tipp-dots .dot1 { width: 6px; height: 6px; }
-/* .tipp-dots .dot2: ENTFERNT (v2.2) — nur .dot1 verwenden */
+/* TIPP-BUBBLE (.tipp-box/.tipp-side/.tipp-bubble/.tipp-dots) ENTFERNT 2026-06-22 —
+   blaue Gedankenblase abgelöst. Tipp heute = QR auf gehostete Seite / Caveat-sprechblase.
+   Siehe EDUKI_DESIGN §1.13. Spec-Archiv: system/_archiv/MASTER_DESIGN_§6_Boxen_2026-06-22.md */
 
 .exp-block { background: #FFF5EB; border: 1.5px solid #D4892A; border-left: 4px solid #E8821A; border-radius: 5px; padding: 12px 13px; margin-bottom: 16px; position: relative; }
 .exp-header { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: #8B4500; margin-bottom: 6px; }
@@ -79,7 +70,6 @@ body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; 
 .auf { margin-bottom: 30px; }  /* Wendy-Abstand minimal reduziert (war 34, davor 28) — Basti 2026-05-27 */
 .auf:last-of-type { margin-bottom: 0; }
 .auf-label { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; margin-bottom: 5px; line-height: 1.65; }
-/* .sterne: ENTFERNT (v2.1) — kein Sterne-System mehr */
 .auf-body { font-family: 'Nunito', sans-serif; font-size: 14px; line-height: 1.75; }
 .teil { display: flex; gap: 6px; margin-top: 18px; font-size: 14px; align-items: flex-start; }
 /* Wendy-Abstände: Teilaufgaben kompakter (18px), erste nah am Aufg-Titel (10px) — Basti 2026-05-27 */
@@ -95,15 +85,26 @@ body { background: #F0EDE8; font-family: 'Nunito', sans-serif; font-size: 14px; 
 .luecke { display: inline-block; border-bottom: 1.5px solid #C8A800; min-width: 70px; height: 16px; vertical-align: bottom; margin: 0 3px; }
 
 /* ── ZEICHENFLÄCHEN ──────────────────────────────────────── */
-.draw-box { background-color: #FAFAFA; background-image: repeating-linear-gradient(to right, #D0D0D0 0, #D0D0D0 0.6px, transparent 0.6px, transparent 20px), repeating-linear-gradient(to bottom, #D0D0D0 0, #D0D0D0 0.6px, transparent 0.6px, transparent 20px); border: 1.5px solid #A8A8A8; border-radius: 2px; margin-top: 14px; }
-.draw-box[data-kosy="1"] { background-color: transparent !important; background-image: none !important; border: none !important; }
-.draw-box[data-svg="1"] { background-color: transparent !important; background-image: none !important; border: none !important; border-radius: 0 !important; }
+/* KÄSTCHEN-NORM: Gitter/Rahmen/Grund kommen AUSSCHLIESSLICH aus dem inline-SVG
+   (draw_box/rechenraster/fuell_karo/kosy_box → templates.py, Norm §3.10: #9E9E9E / 0,35 mm).
+   .draw-box ist nur noch Layout-Wrapper. Kein CSS-Gitter mehr (verschwand im S/W-Druck). */
+.draw-box { margin-top: 14px; }
 .draw-box-baum { background-color: #FAFEFA; background-image: repeating-linear-gradient(to right, #E8F0EC 0, #E8F0EC 0.5px, transparent 0.5px, transparent 10px), repeating-linear-gradient(to bottom, #E8F0EC 0, #E8F0EC 0.5px, transparent 0.5px, transparent 10px), repeating-linear-gradient(to right, transparent 0, transparent calc(33% - 1px), #A8D4C0 calc(33% - 1px), #A8D4C0 calc(33% + 1px), transparent calc(33% + 1px), transparent calc(66% - 1px), #A8D4C0 calc(66% - 1px), #A8D4C0 calc(66% + 1px), transparent calc(66% + 1px), transparent 100%); border: 1px solid #B8D8C8; border-radius: 4px; margin-top: 14px; height: 140px; }
 
 /* ── BRÜCHE ──────────────────────────────────────────────── */
 .b { display: inline-flex; flex-direction: column; align-items: stretch; vertical-align: middle; line-height: 1.2; margin: 0 3px; font-size: 0.92em; text-align: center; }
 .b .z { border-bottom: 1.4px solid currentColor; padding: 1px 4px 2px; display: block; white-space: nowrap; width: 100%; box-sizing: border-box; }
 .b .n { padding: 2px 4px 0; display: block; white-space: nowrap; width: 100%; box-sizing: border-box; }
+
+/* ── MATHE-NOTATION (Zeichenkatalog neuer LP · Cambria Math, AUFRECHT) ──
+   .mv = Variable/Name · .mu = Ziffern/Klammern/Operatoren (beide aufrecht)
+   .mov = Strecke (Überstrich) · .mvec = Vektorpfeil · siehe templates.py mv()/koord()/strecke() */
+.nw  { white-space: nowrap; }
+.mv  { font-family: 'Cambria Math','STIX Two Math',Cambria,'Times New Roman',serif; font-style: normal; font-size: 1.20em; }
+.mu  { font-family: 'Cambria Math','STIX Two Math',Cambria,'Times New Roman',serif; font-style: normal; font-size: 1.20em; }
+.mov { font-family: 'Cambria Math','STIX Two Math',Cambria,'Times New Roman',serif; font-style: normal; font-size: 1.20em; display: inline-block; line-height: 1; border-top: 1.3px solid currentColor; padding: 1.5px 1.5px 0; vertical-align: -0.03em; }
+.mvec { position: relative; display: inline-block; font-family: 'Cambria Math','STIX Two Math',Cambria,'Times New Roman',serif; font-style: normal; font-size: 1.20em; }
+.mvec::after { content: '\2192'; position: absolute; left: -0.04em; right: 0; top: -0.32em; font-size: 0.66em; line-height: 1; text-align: center; font-style: normal; }
 
 /* ── TABELLEN ────────────────────────────────────────────── */
 .mt-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin: 6px 0; font-family: 'Nunito', sans-serif; }
@@ -161,14 +162,8 @@ body { background: white !important; padding: 0 !important; margin: 0 !important
 .loe-badge { background: #444 !important; }
 /* (Lösungsblatt-spezifische Überschreibung weggefallen — sec-hdr nutzt jetzt einheitlich das ::before-Häkchen-Sticker-Design) */
 .tape-box, .def-tape, .merk-box { background: #F8F8F5 !important; border-color: #ccc !important; }
-.spick-box { background: #F5F0C8 !important; border-color: #ccc !important; }
-.tipp-box { background: #F2F6FC !important; border-left-color: #5599CC !important; border-color: #B8CCE4 !important; }
-.tipp-bubble { background: #F2F6FC !important; border-color: #B8CCE4 !important; }
-.tipp-dots span { background: #E8E8E8 !important; border-color: #ccc !important; }
 .exp-block { background: #F8F5F0 !important; border-left-color: #888 !important; border-color: #bbb !important; }
-.draw-box { background-image: repeating-linear-gradient(to right, #bbb 0, #bbb 0.5px, transparent 0.5px, transparent 20px), repeating-linear-gradient(to bottom, #bbb 0, #bbb 0.5px, transparent 0.5px, transparent 20px) !important; border-color: #999 !important; border-radius: 2px !important; }
-.draw-box[data-kosy="1"] { background-color: transparent !important; background-image: none !important; border: none !important; }
-.draw-box[data-svg="1"] { background-color: transparent !important; background-image: none !important; border: none !important; border-radius: 0 !important; }
+/* .draw-box Print-Gitter entfällt — Kästchen kommen aus dem inline-SVG (Norm §3.10). */
 .draw-box-baum { background-color: #F8FAF8 !important; }
 .data-card { border-color: #ccc !important; background: #F8F8F8 !important; }
 .mt-tbl th { background: #E8E8E8 !important; color: #333 !important; border-color: #bbb !important; }
