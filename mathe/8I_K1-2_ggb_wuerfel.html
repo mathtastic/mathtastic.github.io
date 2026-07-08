@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Würfel drehen — Symmetrieachse (8I Raumgeometrie K1-2)</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{font-family:'Nunito',system-ui,sans-serif;background:#f6efe9;display:flex;flex-direction:column}
+  .hdr{background:#fff;border-bottom:2px solid #E3CC93;padding:10px 14px;color:#1f262b;
+       font-size:14px;line-height:1.4}
+  .hdr b{color:#C07A4E}
+  #ggb{flex:1;min-height:0}
+  .ggb-loading{padding:24px;text-align:center;color:#8a7a72;font-size:14px}
+</style>
+<script src="https://www.geogebra.org/apps/deployggb.js"></script>
+</head>
+<body>
+  <div class="hdr">🔄 <b>Dreh den Würfel</b> mit dem Schieberegler <b>φ</b> um die senkrechte Achse.
+    Bei welchen Winkeln deckt sich der gedrehte Würfel wieder <b>genau</b> mit dem Original?</div>
+  <div id="ggb"><div class="ggb-loading">Würfel wird geladen …</div></div>
+
+<script>
+  var params = {
+    appName: "3d",
+    showToolBar: false,
+    showAlgebraInput: false,
+    showMenuBar: false,
+    showResetIcon: true,
+    enableRightClick: false,
+    enableShiftDragZoom: true,
+    showZoomButtons: true,
+    rounding: "0d",
+    appletOnLoad: function (api) {
+      // ── Würfel (2×2×2) auf der xy-Ebene: Basisquadrat -> Prisma der Höhe 2 ──
+      api.evalCommand("A=(0,0,0)");
+      api.evalCommand("B=(2,0,0)");
+      api.evalCommand("C=(2,2,0)");
+      api.evalCommand("D=(0,2,0)");
+      api.evalCommand("basis=Polygon(A,B,C,D)");
+      api.evalCommand("koerper=Prism(basis,2)");
+      // ── senkrechte Symmetrieachse durch die Mitte ──
+      api.evalCommand("achse=Line((1,1,0),(1,1,1))");
+      // ── Schieberegler + gedrehte Kopie ──
+      api.evalCommand("φ=Slider(0°,360°,15°)");
+      api.evalCommand("gedreht=Rotate(koerper,φ,achse)");
+      // ── Stil: Original blass, gedrehte Kopie terrakotta, Achse grau ──
+      try {
+        api.setColor("koerper", 196, 220, 240); api.setFilling("koerper", 0.20);
+        api.setColor("gedreht", 192, 122, 78);    api.setFilling("gedreht", 0.70);
+        api.setColor("achse", 120, 120, 120); api.setLineThickness("achse", 3);
+        ["A","B","C","D","basis","koerper","gedreht","achse"].forEach(function(n){
+          api.setLabelVisible(n, false);
+        });
+        ["A","B","C","D"].forEach(function(n){ api.setVisible(n, false); });
+        api.setVisible("basis", false);
+      } catch (e) {}
+      // Kamera leicht schräg von oben
+      try { api.setRotation ? api.setRotation(-30, 20) : 0; } catch (e) {}
+    }
+  };
+
+  function sizeAndInject() {
+    params.width = window.innerWidth;
+    params.height = Math.max(320, window.innerHeight - 62);
+    var applet = new GGBApplet(params, true);
+    applet.inject("ggb");
+  }
+  window.addEventListener("load", sizeAndInject);
+</script>
+</body>
+</html>
