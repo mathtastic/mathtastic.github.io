@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rettungscode — Der schmelzende Eisberg</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Nunito,Segoe UI,sans-serif;background:linear-gradient(170deg,#0d2847,#16436b 60%,#1d5a8a);
+min-height:100vh;color:#fff;display:flex;align-items:center;justify-content:center;padding:20px;overflow-x:hidden;}
+.box{max-width:430px;width:100%;background:rgba(255,255,255,.08);backdrop-filter:blur(6px);
+border:1.5px solid rgba(255,255,255,.22);border-radius:20px;padding:26px 24px;text-align:center;}
+h1{font-size:23px;margin-bottom:4px;}.sub{font-size:13px;opacity:.85;margin-bottom:18px;padding:0 6px;}
+.digits{display:flex;gap:10px;justify-content:center;margin:14px 0 6px;}
+.digits input{width:56px;height:70px;font-size:34px;text-align:center;border-radius:12px;border:2.5px solid #7Fb4dd;
+background:#fff;color:#123;font-weight:800;font-family:'Cambria Math',serif;}
+.digits input:focus{outline:none;border-color:#ffd257;box-shadow:0 0 0 3px rgba(255,210,87,.4);}
+.hint{font-size:12px;opacity:.7;margin-bottom:16px;}
+button{background:#ffd257;color:#3a2c00;border:none;border-radius:30px;padding:14px 30px;font-size:17px;
+font-weight:800;cursor:pointer;font-family:Nunito,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.3);}
+button:active{transform:translateY(1px);}
+#msg{margin-top:20px;font-size:16px;line-height:1.5;min-height:60px;font-weight:700;}
+.ok{color:#8affc0;}.no{color:#ffd0a0;}
+.slots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:12px;font-size:12px;}
+.slots span{padding:4px 9px;border-radius:8px;background:rgba(255,255,255,.12);white-space:nowrap;}
+.slots .good{background:#1f7a4d;}.slots .bad{background:#8a4b1e;}
+.big{font-size:44px;margin:6px 0;}
+@keyframes pop{0%{transform:scale(.3);opacity:0;}60%{transform:scale(1.15);}100%{transform:scale(1);opacity:1;}}
+.pop{animation:pop .5s ease;}
+.confetti{position:fixed;top:-10px;font-size:20px;animation:fall linear forwards;z-index:9;}
+@keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:.9;}}
+</style></head><body>
+<div class="box">
+<div class="big">&#129482;</div>
+<h1>Der Rettungscode</h1>
+<div class="sub">Tragt eure vier Ziffern ein &mdash; Schloss&nbsp;1 bis Schloss&nbsp;4.</div>
+<div class="digits">
+<input id="d0" inputmode="numeric" maxlength="1" pattern="[0-9]">
+<input id="d1" inputmode="numeric" maxlength="1" pattern="[0-9]">
+<input id="d2" inputmode="numeric" maxlength="1" pattern="[0-9]">
+<input id="d3" inputmode="numeric" maxlength="1" pattern="[0-9]">
+</div>
+<div class="hint">Schloss 1 &#128031; &middot; Schloss 2 &#10052;&#65039; &middot; Schloss 3 &#129517; &middot; Schloss 4 &#128269;</div>
+<button onclick="pruefe()">&#128274; Luke &ouml;ffnen</button>
+<div id="msg"></div>
+</div>
+<script>
+var CODE=[7,2,9,4];
+var SYM=['\uD83D\uDC1F Schloss 1','\u2744\uFE0F Schloss 2','\uD83E\uDDED Schloss 3','\uD83D\uDD0D Schloss 4'];
+var ins=[0,1,2,3].map(function(i){return document.getElementById('d'+i);});
+ins.forEach(function(inp,i){inp.addEventListener('input',function(){
+  inp.value=inp.value.replace(/[^0-9]/g,'');
+  if(inp.value&&i<3)ins[i+1].focus();});});
+function confetti(){for(var i=0;i<60;i++){var c=document.createElement('div');c.className='confetti';
+  c.textContent=['\uD83C\uDF89','\u2744\uFE0F','\uD83D\uDC27','\u2B50','\uD83D\uDC1F'][i%5];
+  c.style.left=Math.random()*100+'vw';c.style.animationDuration=(2+Math.random()*2)+'s';
+  c.style.fontSize=(14+Math.random()*18)+'px';document.body.appendChild(c);
+  setTimeout(function(x){return function(){x.remove();};}(c),4200);}}
+function pruefe(){
+  var v=ins.map(function(x){return x.value===''?-1:parseInt(x.value,10);});
+  var msg=document.getElementById('msg');
+  if(v.indexOf(-1)>=0){msg.className='no';msg.innerHTML='Bitte alle vier Ziffern eintragen.';return;}
+  if(v[0]===CODE[0]&&v[1]===CODE[1]&&v[2]===CODE[2]&&v[3]===CODE[3]){
+    msg.className='ok pop';
+    msg.innerHTML='<div class="big">&#127881;</div><b>KLICK!</b> Die Rettungsluke &ouml;ffnet sich!<br>'+
+      'Ihr habt die Pinguin-Kolonie gerettet. &#128039;<br>'+
+      '<span style="font-size:13px;opacity:.9;font-weight:400;">Holt euch jetzt eure Urkunde!</span>';
+    confetti();
+  }else{
+    var slots='<div class="slots">';
+    for(var i=0;i<4;i++){slots+='<span class="'+(v[i]===CODE[i]?'good':'bad')+'">'+SYM[i]+'</span>';}
+    slots+='</div>';
+    var falsch=[];for(var j=0;j<4;j++)if(v[j]!==CODE[j])falsch.push(SYM[j]);
+    msg.className='no';
+    msg.innerHTML='&#128274; Noch nicht &mdash; ein Schloss klemmt!<br>'+
+      '<span style="font-size:14px;font-weight:400;">Pr&uuml;ft noch einmal: '+falsch.join(', ')+'.</span>'+slots;
+  }
+}
+</script></body></html>
