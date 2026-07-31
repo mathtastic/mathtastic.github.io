@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tipp &middot; K4-1 Lerntheke</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<style>
+ *{margin:0;padding:0;box-sizing:border-box}
+ body{font-family:'Lora',serif;color:#1f262b;background:#f4f0fb;padding:22px;line-height:1.55}
+ .card{max-width:640px;margin:0 auto;background:#fff;border:1.4px solid #6D28D9;border-radius:12px;padding:22px 24px}
+ h1{font-family:'Nunito',sans-serif;font-size:21px;color:#6D28D9;margin-bottom:3px}
+ .sub{font-family:'Nunito',sans-serif;font-size:12px;color:#7a858c;text-transform:uppercase;letter-spacing:.07em;margin-bottom:16px}
+ .step{background:#f4f0fb;border-radius:8px;padding:10px 13px;margin-bottom:9px;font-size:14.5px}
+ .step b{color:#6D28D9}
+ table{border-collapse:collapse;margin:8px auto;width:100%}
+ td{border:1px solid #ddd6f3;text-align:center;padding:5px;font-size:14px}
+ td.r{font-family:'Cambria Math',serif;font-size:16px;font-weight:700}
+
+/* ── römisches Kleid (nz_roemisch_lib.roemisch_umstyle) ── */
+body{background:#EFE3CC;}
+.card{background:#FDF6E4;border:2.5px solid #B9975B;border-radius:4px;box-shadow:inset 0 0 0 1.5px #FDF6E4, inset 0 0 0 3px #D9C79B,0 8px 26px rgba(90,70,30,.15);}
+h1{font-family:'Lora',serif;letter-spacing:.015em;}
+.sub{color:#9C6308;letter-spacing:.11em;}
+.step{background:#FFF9EC;border:1px solid #E7D6AC;border-left:3px solid #6D28D9;border-radius:3px;}
+.wort{border-left-color:#9C6308;}
+.ws{background:#FFF9EC;border-color:#B9975B;}
+td{border-color:#B9975B;}
+.rechnung{background:#FDF6E4;border-color:#B9975B;}
+.roem-schluss{display:flex;align-items:center;gap:9px;margin-top:18px;}
+.roem-schluss span{flex:1;height:1px;background:#B9975B;}
+.roem-schluss b{width:7px;height:7px;background:#9C6308;opacity:.65;transform:rotate(45deg);}
+</style></head>
+<body><div class="card"><div style="margin:-6px 0 15px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="18" style="display:block;opacity:0.6;" aria-hidden="true"><defs><pattern id="mbk" width="30" height="18" patternUnits="userSpaceOnUse"><path d="M0.00,14.10 L0.00,3.90 L21.60,3.90 L21.60,11.70 L7.80,11.70 L7.80,9.00" fill="none" stroke="#9C6308" stroke-width="1.5" stroke-linecap="butt"/></pattern></defs><rect width="100%" height="18" fill="url(#mbk)"/><line x1="0" y1="1.5" x2="100%" y2="1.5" stroke="#9C6308" stroke-width="1.2"/><line x1="0" y1="16.5" x2="100%" y2="16.5" stroke="#9C6308" stroke-width="1.2"/></svg></div>
+ <h1>&#128161; Alles auf einen Blick</h1>
+ <div class="sub">Nat&uuml;rliche Zahlen &middot; Klasse 5 &middot; K4-1</div>
+
+ <div class="step"><b>Stellenwert.</b> Der Wert einer Ziffer h&auml;ngt davon ab, WO sie
+ steht. Jede Stelle ist zehnmal so viel wert wie die rechts daneben.
+ Jede leere Stelle braucht eine <b>0</b>.</div>
+
+ <div class="step"><b>Gro&szlig;e Zahlen lesen.</b> Von rechts in Dreierbl&ouml;cke
+ trennen, dann Block f&uuml;r Block von links lesen:
+ 4&#8239;320&#8239;015 = vier Millionen dreihundertzwanzigtausendf&uuml;nfzehn.</div>
+
+ <div class="step"><b>Zahlenstrahl.</b> Nach rechts wird es gr&ouml;&szlig;er, alle
+ Abst&auml;nde sind gleich. Schrittweite: zwei beschriftete Zahlen abziehen und durch die
+ Anzahl der <b>Abst&auml;nde</b> teilen &mdash; nicht der Striche.</div>
+
+ <div class="step"><b>Runden.</b> Rundungsstelle suchen, auf die Ziffer <b>rechts daneben</b>
+ schauen: 0&ndash;4 abrunden, 5&ndash;9 aufrunden. Alles rechts davon wird 0.
+ Zeichen: <b>&#8776;</b></div>
+
+ <div class="step"><b>R&ouml;misch.</b>
+ <table>
+  <tr><td class="r">I</td><td class="r">V</td><td class="r">X</td><td class="r">L</td>
+      <td class="r">C</td><td class="r">D</td><td class="r">M</td></tr>
+  <tr><td>1</td><td>5</td><td>10</td><td>50</td><td>100</td><td>500</td><td>1000</td></tr>
+ </table>
+ Gro&szlig; nach klein &rarr; addieren. Kleines Zeichen LINKS &rarr; abziehen (IV = 4).
+ H&ouml;chstens dreimal dasselbe Zeichen. Abziehen d&uuml;rfen nur I, X und C.</div>
+
+ <div class="step"><b>Dual.</b> Stufen 1, 2, 4, 8, 16, 32 &hellip; Wo eine <b>1</b> steht,
+ wird die Stufe mitgez&auml;hlt: 1101 = 8 + 4 + 1 = 13.</div>
+<div class="roem-schluss"><span></span><b></b><span></span></div></div></body></html>

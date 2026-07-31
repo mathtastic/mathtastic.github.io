@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tipp &middot; K1-3 Runden</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<style>
+ *{margin:0;padding:0;box-sizing:border-box}
+ body{font-family:'Lora',serif;color:#1f262b;background:#fdf3f3;padding:22px;line-height:1.55}
+ .card{max-width:640px;margin:0 auto;background:#fff;border:1.4px solid #B23A3A;border-radius:12px;padding:22px 24px}
+ h1{font-family:'Nunito',sans-serif;font-size:21px;color:#B23A3A;margin-bottom:3px}
+ .sub{font-family:'Nunito',sans-serif;font-size:12px;color:#7a858c;text-transform:uppercase;letter-spacing:.07em;margin-bottom:16px}
+ .step{background:#fdf3f3;border-radius:8px;padding:10px 13px;margin-bottom:9px;font-size:14.5px}
+ .step b{color:#B23A3A}
+ .wort{border-left:3px solid #B23A3A;padding:2px 0 2px 11px;margin:9px 0;font-size:14px}
+ .gross{font-family:'Cambria Math',serif;font-size:17px}
+
+/* ── römisches Kleid (nz_roemisch_lib.roemisch_umstyle) ── */
+body{background:#EFE3CC;}
+.card{background:#FDF6E4;border:2.5px solid #B9975B;border-radius:4px;box-shadow:inset 0 0 0 1.5px #FDF6E4, inset 0 0 0 3px #D9C79B,0 8px 26px rgba(90,70,30,.15);}
+h1{font-family:'Lora',serif;letter-spacing:.015em;}
+.sub{color:#9C6308;letter-spacing:.11em;}
+.step{background:#FFF9EC;border:1px solid #E7D6AC;border-left:3px solid #B23A3A;border-radius:3px;}
+.wort{border-left-color:#9C6308;}
+.ws{background:#FFF9EC;border-color:#B9975B;}
+td{border-color:#B9975B;}
+.rechnung{background:#FDF6E4;border-color:#B9975B;}
+.roem-schluss{display:flex;align-items:center;gap:9px;margin-top:18px;}
+.roem-schluss span{flex:1;height:1px;background:#B9975B;}
+.roem-schluss b{width:7px;height:7px;background:#9C6308;opacity:.65;transform:rotate(45deg);}
+</style></head>
+<body><div class="card"><div style="margin:-6px 0 15px;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="18" style="display:block;opacity:0.6;" aria-hidden="true"><defs><pattern id="mbk" width="30" height="18" patternUnits="userSpaceOnUse"><path d="M0.00,14.10 L0.00,3.90 L21.60,3.90 L21.60,11.70 L7.80,11.70 L7.80,9.00" fill="none" stroke="#9C6308" stroke-width="1.5" stroke-linecap="butt"/></pattern></defs><rect width="100%" height="18" fill="url(#mbk)"/><line x1="0" y1="1.5" x2="100%" y2="1.5" stroke="#9C6308" stroke-width="1.2"/><line x1="0" y1="16.5" x2="100%" y2="16.5" stroke="#9C6308" stroke-width="1.2"/></svg></div>
+ <h1>&#128161; Tipp: Runden</h1>
+ <div class="sub">Nat&uuml;rliche Zahlen &middot; Klasse 5 &middot; K1-3</div>
+
+ <div class="wort"><b>Runden</b> &mdash; eine Zahl durch die n&auml;chstliegende
+ &bdquo;runde&ldquo; Zahl ersetzen.</div>
+ <div class="wort"><b>Rundungsstelle</b> &mdash; die Stelle, auf die du rundest
+ (Zehner, Hunderter, Tausender &hellip;).</div>
+
+ <div class="step"><b>I) Rundungsstelle suchen.</b> Sollst du auf Zehner runden, dann
+ markiere die Zehnerstelle.</div>
+ <div class="step"><b>II) Auf die Ziffer RECHTS DANEBEN schauen.</b> Nur sie entscheidet
+ &mdash; alle anderen sind egal.</div>
+ <div class="step"><b>III) Entscheiden:</b><br>
+ <b>0, 1, 2, 3, 4</b> &rarr; abrunden (die Rundungsstelle bleibt)<br>
+ <b>5, 6, 7, 8, 9</b> &rarr; aufrunden (die Rundungsstelle wird 1 gr&ouml;&szlig;er)</div>
+ <div class="step"><b>IV) Alles rechts davon wird 0.</b><br>
+ <span class="gross">2748</span> auf Hunderter: Hunderterstelle ist die <b>7</b>,
+ rechts daneben steht <b>4</b> &rarr; abrunden &rarr; <span class="gross">2700</span>.</div>
+ <div class="step"><b>Achtung:</b> Man schreibt <b>&#8776;</b> statt <b>=</b>, weil das
+ Ergebnis nur ungef&auml;hr stimmt.</div>
+<div class="roem-schluss"><span></span><b></b><span></span></div></div></body></html>
