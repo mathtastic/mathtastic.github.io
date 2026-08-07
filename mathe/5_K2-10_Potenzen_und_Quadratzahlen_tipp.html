@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tipp &middot; K2-10 Potenzen und Quadratzahlen</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<style>
+ *{margin:0;padding:0;box-sizing:border-box}
+ body{font-family:'Lora',serif;color:#1f262b;background:#f4f0fb;padding:22px;line-height:1.55}
+ .card{max-width:640px;margin:0 auto;background:#fff;border:1.4px solid #6D28D9;border-radius:12px;padding:22px 24px}
+ h1{font-family:'Nunito',sans-serif;font-size:21px;color:#6D28D9;margin-bottom:3px}
+ .sub{font-family:'Nunito',sans-serif;font-size:12px;color:#7a858c;text-transform:uppercase;letter-spacing:.07em;margin-bottom:16px}
+ .step{background:#f4f0fb;border-radius:8px;padding:10px 13px;margin-bottom:9px;font-size:14.5px}
+ .step b{color:#6D28D9}
+ .quadrate{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+ .q{background:#FDF6E4;border:1.3px solid #E3CC93;border-radius:7px;padding:5px 9px;font-family:'Cambria Math',serif;font-size:14px}
+ .rechnung{font-family:'Cambria Math',serif;font-size:16px;text-align:center;background:#FDF6E4;border:1.3px solid #E3CC93;border-radius:8px;padding:11px;margin:9px 0;line-height:1.8}
+
+/* ── Rechenbuch-Kleid (nz_rechnen_lib.rechenmeister_umstyle) ── */
+body{background:#EFE9DE;}
+.card{background:#FDF9F0;border:1.6px solid #C9B27C;border-radius:5px;box-shadow:inset 0 0 0 4px #FDF9F0, inset 0 0 0 5px #E7DAC0,0 8px 26px rgba(90,70,30,.14);}
+h1{font-family:'Lora',serif;letter-spacing:.01em;}
+.sub{color:#6D28D9;letter-spacing:.11em;}
+.step{background:#FFFCF5;border:1px solid #EADFC6;border-left:3px solid #6D28D9;border-radius:3px;}
+.ws{background:#FFFCF5;border-color:#C9B27C;}
+th{background:#FFFCF5;border-color:#C9B27C;}
+.rm-schluss{display:flex;align-items:center;gap:9px;margin-top:18px;}
+.rm-schluss span{flex:1;height:1px;background:#C9B27C;}
+</style></head>
+<body><div class="card"><div style="display:flex;justify-content:center;margin:-4px 0 14px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 14" width="34" height="14" style="display:block;flex:none;" aria-hidden="true"><path d="M17,1.2 C22,5 24.5,7.2 30,7 C24.5,6.8 22,9 17,12.8 C12,9 9.5,6.8 4,7 C9.5,7.2 12,5 17,1.2 Z" fill="#6D28D9" opacity="0.55"/><line x1="9" y1="7" x2="25" y2="7" stroke="#fff" stroke-width="0.9" opacity="0.8"/></svg></div>
+ <h1>&#128161; Tipp: Basis und Exponent nicht verwechseln</h1>
+ <div class="sub">Rechnen mit nat&uuml;rlichen Zahlen &middot; Klasse 5 &middot; K2-10</div>
+ <div class="step"><b>Die Regel:</b> Die <b>untere</b> Zahl (Basis) wird multipliziert.
+ Die <b>kleine obere</b> Zahl (Exponent) sagt nur, <b>wie oft</b> sie dasteht.</div>
+ <div class="rechnung">4<sup>3</sup> = 4 &middot; 4 &middot; 4 = <b>64</b><br>
+ nicht 4 &middot; 3 = 12</div>
+ <div class="step"><b>Zwei Sonderf&auml;lle:</b><br>
+ 1<sup>10</sup> = 1 &middot; 1 &middot; &hellip; &middot; 1 = <b>1</b> &mdash; die 1 bleibt
+ immer 1.<br>
+ 0<sup>5</sup> = 0 &middot; 0 &middot; 0 &middot; 0 &middot; 0 = <b>0</b>.</div>
+ <div class="step"><b>Die Quadratzahlen bis 400</b> &mdash; lerne sie wie das Einmaleins:</div>
+ <div class="quadrate">
+  <div class="q">1</div><div class="q">4</div><div class="q">9</div><div class="q">16</div>
+  <div class="q">25</div><div class="q">36</div><div class="q">49</div><div class="q">64</div>
+  <div class="q">81</div><div class="q">100</div><div class="q">121</div><div class="q">144</div>
+  <div class="q">169</div><div class="q">196</div><div class="q">225</div><div class="q">256</div>
+  <div class="q">289</div><div class="q">324</div><div class="q">361</div><div class="q">400</div>
+ </div>
+ <div class="step"><b>Zum Vergleichen:</b> Rechne immer <b>beide</b> Seiten aus. Dass
+ 4<sup>2</sup> und 2<sup>4</sup> beide 16 ergeben, ist Zufall &mdash; bei 2<sup>3</sup> = 8
+ und 3<sup>2</sup> = 9 stimmt es schon nicht mehr.</div>
+<div class="rm-schluss"><span></span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 14" width="34" height="14" style="display:block;flex:none;" aria-hidden="true"><path d="M17,1.2 C22,5 24.5,7.2 30,7 C24.5,6.8 22,9 17,12.8 C12,9 9.5,6.8 4,7 C9.5,7.2 12,5 17,1.2 Z" fill="#6D28D9" opacity="0.55"/><line x1="9" y1="7" x2="25" y2="7" stroke="#fff" stroke-width="0.9" opacity="0.8"/></svg><span></span></div></div></body></html>

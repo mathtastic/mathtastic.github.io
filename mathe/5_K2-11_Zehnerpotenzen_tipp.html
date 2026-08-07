@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tipp &middot; K2-11 Zehnerpotenzen</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<style>
+ *{margin:0;padding:0;box-sizing:border-box}
+ body{font-family:'Lora',serif;color:#1f262b;background:#f4f0fb;padding:22px;line-height:1.55}
+ .card{max-width:640px;margin:0 auto;background:#fff;border:1.4px solid #6D28D9;border-radius:12px;padding:22px 24px}
+ h1{font-family:'Nunito',sans-serif;font-size:21px;color:#6D28D9;margin-bottom:3px}
+ .sub{font-family:'Nunito',sans-serif;font-size:12px;color:#7a858c;text-transform:uppercase;letter-spacing:.07em;margin-bottom:16px}
+ .step{background:#f4f0fb;border-radius:8px;padding:10px 13px;margin-bottom:9px;font-size:14.5px}
+ .step b{color:#6D28D9}
+ table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+ td,th{border:1px solid #ddd3f0;padding:6px 8px;text-align:center}
+ th{background:#FDF6E4;font-family:'Nunito',sans-serif;font-size:12px}
+ .rechnung{font-family:'Cambria Math',serif;font-size:16px;text-align:center;background:#FDF6E4;border:1.3px solid #E3CC93;border-radius:8px;padding:11px;margin:9px 0;line-height:1.8}
+
+/* ── Rechenbuch-Kleid (nz_rechnen_lib.rechenmeister_umstyle) ── */
+body{background:#EFE9DE;}
+.card{background:#FDF9F0;border:1.6px solid #C9B27C;border-radius:5px;box-shadow:inset 0 0 0 4px #FDF9F0, inset 0 0 0 5px #E7DAC0,0 8px 26px rgba(90,70,30,.14);}
+h1{font-family:'Lora',serif;letter-spacing:.01em;}
+.sub{color:#6D28D9;letter-spacing:.11em;}
+.step{background:#FFFCF5;border:1px solid #EADFC6;border-left:3px solid #6D28D9;border-radius:3px;}
+.ws{background:#FFFCF5;border-color:#C9B27C;}
+th{background:#FFFCF5;border-color:#C9B27C;}
+.rm-schluss{display:flex;align-items:center;gap:9px;margin-top:18px;}
+.rm-schluss span{flex:1;height:1px;background:#C9B27C;}
+</style></head>
+<body><div class="card"><div style="display:flex;justify-content:center;margin:-4px 0 14px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 14" width="34" height="14" style="display:block;flex:none;" aria-hidden="true"><path d="M17,1.2 C22,5 24.5,7.2 30,7 C24.5,6.8 22,9 17,12.8 C12,9 9.5,6.8 4,7 C9.5,7.2 12,5 17,1.2 Z" fill="#6D28D9" opacity="0.55"/><line x1="9" y1="7" x2="25" y2="7" stroke="#fff" stroke-width="0.9" opacity="0.8"/></svg></div>
+ <h1>&#128161; Tipp: der Exponent z&auml;hlt die Nullen</h1>
+ <div class="sub">Rechnen mit nat&uuml;rlichen Zahlen &middot; Klasse 5 &middot; K2-11</div>
+ <div class="step"><b>Die Regel:</b> Bei einer Zehnerpotenz sagt der Exponent, wie viele
+ <b>Nullen</b> hinter der 1 stehen &mdash; nicht, wie viele Stellen die Zahl hat.</div>
+ <table>
+  <tr><th>Potenz</th><th>Zahl</th><th>Nullen</th><th>Stellen</th></tr>
+  <tr><td>10<sup>1</sup></td><td>10</td><td>1</td><td>2</td></tr>
+  <tr><td>10<sup>2</sup></td><td>100</td><td>2</td><td>3</td></tr>
+  <tr><td>10<sup>3</sup></td><td>1 000</td><td>3</td><td>4</td></tr>
+  <tr><td>10<sup>6</sup></td><td>1 000 000</td><td>6</td><td>7</td></tr>
+ </table>
+ <div class="step"><b>Zahlen zerlegen:</b> Schau dir jede Stelle einzeln an. Steht dort
+ eine 0, taucht sie in der Zerlegung gar nicht auf.</div>
+ <div class="rechnung">5 500 = 5 &middot; 10<sup>3</sup> + 5 &middot; 10<sup>2</sup><br>
+ 208 000 = 2 &middot; 10<sup>5</sup> + 8 &middot; 10<sup>3</sup></div>
+ <div class="step"><b>Zur&uuml;ck&uuml;bersetzen:</b> 7 &middot; 10<sup>4</sup> hei&szlig;t
+ „sieben mal zehntausend" = <b>70 000</b>. Die 7 schreibst du hin, dann so viele Nullen,
+ wie der Exponent sagt.</div>
+ <div class="step"><b>Wof&uuml;r das gut ist:</b> 4 &middot; 10<sup>5</sup> km liest man
+ schneller als 400 000 km &mdash; und man sieht die Gr&ouml;&szlig;enordnung sofort, ohne
+ Nullen zu z&auml;hlen.</div>
+<div class="rm-schluss"><span></span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 14" width="34" height="14" style="display:block;flex:none;" aria-hidden="true"><path d="M17,1.2 C22,5 24.5,7.2 30,7 C24.5,6.8 22,9 17,12.8 C12,9 9.5,6.8 4,7 C9.5,7.2 12,5 17,1.2 Z" fill="#6D28D9" opacity="0.55"/><line x1="9" y1="7" x2="25" y2="7" stroke="#fff" stroke-width="0.9" opacity="0.8"/></svg><span></span></div></div></body></html>
