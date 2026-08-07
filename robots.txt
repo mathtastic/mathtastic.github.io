@@ -1,0 +1,18 @@
+# mathtastic — mathtastic.github.io
+#
+# /mathe/ = QR-Ziele der gedruckten Arbeitsblaetter (Tipps, Wortspeicher,
+# Loesungen). Betriebsinfrastruktur, kein Such-Inhalt: die vollstaendigen
+# Blaetter samt Loesungen sollen nicht ueber Suchmaschinen auffindbar sein,
+# verkauft wird ueber Eduki.
+#
+# Die Startseite bleibt bewusst offen — sie ist ein Schaufenster und verlinkt
+# ausschliesslich Eduki-Produkte, keine Gratis-Blaetter.
+#
+# WICHTIG: Das hier regelt nur die INDEXIERUNG, nicht den Zugriff. Alle URLs
+# bleiben normal erreichbar — jeder QR-Code funktioniert unveraendert.
+
+User-agent: *
+# Datenschutzerklaerung: im Pinterest-App-Formular hinterlegt, muss auffindbar
+# bleiben (Ausnahme steht VOR dem Disallow — genauere Regel gewinnt).
+Allow: /mathe/mathastico-datenschutz.html
+Disallow: /mathe/
