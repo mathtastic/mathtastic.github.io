@@ -213,7 +213,7 @@ var FORDERN=[
   /* dreistellig - bei zweistelligen Zahlen waere die Regel trivial */
   var kand=[]; for(var k=3;k<=24;k++){var x=k*4; if(x%10===2||x%10===6)kand.push(x);}
   var z=r(1,8)*100+kand[r(0,kand.length-1)];
-  return {f:'<b>Fehlersuche.</b> In welcher <b>Zeile</b> steckt der Fehler? Tippe 1, 2 oder 3.',
+  return {f:'<b>Fehlersuche.</b> In welcher Zeile passiert der <b>erste</b> Fehler? Tippe 1, 2 oder 3.',
           typ:'ein',
           zeilen:['Ist '+z+' durch 4 teilbar?',
                   'Die letzte Ziffer ist '+(z%10)+', und '+(z%10)+' : 4 geht nicht auf.',

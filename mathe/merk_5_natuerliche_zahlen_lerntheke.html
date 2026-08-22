@@ -231,7 +231,7 @@ var FORDERN=[
   var zahl=r(3,8)*1000+r(0,9)*100+r(5,9)*10+r(0,9);
   var falsch=Math.floor(zahl/100)*100;      /* abgerundet, obwohl aufzurunden waere */
   var richtig=falsch+100;
-  return {f:'<b>Fehlersuche.</b> In welcher <b>Zeile</b> steckt der Fehler? '+
+  return {f:'<b>Fehlersuche.</b> In welcher Zeile passiert der <b>erste</b> Fehler? '+
             'Tippe 1, 2 oder 3.',
           typ:'ein',
           zeilen:['Runde '+zt(zahl)+' auf Hunderter.',
