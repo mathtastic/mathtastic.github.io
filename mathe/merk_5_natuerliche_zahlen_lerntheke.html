@@ -2,7 +2,7 @@
 <html lang="de"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Lerntheke · Ganze Zahlen Klasse 5</title>
+<title>Lerntheke · Natürliche Zahlen Klasse 5</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -101,21 +101,25 @@ footer .marke{font-family:Lora,serif;font-weight:700;color:#1a1a1a;font-size:15p
   100%{transform:scale(1);opacity:1;}}
 .pop{animation:pop .45s ease;}
 
-.mz { font-family:"Cambria Math",Cambria,serif; }
-.pos { color:#1A7A50; font-weight:700; }
-.neg { color:#9C2B2B; font-weight:700; }
+table.swt { width:100%; border-collapse:collapse; margin:10px 0 6px; }
+table.swt td { text-align:center; border:1px solid #E3CC93; padding:5px 0;
+               font-family:"Cambria Math",Cambria,serif; font-size:17px; }
+table.swt td.k { font-family:Nunito,sans-serif; font-size:11px; font-weight:800;
+                 padding:3px 0; }
+table.swt td.g { font-family:Nunito,sans-serif; font-size:11px; font-weight:800;
+                 color:#fff; border:none; padding:3px 0; }
 </style></head>
 <body>
 <header><div class="in">
   <div style="flex:1;">
     <span class="klasse">Klasse 5</span>
-    <h1>Lerntheke<br>Ganze Zahlen</h1>
+    <h1>Lerntheke<br>Natürliche Zahlen</h1>
   </div>
   <img src="data:image/png;base64,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" alt="">
 </div></header>
 <div class="wrap">
 
-<p class="lead">Schon fertig? Dann pr&uuml;f deine Vorzeichenregeln. Jede richtige
+<p class="lead">Schon fertig? Dann pr&uuml;f dein Zahlenwissen. Jede richtige
 L&ouml;sung deckt einen Buchstaben auf &mdash; knack das ganze Wort.</p>
 
 <div class="stufen">
@@ -136,14 +140,14 @@ L&ouml;sung deckt einen Buchstaben auf &mdash; knack das ganze Wort.</p>
 
 <button class="neu" onclick="baue()">&#8635; Neue Aufgaben w&uuml;rfeln</button>
 <p class="lead" style="margin-top:12px;font-size:13.5px;">
-  Minus tippst du einfach mit dem Bindestrich: <b>-5</b>. Die Zahlen sind jedes Mal neu.</p>
+  Gro&szlig;e Zahlen tippst du <b>ohne</b> Leerzeichen: 3407250.</p>
 
 <footer>
   <span class="marke">mathtastic</span><br>
-  Dieses Blatt geh&ouml;rt zum Merkposter <b>Ganze Zahlen &middot; Klasse 5</b>.
-  Die ganze Unterrichtsreihe zu den ganzen Zahlen &mdash; von der Zahlengeraden bis
-  zu den Vorzeichenregeln &mdash; gibt es als fertige Arbeitsbl&auml;tter im
-  mathtastic-Shop.<br>
+  Dieses Blatt geh&ouml;rt zum Merkposter <b>Nat&uuml;rliche Zahlen &middot;
+  Klasse 5</b>. Die ganze Unterrichtsreihe &mdash; von der Stellenwerttafel bis zu
+  r&ouml;mischen Zahlen und Dualsystem &mdash; gibt es als fertige
+  Arbeitsbl&auml;tter im mathtastic-Shop.<br>
   <span style="font-size:12px;">&copy; mathtastic &middot; keine Anmeldung, keine
   Speicherung &mdash; deine Eingaben bleiben auf deinem Ger&auml;t.</span>
 </footer>
@@ -160,90 +164,100 @@ function mix(a){for(var i=a.length-1;i>0;i--){var j=r(0,i);var t=a[i];a[i]=a[j];
 
 /* ---------- Stufe 1 ---------- */
 var UEBEN=[
- function(){var z=r(2,9), plus=r(0,1)===1, innen=r(0,1)===1;
-  var vor=plus?'+':'−', inn=innen?'+':'−';
-  var erg=(plus===innen)?z:-z;   /* gleiche Vorzeichen -> +, verschiedene -> - */
-  return {f:'<b>Klammer auflösen.</b> Gleiche Vorzeichen werden zu +, '+
-            'verschiedene zu −.',
-          t:vor+' ('+inn+z+') =',typ:'ein',
-          pruef:function(v){return v===erg;},
-          tipp:(plus===innen?'Zwei gleiche Vorzeichen — das Ergebnis ist positiv.'
-                            :'Zwei verschiedene Vorzeichen — das Ergebnis ist negativ.')};},
- function(){var a=-r(2,9), b=-r(2,9);
-  while(b===a){b=-r(2,9);}
-  var kl=Math.min(a,b);
-  return {f:'Welche Zahl ist <b>kleiner</b>? Denk an die Zahlengerade.',
-          t:m(a)+'   oder   '+m(b),typ:'wahl',
-          opt:mix([m(a),m(b)]),richtig:m(kl),
-          tipp:'Je weiter links auf der Zahlengeraden, desto kleiner. Bei negativen '+
-               'Zahlen ist die mit der größeren Ziffer die kleinere.'};},
- function(){var z=r(2,12), neg=r(0,1)===1;
-  var start=neg?-z:z, geg=-start;
-  return {f:'Wie heißt die <b>Gegenzahl</b>?',
-          t:'Gegenzahl von '+m(start),typ:'ein',
-          pruef:function(v){return v===geg;},
-          tipp:'Gleich weit von der 0 entfernt, nur auf der anderen Seite.'};},
- function(){var z=r(2,15), neg=r(0,1)===1;
-  var zahl=neg?-z:z;
-  return {f:'Wie groß ist der <b>Betrag</b>? Das ist der Abstand zur 0.',
-          t:'|'+m(zahl)+'| =',typ:'ein',
-          pruef:function(v){return v===z;},
-          tipp:'Der Betrag ist nie negativ — er misst nur den Abstand.'};},
- function(){var a=r(2,9), b=r(2,9), na=r(0,1)===1, nb=r(0,1)===1;
-  var f1=na?-a:a, f2=nb?-b:b, erg=f1*f2;
-  return {f:'<b>Malrechnen mit Vorzeichen.</b>',
-          t:'('+(na?'−':'+')+a+') · ('+(nb?'−':'+')+b+') =',typ:'ein',
-          pruef:function(v){return v===erg;},
-          tipp:(na===nb?'Gleiche Vorzeichen — das Ergebnis ist positiv.'
-                       :'Verschiedene Vorzeichen — das Ergebnis ist negativ.')};}
+ function(){var stellen=['Einer','Zehner','Hunderter','Tausender','Zehntausender'];
+  var pos=r(1,4);                       /* Position von rechts, 0-basiert */
+  var zahl=r(10000,99999), ziffer;
+  /* Eine 0 an der gefragten Stelle waere eine sinnlose Aufgabe (Wert 0) */
+  for(var i=0;i<40;i++){ziffer=(''+zahl).charAt(4-pos); if(ziffer!=='0')break;
+    zahl=r(10000,99999);}
+  var wert=parseInt(ziffer,10)*Math.pow(10,pos);
+  return {f:'<b>Stellenwert.</b> Welchen <b>Wert</b> hat die Ziffer '+
+            '<b>'+ziffer+'</b> an der '+stellen[pos]+'-Stelle?',
+          t:zt(zahl),typ:'ein',
+          pruef:function(v){return v===wert;},
+          tipp:'Die Ziffer '+ziffer+' steht an der '+stellen[pos]+'-Stelle, also '+
+               ziffer+' · '+Math.pow(10,pos)+'.'};},
+ function(){var mio=r(1,9), tau=r(100,999), ein=r(100,999);
+  var zahl=mio*1000000+tau*1000+ein;
+  return {f:'<b>Große Zahlen schreiben.</b> Schreib die Zahl in Ziffern.',
+          t:mio+' Millionen '+tau+' Tausend '+ein,typ:'ein',
+          pruef:function(v){return v===zahl;},
+          tipp:'Jede Dreiergruppe hat genau drei Stellen — fehlende Stellen mit '+
+               'Nullen auffüllen.'};},
+ function(){var a=r(1000,9999), b=r(1000,9999);
+  while(b===a){b=r(1000,9999);}
+  return {f:'<b>Vergleichen.</b> Welche Zahl ist <b>größer</b>?',
+          t:zt(a)+'   oder   '+zt(b),typ:'wahl',opt:mix([zt(a),zt(b)]),
+          richtig:zt(Math.max(a,b)),
+          tipp:'Vergleiche von links: Die erste Ziffer, die sich unterscheidet, '+
+               'entscheidet.'};},
+ function(){var zahl=r(1200,8900);
+  var ger=Math.round(zahl/100)*100;
+  return {f:'<b>Runden auf Hunderter.</b> Welche Hunderterzahl liegt am nächsten?',
+          t:zt(zahl)+' ≈ ?',typ:'ein',
+          pruef:function(v){return v===ger;},
+          tipp:'Schau auf die Zehnerziffer: 0 bis 4 abrunden, 5 bis 9 aufrunden.'};},
+ function(){var zahl=r(1000,9998);
+  var was=r(0,1);
+  return {f:'<b>'+(was===0?'Vorgänger':'Nachfolger')+'.</b> Welche Zahl kommt '+
+            (was===0?'direkt davor':'direkt danach')+'?',
+          t:zt(zahl),typ:'ein',
+          pruef:function(v){return v===(was===0?zahl-1:zahl+1);},
+          tipp:(was===0?'Eins weniger.':'Eins mehr.')};}
 ];
 
 /* ---------- Stufe 2 ---------- */
 var FORDERN=[
- function(){var a=r(2,9), b=r(2,6), c=r(2,5);
-  /* −a + (−b)·(−c): Punkt zuerst, gleiche Vorzeichen -> positiv */
-  var erg=-a+(b*c);
-  return {f:'<b>Rechenkette.</b> Punkt vor Strich — und die Vorzeichenregel.',
-          t:'−'+a+' + (−'+b+') · (−'+c+') =',typ:'ein',
-          pruef:function(v){return v===erg;},
-          tipp:'Zuerst (−'+b+') · (−'+c+') = '+(b*c)+' — gleiche Vorzeichen. '+
-               'Dann −'+a+' + '+(b*c)+'.'};},
- function(){var g=-r(5,20);
-  return {f:'<b>Viele Lösungen sind richtig.</b> Nenne eine ganze Zahl, die '+
-            '<b>kleiner</b> als '+m(g)+' ist.',
-          bed:true,typ:'ein',
-          pruef:function(v){return v<g&&Number.isInteger(v);},
-          tipp:'Kleiner heißt: weiter LINKS auf der Zahlengeraden — also noch '+
-               'weiter weg von der 0.'};},
- function(){var a=r(5,12), b=r(2,4);
-  /* Typischer Fehler: −(−b) wird zu −b statt +b */
+ function(){var zahl=r(12000,98000)+r(100,999);
+  var auf=[1000,10000][r(0,1)];
+  var name=auf===1000?'Tausender':'Zehntausender';
+  var ger=Math.round(zahl/auf)*auf;
+  return {f:'<b>Runden auf '+name+'.</b> Achte genau auf die Rundungsstelle.',
+          t:zt(zahl)+' ≈ ?',typ:'ein',
+          pruef:function(v){return v===ger;},
+          tipp:'Die Ziffer RECHTS neben der '+name+'-Stelle entscheidet.'};},
+ function(){var start=r(2,6)*1000, weite=[50,100,200,250][r(0,3)];
+  var schritte=4;
+  var ende=start+weite*schritte;
+  return {f:'<b>Zahlenstrahl.</b> Zwischen <b>'+zt(start)+'</b> und <b>'+zt(ende)+'</b> '+
+            'liegen <b>'+schritte+'</b> gleich große Schritte. Wie groß ist ein Schritt?',
+          t:'',typ:'ein',
+          pruef:function(v){return v===weite;},
+          tipp:'Teile den Abstand '+zt(ende-start)+' durch die Zahl der Schritte ('+
+               schritte+').'};},
+ function(){
+  /* Zehnerziffer MUSS 5..9 sein, sonst waere "also abrunden" richtig und die
+     Aufgabe haette keine Loesung. Stellen deshalb einzeln bauen. */
+  var zahl=r(3,8)*1000+r(0,9)*100+r(5,9)*10+r(0,9);
+  var falsch=Math.floor(zahl/100)*100;      /* abgerundet, obwohl aufzurunden waere */
+  var richtig=falsch+100;
   return {f:'<b>Fehlersuche.</b> In welcher <b>Zeile</b> steckt der Fehler? '+
             'Tippe 1, 2 oder 3.',
           typ:'ein',
-          zeilen:[a+' − (−'+b+')',
-                  '= '+a+' − '+b,
-                  '= '+(a-b)],
+          zeilen:['Runde '+zt(zahl)+' auf Hunderter.',
+                  'Die Zehnerziffer ist '+Math.floor(zahl/10)%10+' — also abrunden.',
+                  zt(zahl)+' ≈ '+zt(falsch)],
           pruef:function(v){return v===2;},
-          tipp:'Zwei Minuszeichen hintereinander werden zu einem Plus: '+
-               a+' − (−'+b+') = '+a+' + '+b+'.'};},
- function(){var ziel=-r(2,9), sub=r(3,12);
-  var fehlt=ziel+sub;   /* □ + (−sub) = ziel  ->  □ = ziel + sub */
-  return {f:'<b>Umkehraufgabe.</b> Welche Zahl gehört in das Kästchen?',
-          t:'□ + (−'+sub+') = '+m(ziel),typ:'ein',
-          pruef:function(v){return v===fehlt;},
-          tipp:'Was du abziehst, musst du zum Ergebnis wieder dazurechnen: '+
-               m(ziel)+' + '+sub+'.'};},
- function(){var gross=r(6,12), klein=r(2,5);
-  var erg=-gross+klein;
-  return {f:'<b>Denk genau nach.</b> Welches Ergebnis stimmt?',
-          t:'(−'+gross+') + (+'+klein+') =',typ:'wahl',
-          opt:mix([m(erg), '+'+(gross-klein), '+'+(gross+klein), '−'+(gross+klein)]),
-          richtig:m(erg),
-          tipp:'Nicht die größere Zahl entscheidet, sondern der größere BETRAG. '+
-               gross+' ist weiter von der 0 weg als '+klein+' — also bleibt das Minus.'};}
+          tipp:'Ab der Ziffer 5 wird AUFgerundet. Richtig wäre '+richtig+'.'};},
+ function(){var grenze=r(3,7)*1000;
+  return {f:'<b>Viele Lösungen sind richtig.</b> Nenne eine Zahl zwischen '+
+            '<b>'+zt(grenze)+'</b> und <b>'+zt(grenze+1000)+'</b>, die auf Hunderter '+
+            'gerundet <b>'+zt(grenze+500)+'</b> ergibt.',
+          bed:true,typ:'ein',
+          pruef:function(v){return Math.round(v/100)*100===grenze+500&&
+                                   v>grenze&&v<grenze+1000;},
+          tipp:'Die Zahl muss zwischen '+(grenze+450)+' und '+(grenze+549)+' liegen.'};},
+ function(){var a=r(2,9)*100+r(80,99), b=r(2,9)*100+r(80,99);
+  var ueber=(Math.round(a/100)*100)+(Math.round(b/100)*100);
+  return {f:'<b>Überschlagen.</b> Runde beide Zahlen auf Hunderter und rechne '+
+            'im Kopf.',
+          t:a+' + '+b+' ≈ ?',typ:'ein',
+          pruef:function(v){return v===ueber;},
+          tipp:'Erst runden: '+a+' ≈ '+(Math.round(a/100)*100)+' und '+b+' ≈ '+
+               (Math.round(b/100)*100)+'. Dann addieren.'};}
 ];
 
-var WORT={ueben:'MINUS',fordern:'STARK'};
+var WORT={ueben:'RUNDE',fordern:'WERTE'};
 
 var stufe='ueben', aufg=[], gel=[], vers=[], gefeiert=false;
 

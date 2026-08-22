@@ -148,6 +148,9 @@ function r(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
 /* Zahl mit typografischem Minus ausgeben — JS liefert sonst den ASCII-Bindestrich,
    und in einer Auswahl staenden dann "-7" und "−15" nebeneinander. */
 function m(x){return (''+x).replace('-','−');}
+/* Grosse Zahlen mit Tausender-Leerzeichen — genau wie auf dem Poster
+   ("3 407 250", nie mit Punkt). */
+function zt(x){return (''+x).replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
 function mix(a){for(var i=a.length-1;i>0;i--){var j=r(0,i);var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 
 
@@ -295,7 +298,10 @@ function check(i){
   /* Ganze Zahlen: Ergebnisse sind oft negativ. Schueler tippen den ASCII-
      Bindestrich, kopieren aber manchmal das typografische Minus (U+2212) vom
      Poster ab — beides muss parseFloat verstehen. */
-  var roh=(el.value||'').replace(/[−–—]/g,'-').replace(',','.').trim();
+  /* Leerzeichen (auch geschuetzte) entfernen: wer "3 407 250" abtippt, soll
+     nicht scheitern. */
+  var roh=(el.value||'').replace(/[−–—]/g,'-')
+                        .replace(/[\s ]/g,'').replace(',','.').trim();
   var rk=document.getElementById('r'+i);
   if(roh===''){rk.innerHTML='<span class="no">Trag zuerst eine Zahl ein.</span>';return;}
   var v=parseFloat(roh);
