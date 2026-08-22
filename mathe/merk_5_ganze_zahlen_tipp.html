@@ -2,7 +2,7 @@
 <html lang="de"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Erklärung · Teilbarkeitsregeln Klasse 5</title>
+<title>Erklärung · Ganze Zahlen Klasse 5</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -100,6 +100,10 @@ footer .marke{font-family:Lora,serif;font-weight:700;color:#1a1a1a;font-size:15p
 @keyframes pop{0%{transform:scale(.4);opacity:0;}65%{transform:scale(1.12);}
   100%{transform:scale(1);opacity:1;}}
 .pop{animation:pop .45s ease;}
+
+.mz { font-family:"Cambria Math",Cambria,serif; }
+.pos { color:#1A7A50; font-weight:700; }
+.neg { color:#9C2B2B; font-weight:700; }
 </style></head>
 <body>
 <header><div class="in">
@@ -111,70 +115,69 @@ footer .marke{font-family:Lora,serif;font-weight:700;color:#1a1a1a;font-size:15p
 </div></header>
 <div class="wrap">
 
-<p class="lead">Kein Problem &mdash; hier steht jede Regel noch einmal in Ruhe,
-mit einem Beispiel zum Mitdenken.</p>
+<p class="lead">Kein Problem &mdash; hier steht alles noch einmal in Ruhe.</p>
 
-<h2>Was hei&szlig;t „teilbar"?</h2>
-<p class="lead">Eine Zahl ist durch eine andere <b>teilbar</b>, wenn die Division
-<b>ohne Rest</b> aufgeht.</p>
+<h2>Links ist immer kleiner</h2>
+<p class="lead">Auf der Zahlengeraden stehen die negativen Zahlen <b>links</b> von
+der 0, die positiven <b>rechts</b>.</p>
 <div class="karte">
-  <div class="zeile">12 : 4 = 3 &nbsp;<span style="color:#1A7A50;font-weight:700;">
-    kein Rest &rarr; 12 ist durch 4 teilbar</span><br>
-  13 : 4 = 3 Rest 1 &nbsp;<span style="color:#9C6308;font-weight:700;">
-    Rest &rarr; nicht teilbar</span></div>
+  <div class="zeile"><span class="neg">−7</span> &lt; <span class="neg">−2</span>
+    &lt; 0 &lt; <span class="pos">+3</span></div>
+  <div class="tipp"><b>Achtung:</b> Bei negativen Zahlen dreht sich das Gefühl um.
+    <span class="mz">−7</span> ist <b>kleiner</b> als <span class="mz">−2</span>,
+    obwohl die 7 größer aussieht als die 2. Sie steht eben weiter links.</div>
 </div>
 
-<h2>Der schnelle Blick: die letzte Ziffer</h2>
+<h2>Gegenzahl und Betrag</h2>
 <div class="karte">
+  <div class="schritt"><div class="s">1</div><div class="t">
+    Die <b>Gegenzahl</b> liegt gleich weit von der 0 entfernt — nur auf der anderen
+    Seite.<br><span class="zeile">Gegenzahl von <span class="neg">−4</span> ist
+    <span class="pos">+4</span></span></div></div>
   <div class="schritt"><div class="s">2</div><div class="t">
-    Endet die Zahl auf <b>0, 2, 4, 6</b> oder <b>8</b>, ist sie durch <b>2</b>
-    teilbar. Solche Zahlen hei&szlig;en <b>gerade</b>.<br>
-    <span class="zeile">3<b style="color:#1A7A50;">4</b> &#10003; &nbsp;&nbsp;
-      3<b style="color:#9C6308;">7</b> &#10007;</span></div></div>
-  <div class="schritt"><div class="s">5</div><div class="t">
-    Endet die Zahl auf <b>0</b> oder <b>5</b>, ist sie durch <b>5</b> teilbar.<br>
-    <span class="zeile">18<b style="color:#1A7A50;">5</b> &#10003; &nbsp;&nbsp;
-      18<b style="color:#9C6308;">3</b> &#10007;</span></div></div>
+    Der <b>Betrag</b> ist der <b>Abstand zur 0</b>. Er ist <b>nie negativ</b>.<br>
+    <span class="zeile">|<span class="neg">−4</span>| = <b>4</b> &nbsp;&nbsp;
+    |<span class="pos">+4</span>| = <b>4</b></span></div></div>
 </div>
 
-<h2>Bei der 4 z&auml;hlen zwei Ziffern</h2>
-<div class="karte">
-  <div class="frage">Schau dir die <b>letzten beiden</b> Ziffern an. Bilden sie eine
-    Zahl, die durch 4 teilbar ist, dann ist die ganze Zahl durch 4 teilbar.</div>
-  <div class="zeile" style="margin-top:8px;">
-    7<b style="color:#1A7A50;">16</b> &rarr; 16 : 4 = 4 &nbsp;&#10003;<br>
-    7<b style="color:#9C6308;">14</b> &rarr; 14 : 4 geht nicht auf &nbsp;&#10007;</div>
-  <div class="tipp"><b>Achtung:</b> Die letzte Ziffer allein reicht nicht!
-    714 endet auf eine 4 und ist trotzdem <b>nicht</b> durch 4 teilbar.</div>
-</div>
-
-<h2>Die Quersumme</h2>
-<p class="lead">Die <b>Quersumme</b> bekommst du, wenn du <b>alle Ziffern
-addierst</b>.</p>
-<div class="merkkasten">
-  7 6 5 &nbsp;&rarr;&nbsp; 7 + 6 + 5 = <b style="color:#9C6308;">18</b>
-</div>
-<div class="karte">
-  <div class="schritt"><div class="s">3</div><div class="t">
-    Ist die <b>Quersumme durch 3</b> teilbar, dann ist die ganze Zahl durch
-    <b>3</b> teilbar.<br>
-    <span class="zeile">18 : 3 = 6 &rarr; 765 ist durch 3 teilbar &#10003;</span></div></div>
-  <div class="schritt"><div class="s">9</div><div class="t">
-    Ist die <b>Quersumme durch 9</b> teilbar, dann ist die ganze Zahl durch
-    <b>9</b> teilbar.<br>
-    <span class="zeile">18 : 9 = 2 &rarr; 765 ist auch durch 9 teilbar &#10003;</span></div></div>
-  <div class="tipp"><b>Nicht verwechseln:</b> Jede durch <b>9</b> teilbare Zahl ist
-    auch durch <b>3</b> teilbar &mdash; umgekehrt aber nicht. 12 geht durch 3,
-    aber nicht durch 9.</div>
-</div>
-
-<h2>Regeln verbinden</h2>
+<h2>Klammern auflösen</h2>
+<p class="lead">Zwei Vorzeichen treffen aufeinander. Die Regel ist kurz:
+<b>gleiche</b> Vorzeichen werden zu <span class="pos">+</span>,
+<b>verschiedene</b> zu <span class="neg">−</span>.</p>
 <div class="karte">
   <div class="zeile" style="line-height:2.0;">
-    durch <b style="color:#1A7A50;">6</b> = durch 2 <b>und</b> durch 3<br>
-    durch <b style="color:#1C5F96;">10</b> = durch 2 <b>und</b> durch 5<br>
-    durch <b style="color:#6D28D9;">12</b> = durch 3 <b>und</b> durch 4
+    + (+5) = <span class="pos">+5</span> &nbsp;&nbsp;&nbsp;
+    − (−5) = <span class="pos">+5</span><br>
+    + (−5) = <span class="neg">−5</span> &nbsp;&nbsp;&nbsp;
+    − (+5) = <span class="neg">−5</span>
   </div>
+  <div class="tipp"><b>Denk an Geld:</b> Ein Plus ist Guthaben, ein Minus sind
+    Schulden.<br>
+    <span class="mz">+ (−5)</span> heißt „5 € Schulden dazu" =
+    <span class="neg">−5</span>.<br>
+    <span class="mz">− (−5)</span> heißt „5 € Schulden weg" =
+    <span class="pos">+5</span>.</div>
+</div>
+
+<h2>Mal und Geteilt</h2>
+<div class="karte">
+  <div class="zeile" style="line-height:2.0;">
+    (−4) · (−3) = <span class="pos">+12</span><br>
+    (+4) · (+3) = <span class="pos">+12</span><br>
+    (−4) · (+3) = <span class="neg">−12</span><br>
+    (−12) : (+4) = <span class="neg">−3</span>
+  </div>
+  <div class="tipp">Es ist <b>dieselbe Regel</b> wie bei den Klammern: gleiche
+    Vorzeichen ergeben ein Plus, verschiedene ein Minus.</div>
+</div>
+
+<h2>Die häufigste Falle</h2>
+<div class="karte">
+  <div class="frage">Beim Plus- und Minusrechnen entscheidet <b>nicht</b> die
+    größere Zahl, sondern der größere <b>Betrag</b>.</div>
+  <div class="zeile" style="margin-top:8px;">(−9) + (+4) = <span class="neg">−5</span></div>
+  <div class="tipp">−9 hat den Abstand <b>9</b> zur 0, +4 nur den Abstand <b>4</b>.
+    Das Minus ist also „stärker" — das Ergebnis bleibt negativ.</div>
 </div>
 
 <p class="lead" style="margin-top:16px;">Alles klar? Dann geh zur&uuml;ck zum Poster
@@ -182,9 +185,10 @@ und probier die Aufgaben noch einmal. &#128039;</p>
 
 <footer>
   <span class="marke">mathtastic</span><br>
-  Dieses Blatt geh&ouml;rt zum Merkposter <b>Teilbarkeitsregeln &middot; Klasse 5</b>.
-  Die ganze Unterrichtsreihe zur Teilbarkeit &mdash; von Teiler und Vielfachem bis
-  ggT und kgV &mdash; gibt es als fertige Arbeitsbl&auml;tter im mathtastic-Shop.<br>
+  Dieses Blatt geh&ouml;rt zum Merkposter <b>Ganze Zahlen &middot; Klasse 5</b>.
+  Die ganze Unterrichtsreihe zu den ganzen Zahlen &mdash; von der Zahlengeraden bis
+  zu den Vorzeichenregeln &mdash; gibt es als fertige Arbeitsbl&auml;tter im
+  mathtastic-Shop.<br>
   <span style="font-size:12px;">&copy; mathtastic &middot; keine Anmeldung, keine
   Speicherung &mdash; deine Eingaben bleiben auf deinem Ger&auml;t.</span>
 </footer>

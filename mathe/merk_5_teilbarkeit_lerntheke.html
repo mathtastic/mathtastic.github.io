@@ -38,6 +38,11 @@ p.lead{font-size:15px;line-height:1.55;color:#4A545E;margin-bottom:14px;}
 .term{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:21px;
   margin:8px 0 10px;letter-spacing:.4px;overflow-wrap:break-word;}
 .zeile{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:17px;line-height:1.75;}
+table.zeilen{border-collapse:collapse;margin:6px 0 2px;}
+table.zeilen td{padding:3px 0;vertical-align:baseline;}
+table.zeilen td.zn{width:26px;font-family:Nunito,sans-serif;font-size:12px;
+  font-weight:800;color:#6B7480;}
+table.zeilen td.zt{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:17px;}
 .eing{display:flex;flex-direction:column;gap:9px;}
 input[type=text]{width:100%;min-width:0;font-size:19px;padding:12px 12px;border-radius:11px;
   border:2px solid #E3CC93;background:#FDFBF6;font-family:"Cambria Math",Cambria,serif;
@@ -140,6 +145,9 @@ L&ouml;sung deckt einen Buchstaben auf &mdash; knack das ganze Wort.</p>
 </div>
 <script>
 function r(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
+/* Zahl mit typografischem Minus ausgeben — JS liefert sonst den ASCII-Bindestrich,
+   und in einer Auswahl staenden dann "-7" und "−15" nebeneinander. */
+function m(x){return (''+x).replace('-','−');}
 function mix(a){for(var i=a.length-1;i>0;i--){var j=r(0,i);var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 
 /* ---------- Stufe 1 ---------- */
@@ -204,9 +212,9 @@ var FORDERN=[
   var z=r(1,8)*100+kand[r(0,kand.length-1)];
   return {f:'<b>Fehlersuche.</b> In welcher <b>Zeile</b> steckt der Fehler? Tippe 1, 2 oder 3.',
           typ:'ein',
-          zeilen:['1 Ist '+z+' durch 4 teilbar?',
-                  '2 Die letzte Ziffer ist '+(z%10)+', und '+(z%10)+' : 4 geht nicht auf.',
-                  '3 Antwort: '+z+' ist nicht durch 4 teilbar.'],
+          zeilen:['Ist '+z+' durch 4 teilbar?',
+                  'Die letzte Ziffer ist '+(z%10)+', und '+(z%10)+' : 4 geht nicht auf.',
+                  'Antwort: '+z+' ist nicht durch 4 teilbar.'],
           pruef:function(v){return v===2;},
           tipp:'Bei der 4 zählt nicht die letzte Ziffer, sondern die letzten ZWEI. '+
                'Rechne '+z+' : 4 — es geht auf!'};},
@@ -244,7 +252,12 @@ function render(){
   aufg.forEach(function(a,i){
     h+='<div class="karte'+(gel[i]?' gel':'')+'" id="k'+i+'">';
     h+='<div class="frage"><span class="nr">'+(i+1)+'</span>'+a.f+'</div>';
-    if(a.zeilen){h+='<div class="zeile">'+a.zeilen.join('<br>')+'</div>';}
+    if(a.zeilen){
+      h+='<table class="zeilen">';
+      a.zeilen.forEach(function(z,k){
+        h+='<tr><td class="zn">'+(k+1)+'</td><td class="zt">'+z+'</td></tr>';});
+      h+='</table>';
+    }
     if(a.t){h+='<div class="term">'+a.t+'</div>';}
     if(a.typ==='ein'){
       h+='<div class="eing"><input type="text" inputmode="numeric" id="i'+i+'"'+
@@ -292,7 +305,10 @@ function loese(i,ok){
 
 function check(i){
   var el=document.getElementById('i'+i);
-  var roh=(el.value||'').replace(',','.').trim();
+  /* Ganze Zahlen: Ergebnisse sind oft negativ. Schueler tippen den ASCII-
+     Bindestrich, kopieren aber manchmal das typografische Minus (U+2212) vom
+     Poster ab — beides muss parseFloat verstehen. */
+  var roh=(el.value||'').replace(/[−–—]/g,'-').replace(',','.').trim();
   var rk=document.getElementById('r'+i);
   if(roh===''){rk.innerHTML='<span class="no">Trag zuerst eine Zahl ein.</span>';return;}
   var v=parseFloat(roh);
