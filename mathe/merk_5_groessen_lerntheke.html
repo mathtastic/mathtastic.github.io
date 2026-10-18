@@ -238,12 +238,24 @@ var FORDERN=[
 ];
 
 var WORT={ueben:'METER',fordern:'STUFE'};
+var MINUS=false;
 
 var stufe='ueben', aufg=[], gel=[], vers=[], gefeiert=false;
 
+/* Die Stufenliste ist datengetrieben, damit eine Theke auch drei Stufen haben
+   kann: Die Bruch-Werkstatt stellt ENTDECKEN vor Ueben und Fordern
+   (Ergaenzung_Brueche §8). Ohne eigene Liste bleibt es bei den zwei Stufen der
+   Merkposter — deshalb der typeof-Test statt einer Pflichtvariablen. */
+var STUFEN=(typeof STUFEN_LISTE!=='undefined')?STUFEN_LISTE:['ueben','fordern'];
+
+function quelleFuer(s){
+  if(s==='ueben')return UEBEN;
+  if(s==='fordern')return FORDERN;
+  return ENTDECKEN;
+}
+
 function baue(){
-  var quelle=(stufe==='ueben'?UEBEN:FORDERN);
-  aufg=quelle.map(function(g){return g();});
+  aufg=quelleFuer(stufe).map(function(g){return g();});
   gel=aufg.map(function(){return false;});
   vers=aufg.map(function(){return 0;});
   gefeiert=false;
@@ -262,9 +274,35 @@ function render(){
       h+='</table>';
     }
     if(a.t){h+='<div class="term">'+a.t+'</div>';}
-    if(a.typ==='ein'){
-      h+='<div class="eing"><input type="text" inputmode="numeric" id="i'+i+'"'+
-         (gel[i]?' disabled':'')+'><button class="pr" onclick="check('+i+')">Prüfen</button></div>';
+    if(a.typ==='bruch'){
+      /* Zwei Felder uebereinander mit Bruchstrich dazwischen — ein einzelnes
+         Feld mit "3/4" waere schneller gebaut, wuerde aber die Schreibweise
+         verlernen lassen, die auf dem Blatt steht. */
+      h+='<div class="eing"><span class="bf">'+
+         '<input type="text" inputmode="numeric" id="z'+i+'"'+
+         (gel[i]?' disabled':'')+'>'+
+         '<span class="bfs"></span>'+
+         '<input type="text" inputmode="numeric" id="n'+i+'"'+
+         (gel[i]?' disabled':'')+'></span>'+
+         '<button class="pr" onclick="checkB('+i+')">Prüfen</button></div>';
+      if(a.bed){h+='<div class="tipp" style="margin-top:8px;">Hier gibt es '+
+        '<b>mehrere richtige Antworten</b> — such dir eine aus.</div>';}
+    }else if(a.typ==='ein'){
+      /* iPhone (Basti 2026-10-18, Klasse 7): Das Tastenfeld zu inputmode="numeric" hat
+         weder Minus noch Komma, das zu "decimal" immerhin das Komma. Deshalb "decimal"
+         fuer alle — und wo die Theke negative Zahlen kennt (MINUS), eine eigene Taste +/−
+         vor dem Feld. Auf jeder Karte, nicht nur bei negativen Ergebnissen: sonst
+         verriete die Taste das Vorzeichen. */
+      var feld='<input type="text" inputmode="decimal" autocomplete="off" id="i'+i+'"'+
+               (gel[i]?' disabled':'')+'>';
+      if(MINUS){
+        feld='<div style="display:flex;align-items:center;justify-content:center;gap:8px;">'+
+             '<button type="button" id="v'+i+'" onclick="vz('+i+')" aria-label="Minus davor setzen '+
+             'oder wegnehmen"'+(gel[i]?' disabled':'')+' style="min-width:52px;height:44px;'+
+             'border:1.5px solid #cfc6b3;border-radius:10px;background:#fff;font:800 18px '+
+             'Nunito,sans-serif;color:#1C5F96;cursor:pointer;">+/−</button>'+feld+'</div>';
+      }
+      h+='<div class="eing">'+feld+'<button class="pr" onclick="check('+i+')">Prüfen</button></div>';
       if(a.bed){h+='<div class="tipp" style="margin-top:8px;">Hier gibt es '+
         '<b>mehrere richtige Antworten</b> — such dir eine aus.</div>';}
     }else{
@@ -297,6 +335,9 @@ function loese(i,ok){
     gel[i]=true;
     document.getElementById('k'+i).className='karte gel';
     var inp=document.getElementById('i'+i); if(inp)inp.disabled=true;
+    var ivz=document.getElementById('v'+i); if(ivz)ivz.disabled=true;
+    var iz=document.getElementById('z'+i); if(iz)iz.disabled=true;
+    var inn=document.getElementById('n'+i); if(inn)inn.disabled=true;
     rk.innerHTML='<span class="ok">✓ Richtig!</span>';
     slots();
   }else{
@@ -304,6 +345,14 @@ function loese(i,ok){
     rk.innerHTML='<span class="no">Noch nicht — probier es nochmal.</span>'+
       (vers[i]>=2?'<div class="tipp"><b>Tipp:</b> '+aufg[i].tipp+'</div>':'');
   }
+}
+
+/* Taste +/− : setzt ein Minus vor die Eingabe oder nimmt es wieder weg. */
+function vz(i){
+  var el=document.getElementById('i'+i); if(!el||el.disabled)return;
+  var s=(el.value||'').replace(/^\s+/,'');
+  el.value=/^[-−–—]/.test(s)?s.replace(/^[-−–—]\s*/,''):'−'+s;
+  el.focus();
 }
 
 function check(i){
@@ -322,12 +371,35 @@ function check(i){
   loese(i,aufg[i].pruef(v));
 }
 
+/* Bruchpruefung: `pruef` bekommt Zaehler UND Nenner, nicht den Quotienten.
+   Nur so kann eine Aufgabe zwischen "gleich gross" (6/8 zu 3/4 zaehlt) und
+   "genau dieser Bruch" unterscheiden. */
+function checkB(i){
+  var ez=document.getElementById('z'+i), en=document.getElementById('n'+i);
+  var rk=document.getElementById('r'+i);
+  var z=parseInt((ez.value||'').replace(/[\s ]/g,''),10);
+  var n=parseInt((en.value||'').replace(/[\s ]/g,''),10);
+  if(isNaN(z)||isNaN(n)){
+    rk.innerHTML='<span class="no">Trag oben den Zähler und unten den Nenner ein.</span>';
+    return;}
+  if(n===0){
+    rk.innerHTML='<span class="no">Der Nenner darf nicht 0 sein — in null Teile '+
+                 'lässt sich nichts zerlegen.</span>';
+    return;}
+  if(z<0||n<0){
+    rk.innerHTML='<span class="no">Nimm hier positive Zahlen.</span>';
+    return;}
+  loese(i,aufg[i].pruef(z,n));
+}
+
 function checkW(i,btn){loese(i,btn.textContent.trim()===aufg[i].richtig);}
 
 function setzeStufe(s){
   stufe=s;
-  document.getElementById('s_ueben').className='stufe'+(s==='ueben'?' on':'');
-  document.getElementById('s_fordern').className='stufe'+(s==='fordern'?' on':'');
+  STUFEN.forEach(function(n){
+    var el=document.getElementById('s_'+n);
+    if(el)el.className='stufe'+(n===s?' on':'');
+  });
   baue();
 }
 
@@ -342,6 +414,6 @@ function konfetti(){
     setTimeout(function(x){return function(){x.remove();};}(c),4300);
   }
 }
-setzeStufe('ueben');
+setzeStufe(STUFEN[0]);
 </script>
 </body></html>
