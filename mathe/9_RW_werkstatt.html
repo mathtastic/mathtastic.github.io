@@ -229,7 +229,9 @@ function seiteTrig(){
   var weg = M(nx + ' = ' + ng + (mal ? ' · ' : ' : ') + fwt + ' = ' + zahl(wert) + (mal ? ' · ' : ' : ') +
               fwt) + '<br>' + M(nx + ergebnis(x,2) + '&nbsp;cm');
   var fallen = [{art:'gegeben', wert:wert},
-                {art:'rad', wert:mal ? wert*FN[fn](w) : wert/FN[fn](w)},
+                /* betrag: Im Bogenmaß kommt oft eine negative Zahl heraus, die Ziffern-
+                   tastatur des iPhones hat aber kein Minus — „5,93“ zählt dann wie „−5,93“. */
+                {art:'rad', wert:mal ? wert*FN[fn](w) : wert/FN[fn](w), betrag:true},
                 {art:'umstellen', wert:mal ? wert/FN[fn](rad(w)) : wert*FN[fn](rad(w))}];
   ['sin','cos','tan'].forEach(function(f){
     if(f === fn) return;
@@ -379,9 +381,10 @@ function pruefe(a, eingabe){
   if(Math.abs(v - a.exakt) <= naheBand(a)) return {art:'nahe'};
   for(var i = 0; i < a.fallen.length; i++){
     var f = a.fallen[i];
+    var fw = (f.betrag && v > 0) ? Math.abs(f.wert) : f.wert;
     /* Eine Falle, die zu nah an der Lösung liegt, sagt nichts — sie fällt weg. */
-    if(Math.abs(f.wert - a.exakt) <= 2*naheBand(a)) continue;
-    if(Math.abs(v - f.wert) <= (f.tol || tol)) return {art:f.art};
+    if(Math.abs(fw - a.exakt) <= 2*naheBand(a)) continue;
+    if(Math.abs(v - fw) <= (f.tol || tol)) return {art:f.art};
   }
   return {art:'falsch'};
 }
