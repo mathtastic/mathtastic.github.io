@@ -1,0 +1,298 @@
+<!doctype html><html lang='de'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Gemini Adventskalender</title><style>
+:root{--ink:#2b2b2b;--mute:#6b6457;--line:#e4dccb;--creme:#fbf7ef;--gold:#b8892e;--btn:#2f5d50}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ink:#eee;--mute:#b9b2a4;--line:#444;--creme:#1f1d1a;--gold:#e3c06e;--btn:#5f9c8a}}
+body{margin:0;background:var(--creme);color:var(--ink);font:15px/1.5 system-ui,Segoe UI,sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:32px 0 8px;color:var(--gold)}
+p.lead{color:var(--mute);margin:0 0 16px}
+.k{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,.04)}
+.kopf{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline}
+.name{font-family:Consolas,monospace;font-weight:700}
+.prio{font-size:12px;padding:1px 7px;border-radius:9px;border:1px solid var(--gold);color:var(--gold)}
+.meta{color:var(--mute);font-size:13px}
+pre{white-space:pre-wrap;font:13px/1.45 Consolas,monospace;margin:8px 0 0;max-height:180px;overflow:auto}
+button{margin-left:auto;background:var(--btn);color:#fff;border:0;border-radius:6px;padding:5px 12px;cursor:pointer}
+button.ok{background:#7a7a7a}
+ol{margin:6px 0 0 18px;padding:0}
+</style></head><body><main>
+<h1>Gemini-Prompts · Mathe-Adventskalender</h1>
+<p class='lead'>So geht's:</p><ol><li>gemini.google.com → Bild erzeugen. Bei Figuren zuerst die genannte <strong>Referenz</strong> hochladen.</li><li>Prompt kopieren, einfügen, erzeugen.</li><li>Bild speichern als <code>assets/_generated/&lt;name&gt;.png</code>, kurz Bescheid geben, ich registriere und stelle frei.</li></ol><p class='meta'>Prio A brauche ich für den Bau, Prio B macht die Karten abwechslungsreicher.</p>
+<h2>Figuren · Maskottchen</h2>
+<div class='k'><div class='kopf'><span class='name'>pinguin_advent_brief</span><span class='prio'>Prio A</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_aha.png</code> · Prolog, Cover</span><button onclick="kop(0,this)">Kopieren</button></div><pre id='p0'>Use the uploaded image as the style reference: the dark-slate penguin mascot with round glasses and a whistle on a cord.
+Keep the character, illustration style, line weight, colours and proportions 100 % identical — new pose only.
+New pose: wearing a dusty-red Christmas hat with a cream pom-pom, holding an opened letter with both flippers and reading it with a curious, delighted expression.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+Closed, continuous dark outline around the whole figure.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: full figure visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>pinguin_advent_plaetzchen</span><span class='prio'>Prio A</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_aha.png</code> · Plätzchen-Türchen</span><button onclick="kop(1,this)">Kopieren</button></div><pre id='p1'>Use the uploaded image as the style reference: the dark-slate penguin mascot with round glasses and a whistle on a cord.
+Keep the character, illustration style, line weight, colours and proportions 100 % identical — new pose only.
+New pose: wearing a dusty-red Christmas hat, holding a flat baking tray in front of the body with six star-shaped golden cookies on it, proud smile.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+Closed, continuous dark outline around the whole figure.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: full figure visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>pinguin_advent_jubel</span><span class='prio'>Prio B</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_aha.png</code> · Finale, Urkunde</span><button onclick="kop(2,this)">Kopieren</button></div><pre id='p2'>Use the uploaded image as the style reference: the dark-slate penguin mascot with round glasses and a whistle on a cord.
+Keep the character, illustration style, line weight, colours and proportions 100 % identical — new pose only.
+New pose: wearing a dusty-red Christmas hat, cheering with both flippers raised high, holding a five-pointed golden star above the head, joyful.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+Closed, continuous dark outline around the whole figure.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: full figure visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<h2>Figuren · Pippa und Kalle</h2>
+<div class='k'><div class='kopf'><span class='name'>pippa_lichterkette</span><span class='prio'>Prio A</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_kind_schal.png</code> · Lichterkette, Umfang</span><button onclick="kop(3,this)">Kopieren</button></div><pre id='p3'>Use the uploaded image as the style reference: the young penguin with round glasses and a teal knitted scarf.
+Keep the character, illustration style, line weight, colours and proportions 100 % identical — new pose only.
+New pose: holding a string of fairy lights with round warm-gold bulbs that hangs in a loose loop between both flippers, concentrated, tongue slightly out.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+Closed, continuous dark outline around the whole figure.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: full figure visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>kalle_geschenke</span><span class='prio'>Prio A</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_kind_muetze.png</code> · Geschenke, Quader, Netz</span><button onclick="kop(4,this)">Kopieren</button></div><pre id='p4'>Use the uploaded image as the style reference: the young penguin with round glasses and an ochre knitted beanie.
+Keep the character, illustration style, line weight, colours and proportions 100 % identical — new pose only.
+New pose: carrying a tall stack of three wrapped gift boxes (dusty red, gold, fir green, with ribbons), peeking out from the side of the stack, cheerful.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+Closed, continuous dark outline around the whole figure.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: full figure visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>kalle_stiefel</span><span class='prio'>Prio B</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_kind_muetze.png</code> · Nikolaus (Tür 6)</span><button onclick="kop(5,this)">Kopieren</button></div><pre id='p5'>Use the uploaded image as the style reference: the young penguin with round glasses and an ochre knitted beanie.
+Keep the character, illustration style, line weight, colours and proportions 100 % identical — new pose only.
+New pose: leaning over a big dusty-red boot with a cream fur trim and looking inside it with great curiosity, one flipper on the boot&#x27;s rim.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+Closed, continuous dark outline around the whole figure.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: full figure visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>pippa_kalle_schlitten</span><span class='prio'>Prio B</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_kind_muetze.png</code> · Schlitten, Zeitspanne</span><button onclick="kop(6,this)">Kopieren</button></div><pre id='p6'>Use the uploaded image as the style reference: the young penguin with round glasses and an ochre knitted beanie.
+Show this penguin together with a second, identical-style young penguin who wears round glasses and a teal knitted scarf instead of the beanie.
+Keep the illustration style, line weight, colours and proportions 100 % identical.
+Pose: both sit one behind the other on a simple wooden sled with curved runners, side view, happy.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+Closed, continuous dark outline around the whole group.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: whole group visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<h2>Figuren · neu</h2>
+<div class='k'><div class='kopf'><span class='name'>kira_fliegt</span><span class='prio'>Prio A</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_aha.png</code> · Karten, Sammelkarte</span><button onclick="kop(7,this)">Kopieren</button></div><pre id='p7'>Use the uploaded penguin image ONLY as the style reference.
+Create a NEW character in exactly the same illustration style: same soft dark-slate outline and line weight,
+same flat colouring with gentle shading, same friendly round eyes, same level of detail, same cheerful
+children&#x27;s-schoolbook look.
+New character: an Arctic tern (seabird): slim body in pale grey-white (#EEF0F2), pale grey wings (#C9D1D8), black cap on the head, coral-red pointed beak and short red legs, long forked tail, realistic bird proportions, friendly eye, wearing a tiny brown leather postbag on a strap. Pose: flying to the right with wings spread wide, a sealed envelope held in the beak.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+IMPORTANT for cut-out: the light fur/feathers must be a light warm cream or pale grey, NEVER pure white,
+and the whole figure has a closed, continuous dark outline.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: full figure visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>kira_landet</span><span class='prio'>Prio A</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_aha.png</code> · Prolog</span><button onclick="kop(8,this)">Kopieren</button></div><pre id='p8'>Use the uploaded penguin image ONLY as the style reference.
+Create a NEW character in exactly the same illustration style: same soft dark-slate outline and line weight,
+same flat colouring with gentle shading, same friendly round eyes, same level of detail, same cheerful
+children&#x27;s-schoolbook look.
+New character: an Arctic tern (seabird): slim body in pale grey-white (#EEF0F2), pale grey wings (#C9D1D8), black cap on the head, coral-red pointed beak and short red legs, long forked tail, realistic bird proportions, friendly eye, wearing a tiny brown leather postbag on a strap. Pose: standing on both legs, wings folded, holding a sealed envelope in the beak, head slightly tilted, friendly.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+IMPORTANT for cut-out: the light fur/feathers must be a light warm cream or pale grey, NEVER pure white,
+and the whole figure has a closed, continuous dark outline.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: full figure visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>polly_winkt</span><span class='prio'>Prio A</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_aha.png</code> · Finale Kl. 5 (Enthüllung)</span><button onclick="kop(9,this)">Kopieren</button></div><pre id='p9'>Use the uploaded penguin image ONLY as the style reference.
+Create a NEW character in exactly the same illustration style: same soft dark-slate outline and line weight,
+same flat colouring with gentle shading, same friendly round eyes, same level of detail, same cheerful
+children&#x27;s-schoolbook look.
+New character: a friendly adult female polar bear standing upright on her hind legs, slightly plump and cosy, fur in light warm cream (#F3ECDD) with soft grey-blue shading (#DCE3EA), small black nose, wearing a knitted fir-green scarf (#7FA38A). Pose: waving happily with one big paw raised, warm smile.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+IMPORTANT for cut-out: the light fur/feathers must be a light warm cream or pale grey, NEVER pure white,
+and the whole figure has a closed, continuous dark outline.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: full figure visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>polly_koffer</span><span class='prio'>Prio A</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_aha.png</code> · Finale Kl. 6</span><button onclick="kop(10,this)">Kopieren</button></div><pre id='p10'>Use the uploaded penguin image ONLY as the style reference.
+Create a NEW character in exactly the same illustration style: same soft dark-slate outline and line weight,
+same flat colouring with gentle shading, same friendly round eyes, same level of detail, same cheerful
+children&#x27;s-schoolbook look.
+New character: a friendly adult female polar bear standing upright on her hind legs, slightly plump and cosy, fur in light warm cream (#F3ECDD) with soft grey-blue shading (#DCE3EA), small black nose, wearing a knitted fir-green scarf (#7FA38A), additionally a knitted dusty-red bobble hat. Pose: holding a small old-fashioned brown travel suitcase in one paw, waving goodbye with the other, excited.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+IMPORTANT for cut-out: the light fur/feathers must be a light warm cream or pale grey, NEVER pure white,
+and the whole figure has a closed, continuous dark outline.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: full figure visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>polly_brief</span><span class='prio'>Prio B</span><span class='meta'>Referenz: <code>assets/_generated/_hires/pinguin_aha.png</code> · Prolog Kl. 6</span><button onclick="kop(11,this)">Kopieren</button></div><pre id='p11'>Use the uploaded penguin image ONLY as the style reference.
+Create a NEW character in exactly the same illustration style: same soft dark-slate outline and line weight,
+same flat colouring with gentle shading, same friendly round eyes, same level of detail, same cheerful
+children&#x27;s-schoolbook look.
+New character: a friendly adult female polar bear standing upright on her hind legs, slightly plump and cosy, fur in light warm cream (#F3ECDD) with soft grey-blue shading (#DCE3EA), small black nose, wearing a knitted fir-green scarf (#7FA38A). Pose: holding up a sealed envelope with a red wax seal in both paws, proud.
+Christmas details only in muted colours: dusty red #C8665E, soft gold #E3C06E, fir green #7FA38A.
+IMPORTANT for cut-out: the light fur/feathers must be a light warm cream or pale grey, NEVER pure white,
+and the whole figure has a closed, continuous dark outline.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF), NO floor, NO shadow, NO scenery.
+Composition: full figure visible, centered, fills 75 % of the frame, generous padding.
+No text, no letters, no numbers anywhere in the image.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<h2>Icons</h2>
+<div class='k'><div class='kopf'><span class='name'>geschenk</span><span class='prio'>Prio A</span><span class='meta'>Geschenke</span><button onclick="kop(12,this)">Kopieren</button></div><pre id='p12'>Minimalist flat vector illustration for a premium German math schoolbook: a wrapped gift box with a ribbon and a bow, front three-quarter view.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>adventskranz</span><span class='prio'>Prio A</span><span class='meta'>Prolog, Sammelkarte</span><button onclick="kop(13,this)">Kopieren</button></div><pre id='p13'>Minimalist flat vector illustration for a premium German math schoolbook: an advent wreath made of fir branches with four candles, the candles evenly spaced.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>lichterkette</span><span class='prio'>Prio A</span><span class='meta'>Dualzahl, Lichterbaum</span><button onclick="kop(14,this)">Kopieren</button></div><pre id='p14'>Minimalist flat vector illustration for a premium German math schoolbook: a string of fairy lights with seven round bulbs hanging in one gentle curve.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>plaetzchen</span><span class='prio'>Prio A</span><span class='meta'>Plätzchen</span><button onclick="kop(15,this)">Kopieren</button></div><pre id='p15'>Minimalist flat vector illustration for a premium German math schoolbook: three Christmas cookies side by side: a star-shaped cookie, a heart-shaped cookie and a round cookie.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>tannenbaum</span><span class='prio'>Prio A</span><span class='meta'>Deko, Symbolrätsel</span><button onclick="kop(16,this)">Kopieren</button></div><pre id='p16'>Minimalist flat vector illustration for a premium German math schoolbook: a decorated fir tree with a few round baubles and a star on top.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>nikolausstiefel</span><span class='prio'>Prio A</span><span class='meta'>Nikolaus</span><button onclick="kop(17,this)">Kopieren</button></div><pre id='p17'>Minimalist flat vector illustration for a premium German math schoolbook: a red boot with a white fur trim, filled with walnuts and a mandarin.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>briefumschlag_siegel</span><span class='prio'>Prio A</span><span class='meta'>Briefteile, Finale</span><button onclick="kop(18,this)">Kopieren</button></div><pre id='p18'>Minimalist flat vector illustration for a premium German math schoolbook: a closed envelope seen from the back with a red wax seal.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>schlitten</span><span class='prio'>Prio A</span><span class='meta'>Schlitten</span><button onclick="kop(19,this)">Kopieren</button></div><pre id='p19'>Minimalist flat vector illustration for a premium German math schoolbook: a wooden sled with curved runners, side view.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>kakao_tasse</span><span class='prio'>Prio B</span><span class='meta'>Weihnachtsmarkt</span><button onclick="kop(20,this)">Kopieren</button></div><pre id='p20'>Minimalist flat vector illustration for a premium German math schoolbook: a mug of hot cocoa with three small marshmallows and gentle steam.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>weihnachtsmarkt_stand</span><span class='prio'>Prio B</span><span class='meta'>Weihnachtsmarkt</span><button onclick="kop(21,this)">Kopieren</button></div><pre id='p21'>Minimalist flat vector illustration for a premium German math schoolbook: a small wooden Christmas market stall with a pointed roof and a fir garland, front view.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>weihnachtskugel</span><span class='prio'>Prio B</span><span class='meta'>Kugeln (Kl. 6)</span><button onclick="kop(22,this)">Kopieren</button></div><pre id='p22'>Minimalist flat vector illustration for a premium German math schoolbook: a single round Christmas bauble with a small metal cap and loop.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<div class='k'><div class='kopf'><span class='name'>lebkuchenherz</span><span class='prio'>Prio B</span><span class='meta'>Lebkuchen (Kl. 6)</span><button onclick="kop(23,this)">Kopieren</button></div><pre id='p23'>Minimalist flat vector illustration for a premium German math schoolbook: a gingerbread heart with a white icing border and small icing dots, no lettering.
+Style: clean flat design, geometrically precise and realistically proportioned,
+thin even dark-gray outline (1.5px), muted soft pastel fills
+(dusty red #D9958C, soft gold #EBD39A, sage green #B9D3BE, warm sand #EFE3CC — low saturation, max 3 colors),
+completely flat shading — NO gloss, NO highlight dots, NO gradients, NO drop shadow.
+NOT cute, NOT kawaii, NOT sticker-style, no faces or eyes on objects, not childish.
+Background: a completely PLAIN, SOLID PURE-WHITE background (#FFFFFF),
+NO floor, NO shadow, NO scenery.
+Composition: motif centered, fills 75% of frame, generous padding around edges.
+No text, no letters, no numbers anywhere in the image.
+Calm, professional, reduced — like a modern schoolbook pictogram with warmth.
+Output: 1024x1024 pixels, PNG.</pre></div>
+<script>
+function kop(i,b){const t=document.getElementById('p'+i).innerText;
+ const fertig=()=>{b.textContent='Kopiert ✓';b.classList.add('ok')};
+ if(navigator.clipboard){navigator.clipboard.writeText(t).then(fertig).catch(()=>alt(t,fertig))}else{alt(t,fertig)}}
+function alt(t,f){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();
+ try{document.execCommand('copy');f()}catch(e){}a.remove()}
+</script></main></body></html>
