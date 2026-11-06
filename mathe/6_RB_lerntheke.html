@@ -165,6 +165,11 @@ footer .marke{font-family:Lora,serif;font-weight:700;color:#1a1a1a;
   .code .slots{gap:5px;}
   .code .slots span{width:34px;height:44px;line-height:41px;}
 }
+/* Gemischte Zahl (merk_engine, gemischt=True, seit 2026-11-06): Feld fuer die
+   Ganzen links neben der Brucheingabe, groesser gesetzt wie die Ganzen im Heft. */
+.gz{display:inline-flex;align-items:center;gap:10px;align-self:center;}
+.gz .gg{width:66px;min-height:58px;text-align:center;font-size:24px;}
+.gz .bf{width:84px;}
 /* Die Fehlersuche-Tabelle bringt die Werkstatt-CSS nicht mit — hier stand sie
    als nackte Tabelle. Die Zeilennummer bekommt eine eigene Spalte MIT Trennlinie:
    Ohne sie las sich „1" vor einem gestapelten Halben als gemischte Zahl 1 1/2
@@ -218,7 +223,7 @@ sicher f&uuml;hlst. Jede richtige L&ouml;sung deckt einen Buchstaben auf.</p>
   Die Zahlen sind jedes Mal neu &mdash; du kannst so oft &uuml;ben, wie du
   magst. Wo ein Bruch die Antwort ist, z&auml;hlt jede wertgleiche Schreibweise;
   nur wo das K&uuml;rzen zur Aufgabe geh&ouml;rt, muss der Bruch gek&uuml;rzt
-  sein.</p>
+  sein. Bei einer gemischten Zahl kommt die ganze Zahl ins Feld links.</p>
 
 <footer>
   <div class="marke">mathtastic</div>
@@ -298,23 +303,33 @@ var UEBEN=[
           pruef:function(x,y){return wg(x,y,z,n);},
           tipp:'Der gemeinsame Nenner ist '+n+'.'};},
  function(){var a=r(2,6),b=r(2,6),c=r(2,6),d=r(2,6);
+  /* gegebene Brueche gekuerzt (s. u. „Ein GEGEBENER Anteil") — 2026-11-06 */
+  while(ggt(a,b)>1){a=r(2,6);b=r(2,6);} while(ggt(c,d)>1){c=r(2,6);d=r(2,6);}
   return {f:'<b>Bruch mal Bruch.</b> K&uuml;rze das Ergebnis.',
           t:B(a,b)+' &middot; '+B(c,d),typ:'bruch',
           pruef:function(z,n){return vk(z,n,(a*c)/ggt(a*c,b*d),(b*d)/ggt(a*c,b*d));},
           tipp:'Z&auml;hler mal Z&auml;hler, Nenner mal Nenner &mdash; und '+
                'dann k&uuml;rzen.'};},
  function(){var a=r(2,7),b=r(2,7),c=r(2,7),d=r(2,7);
+  while(ggt(a,b)>1){a=r(2,7);b=r(2,7);} while(ggt(c,d)>1){c=r(2,7);d=r(2,7);}
   var Z=a*d,N=b*c,g=ggt(Z,N);
   return {f:'<b>Durch einen Bruch teilen</b> — nimm den Kehrwert.',
           t:B(a,b)+' : '+B(c,d),typ:'bruch',
           pruef:function(z,n){return vk(z,n,Z/g,N/g);},
           tipp:'Der Kehrwert von '+B(c,d)+' ist '+B(d,c)+'. Dann malnehmen.'};},
- function(){var g1=r(1,4),g2=r(1,4),n=r(4,8),a=r(1,n-1),b=r(1,n-a);
-  return {f:'<b>Gemischte Zahlen</b> addieren.',
-          t:G(g1,a,n)+' + '+G(g2,b,n),typ:'ein',
-          pruef:function(v){return v===g1+g2;},
-          tipp:'Trag hier nur die <b>ganze Zahl</b> des Ergebnisses ein. '+
-               B(a,n)+' + '+B(b,n)+' bleibt unter 1.'};},
+ function(){var g1=r(1,4),g2=r(1,4),n=r(4,8),a=r(1,n-2),b=r(1,n-a-1);
+  /* Bis 2026-11-06 fragte die Aufgabe nur die ganze Zahl ab — die Theke kannte
+     keine Eingabe fuer gemischte Zahlen (Basti: „konnte man gemischte Zahlen nicht
+     schreiben"), und das sagte erst der Tipp nach zwei Fehlversuchen. Dazu ergab
+     b = n-a genau ein Ganzes mehr, als die Pruefung erwartete. Jetzt: das ganze
+     Ergebnis (typ 'gemischt'), Bruchteil bleibt sicher unter 1. */
+  var s=a+b;
+  return {f:'<b>Gemischte Zahlen</b> addieren. Schreib das Ergebnis als '+
+            '<b>gemischte Zahl</b>.',
+          t:G(g1,a,n)+' + '+G(g2,b,n),typ:'gemischt',
+          pruef:function(G2,z,nn){return G2===g1+g2 && z>0 && z<nn && z*n===s*nn;},
+          tipp:'Erst die Ganzen: '+g1+' + '+g2+'. Dann die Br&uuml;che: '+
+               B(a,n)+' + '+B(b,n)+' &mdash; das bleibt unter 1.'};},
  function(){var p=[[B(3,4)+' l Saft auf 3 Gl&auml;ser verteilen','aufteilen'],
                    ['Wie oft passt '+B(1,4)+' l in '+B(3,4)+' l?',
                     'wie oft hinein'],
@@ -351,12 +366,20 @@ var FORDERN=[
           t:'('+B(a,n)+' &minus; '+B(b,n)+') &middot; '+c,typ:'bruch',
           pruef:function(z,m){return wg(z,m,(a-b)*c,n);},
           tipp:'In der Klammer steht '+B(a-b,n)+'. Dann mal '+c+'.'};},
- function(){var g=r(1,3),n=r(2,5),a=r(1,n-1),c=r(2,6),d=r(2,6);
-  var Z=(g*n+a)*c,N=n*d,q=ggt(Z,N);
-  return {f:'<b>Gemischte Zahl mal Bruch.</b> Erst umwandeln.',
-          t:G(g,a,n)+' &middot; '+B(c,d),typ:'bruch',
-          pruef:function(z,m){return vk(z,m,Z/q,N/q);},
-          tipp:G(g,a,n)+' = '+B(g*n+a,n)+'. Dann malnehmen und k&uuml;rzen.'};},
+ function(){var g,n,a,c,d,Z,N,q;
+  /* Ergebnis wieder als gemischte Zahl — so schreibt es die Reihe (Blatt 16/17:
+     „Gib das Ergebnis als gemischte Zahl an"). Bis 2026-11-06 nur als unechter
+     Bruch eintippbar. Gewuerfelt wird, bis das Ergebnis groesser als 1 ist und
+     nicht glatt aufgeht. */
+  do{g=r(1,3);n=r(2,5);a=r(1,n-1);c=r(2,6);d=r(2,6);
+     Z=(g*n+a)*c;N=n*d;q=ggt(Z,N);Z/=q;N/=q;}while(Z<=N||Z%N===0||ggt(c,d)>1);
+  var GG=Math.floor(Z/N),R=Z%N;
+  return {f:'<b>Gemischte Zahl mal Bruch.</b> Erst umwandeln. Schreib das Ergebnis '+
+            'gek&uuml;rzt als <b>gemischte Zahl</b>.',
+          t:G(g,a,n)+' &middot; '+B(c,d),typ:'gemischt',
+          pruef:function(G2,z,m){return G2===GG && z>0 && z<m && z*N===R*m && ggt(z,m)===1;},
+          tipp:G(g,a,n)+' = '+B(g*n+a,n)+'. Dann malnehmen, k&uuml;rzen und '+
+               'die Ganzen herausziehen.'};},
  function(){var k=r(2,9);
   return {f:'Wie hei&szlig;t der <b>Kehrwert</b> dieser ganzen Zahl?',
           t:''+k,typ:'bruch',
@@ -442,6 +465,15 @@ function render(){
          '<button class="pr" onclick="checkB('+i+')">Prüfen</button></div>';
       if(a.bed){h+='<div class="tipp" style="margin-top:8px;">Hier gibt es '+
         '<b>mehrere richtige Antworten</b> — such dir eine aus.</div>';}
+    }else if(a.typ==='gemischt'){
+      var dis=gel[i]?' disabled':'';
+      h+='<div class="eing"><span class="gz">'+
+         '<input type="text" inputmode="numeric" class="gg" id="g'+i+'"'+dis+'>'+
+         '<span class="bf">'+
+         '<input type="text" inputmode="numeric" id="z'+i+'"'+dis+'>'+
+         '<span class="bfs"></span>'+
+         '<input type="text" inputmode="numeric" id="n'+i+'"'+dis+'></span></span>'+
+         '<button class="pr" onclick="checkG('+i+')">Prüfen</button></div>';
     }else if(a.typ==='ein'){
       /* iPhone (Basti 2026-10-18, Klasse 7): Das Tastenfeld zu inputmode="numeric" hat
          weder Minus noch Komma, das zu "decimal" immerhin das Komma. Deshalb "decimal"
@@ -570,6 +602,28 @@ function konfetti(){
   }
 }
 setzeStufe(STUFEN[0]);
+
+/* Gemischte Zahl: `pruef` bekommt Ganze, Zaehler und Nenner einzeln. */
+function checkG(i){
+  var w=function(id){return parseInt((document.getElementById(id+i).value||'')
+                                     .replace(/[\s ]/g,''),10);};
+  var g=w('g'), z=w('z'), n=w('n');
+  var rk=document.getElementById('r'+i);
+  if(isNaN(g)||isNaN(z)||isNaN(n)){
+    rk.innerHTML='<span class="no">Links die ganze Zahl, rechts oben den Zähler und '+
+                 'unten den Nenner.</span>';
+    return;}
+  if(n===0){
+    rk.innerHTML='<span class="no">Der Nenner darf nicht 0 sein — in null Teile '+
+                 'lässt sich nichts zerlegen.</span>';
+    return;}
+  if(g<0||z<0||n<0){
+    rk.innerHTML='<span class="no">Nimm hier positive Zahlen.</span>';
+    return;}
+  var ok=aufg[i].pruef(g,z,n);
+  loese(i,ok);
+  if(ok){document.getElementById('g'+i).disabled=true;}
+}
 
 baue();
 </script>
