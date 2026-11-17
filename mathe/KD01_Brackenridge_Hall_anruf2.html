@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mord auf Brackenridge Hall</title>
+<style>
+:root{--grund:#1E2422;--papier:#F6F3EE;--tinte:#24211D;--akzent:#8C867D;}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--grund);color:var(--tinte);font-family:Georgia, 'Times New Roman', serif;
+  font-size:17px;line-height:1.55;padding:22px 16px 40px;min-height:100vh}
+.karte{max-width:560px;margin:0 auto;background:var(--papier);border-radius:6px;
+  padding:26px 22px 22px;box-shadow:0 10px 30px rgba(0,0,0,.35);
+  border-top:4px solid var(--akzent)}
+.kicker{margin:0 0 6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--akzent)}
+h1{margin:0 0 4px;font-size:26px;line-height:1.2;font-weight:normal}
+.unter{margin:0 0 18px;font-style:italic;opacity:.8}
+.vorspann{margin:0 0 16px}
+#schloss p{margin:0 0 10px}
+#form{display:flex;gap:8px;flex-wrap:wrap}
+#code{flex:1 1 180px;font:inherit;font-size:20px;letter-spacing:.12em;padding:10px 12px;
+  border:1.5px solid var(--tinte);border-radius:4px;background:#fff;color:var(--tinte);
+  text-transform:uppercase}
+#form button{font:inherit;font-size:17px;padding:10px 18px;border:0;border-radius:4px;
+  background:var(--tinte);color:var(--papier);cursor:pointer}
+#meldung{min-height:1.5em;margin-top:10px;font-style:italic}
+.wackel{animation:wackel .35s}
+@keyframes wackel{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+#inhalt h2{font-weight:normal;font-size:20px;border-bottom:1px solid var(--akzent);
+  padding-bottom:4px;margin:22px 0 10px}
+#inhalt img{max-width:100%;height:auto}
+#inhalt details{border:1px solid rgba(0,0,0,.15);border-radius:4px;padding:8px 12px;margin:10px 0}
+#inhalt summary{cursor:pointer}
+footer{max-width:560px;margin:14px auto 0;text-align:center;font-size:12px;
+  color:var(--papier);opacity:.6}
+</style></head>
+<body>
+<main class="karte">
+<p class="kicker">Ein Krimidinner</p>
+<h1>Mord auf Brackenridge Hall</h1>
+<p class="unter">Anruf 2 · Runde 2 · Hauptgang</p>
+<div class="vorspann"><p>Für die Spielleitung. Den Code findest du im Gastgeberheft unter »Codes«.</p></div>
+<div id="schloss">
+<p>Gib den Code ein, um die Seite zu öffnen.</p>
+<form id="form" autocomplete="off">
+<input id="code" name="code" type="text" autocapitalize="characters" autocomplete="off" autocorrect="off"
+ spellcheck="false" aria-label="Code" placeholder="Code">
+<button type="submit">Öffnen</button>
+</form>
+<p id="meldung" aria-live="polite"></p>
+</div>
+<div id="inhalt" hidden></div>
+<noscript><p>Diese Seite braucht JavaScript. Nutzt bitte den gedruckten Notfall-Umschlag.</p></noscript>
+</main>
+<footer>© mathtastic</footer>
+<script>
+(function(){
+var P = {"salz": "GeWO7Jo7K3Vb/bTffKQ3wQ==", "nonce": "QGGuv8lM9qjlVRjv", "daten": "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", "iter": 100000};
+var schloss = document.getElementById('schloss'), inhalt = document.getElementById('inhalt'),
+    feld = document.getElementById('code'), meldung = document.getElementById('meldung'),
+    form = document.getElementById('form');
+function b64(s){var b=atob(s),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u;}
+function norm(c){return (c||'').toUpperCase().replace(/[^A-Z0-9]/g,'');}
+async function oeffne(code){
+  var enc = new TextEncoder();
+  var basis = await crypto.subtle.importKey('raw', enc.encode(norm(code)), 'PBKDF2', false, ['deriveKey']);
+  var key = await crypto.subtle.deriveKey({name:'PBKDF2', salt:b64(P.salz), iterations:P.iter, hash:'SHA-256'},
+                                          basis, {name:'AES-GCM', length:256}, false, ['decrypt']);
+  var klar = await crypto.subtle.decrypt({name:'AES-GCM', iv:b64(P.nonce)}, key, b64(P.daten));
+  return new TextDecoder().decode(klar);
+}
+function zeige(html){
+  inhalt.innerHTML = html; inhalt.hidden = false; schloss.hidden = true;
+  document.body.classList.add('offen'); window.scrollTo(0,0);
+}
+async function versuche(code, still){
+  if(norm(code).length < 4){ if(!still){ meldung.textContent = "Der Code hat mindestens vier Zeichen."; } return; }
+  meldung.textContent = "Pr\u00fcfe \u2026";
+  try { zeige(await oeffne(code)); meldung.textContent = ''; }
+  catch(e){
+    meldung.textContent = "Dieser Code passt nicht.";
+    form.classList.remove('wackel'); void form.offsetWidth; form.classList.add('wackel');
+  }
+}
+if(!(window.crypto && crypto.subtle && window.TextEncoder)){
+  form.hidden = true; meldung.textContent = "Dieser Browser kann die Seite nicht \u00f6ffnen. Nutzt bitte den gedruckten Notfall-Umschlag."; return;
+}
+form.addEventListener('submit', function(ev){ ev.preventDefault(); versuche(feld.value, false); });
+var m = /[#&]c=([^&]+)/.exec(location.hash);
+if(m){ versuche(decodeURIComponent(m[1]), true); }
+})();
+</script>
+</body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mord auf Brackenridge Hall</title>
+<style>
+:root{--grund:#1E2422;--papier:#F6F3EE;--tinte:#24211D;--akzent:#8C867D;}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--grund);color:var(--tinte);font-family:Georgia, 'Times New Roman', serif;
+  font-size:17px;line-height:1.55;padding:22px 16px 40px;min-height:100vh}
+.karte{max-width:560px;margin:0 auto;background:var(--papier);border-radius:6px;
+  padding:26px 22px 22px;box-shadow:0 10px 30px rgba(0,0,0,.35);
+  border-top:4px solid var(--akzent)}
+.kicker{margin:0 0 6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--akzent)}
+h1{margin:0 0 4px;font-size:26px;line-height:1.2;font-weight:normal}
+.unter{margin:0 0 18px;font-style:italic;opacity:.8}
+.vorspann{margin:0 0 16px}
+#schloss p{margin:0 0 10px}
+#form{display:flex;gap:8px;flex-wrap:wrap}
+#code{flex:1 1 180px;font:inherit;font-size:20px;letter-spacing:.12em;padding:10px 12px;
+  border:1.5px solid var(--tinte);border-radius:4px;background:#fff;color:var(--tinte);
+  text-transform:uppercase}
+#form button{font:inherit;font-size:17px;padding:10px 18px;border:0;border-radius:4px;
+  background:var(--tinte);color:var(--papier);cursor:pointer}
+#meldung{min-height:1.5em;margin-top:10px;font-style:italic}
+.wackel{animation:wackel .35s}
+@keyframes wackel{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+#inhalt h2{font-weight:normal;font-size:20px;border-bottom:1px solid var(--akzent);
+  padding-bottom:4px;margin:22px 0 10px}
+#inhalt img{max-width:100%;height:auto}
+#inhalt details{border:1px solid rgba(0,0,0,.15);border-radius:4px;padding:8px 12px;margin:10px 0}
+#inhalt summary{cursor:pointer}
+footer{max-width:560px;margin:14px auto 0;text-align:center;font-size:12px;
+  color:var(--papier);opacity:.6}
+</style></head>
+<body>
+<main class="karte">
+<p class="kicker">Ein Krimidinner</p>
+<h1>Mord auf Brackenridge Hall</h1>
+<p class="unter">Einladung · Rolle 6</p>
+<div class="vorspann"><p>Diese Seite ist nur für dich. Der Schlüssel steht auf deiner Einladungskarte.</p></div>
+<div id="schloss">
+<p>Schlüssel von der Karte eingeben:</p>
+<form id="form" autocomplete="off">
+<input id="code" name="code" type="text" autocapitalize="characters" autocomplete="off" autocorrect="off"
+ spellcheck="false" aria-label="Code" placeholder="Code">
+<button type="submit">Öffnen</button>
+</form>
+<p id="meldung" aria-live="polite"></p>
+</div>
+<div id="inhalt" hidden></div>
+<noscript><p>Diese Seite braucht JavaScript. Nutzt bitte den gedruckten Notfall-Umschlag.</p></noscript>
+</main>
+<footer>© mathtastic</footer>
+<script>
+(function(){
+var P = {"salz": "mKkjJlbZt/We61FX5EJnqg==", "nonce": "ThASCZbegBrTnIcz", "daten": "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", "iter": 100000};
+var schloss = document.getElementById('schloss'), inhalt = document.getElementById('inhalt'),
+    feld = document.getElementById('code'), meldung = document.getElementById('meldung'),
+    form = document.getElementById('form');
+function b64(s){var b=atob(s),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u;}
+function norm(c){return (c||'').toUpperCase().replace(/[^A-Z0-9]/g,'');}
+async function oeffne(code){
+  var enc = new TextEncoder();
+  var basis = await crypto.subtle.importKey('raw', enc.encode(norm(code)), 'PBKDF2', false, ['deriveKey']);
+  var key = await crypto.subtle.deriveKey({name:'PBKDF2', salt:b64(P.salz), iterations:P.iter, hash:'SHA-256'},
+                                          basis, {name:'AES-GCM', length:256}, false, ['decrypt']);
+  var klar = await crypto.subtle.decrypt({name:'AES-GCM', iv:b64(P.nonce)}, key, b64(P.daten));
+  return new TextDecoder().decode(klar);
+}
+function zeige(html){
+  inhalt.innerHTML = html; inhalt.hidden = false; schloss.hidden = true;
+  document.body.classList.add('offen'); window.scrollTo(0,0);
+}
+async function versuche(code, still){
+  if(norm(code).length < 4){ if(!still){ meldung.textContent = "Der Code hat mindestens vier Zeichen."; } return; }
+  meldung.textContent = "Pr\u00fcfe \u2026";
+  try { zeige(await oeffne(code)); meldung.textContent = ''; }
+  catch(e){
+    meldung.textContent = "Dieser Code passt nicht.";
+    form.classList.remove('wackel'); void form.offsetWidth; form.classList.add('wackel');
+  }
+}
+if(!(window.crypto && crypto.subtle && window.TextEncoder)){
+  form.hidden = true; meldung.textContent = "Dieser Browser kann die Seite nicht \u00f6ffnen. Nutzt bitte den gedruckten Notfall-Umschlag."; return;
+}
+form.addEventListener('submit', function(ev){ ev.preventDefault(); versuche(feld.value, false); });
+var m = /[#&]c=([^&]+)/.exec(location.hash);
+if(m){ versuche(decodeURIComponent(m[1]), true); }
+})();
+</script>
+</body></html>

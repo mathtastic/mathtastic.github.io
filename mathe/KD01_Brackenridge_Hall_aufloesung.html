@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mord auf Brackenridge Hall</title>
+<style>
+:root{--grund:#1E2422;--papier:#F6F3EE;--tinte:#24211D;--akzent:#8C867D;}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--grund);color:var(--tinte);font-family:Georgia, 'Times New Roman', serif;
+  font-size:17px;line-height:1.55;padding:22px 16px 40px;min-height:100vh}
+.karte{max-width:560px;margin:0 auto;background:var(--papier);border-radius:6px;
+  padding:26px 22px 22px;box-shadow:0 10px 30px rgba(0,0,0,.35);
+  border-top:4px solid var(--akzent)}
+.kicker{margin:0 0 6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--akzent)}
+h1{margin:0 0 4px;font-size:26px;line-height:1.2;font-weight:normal}
+.unter{margin:0 0 18px;font-style:italic;opacity:.8}
+.vorspann{margin:0 0 16px}
+#schloss p{margin:0 0 10px}
+#form{display:flex;gap:8px;flex-wrap:wrap}
+#code{flex:1 1 180px;font:inherit;font-size:20px;letter-spacing:.12em;padding:10px 12px;
+  border:1.5px solid var(--tinte);border-radius:4px;background:#fff;color:var(--tinte);
+  text-transform:uppercase}
+#form button{font:inherit;font-size:17px;padding:10px 18px;border:0;border-radius:4px;
+  background:var(--tinte);color:var(--papier);cursor:pointer}
+#meldung{min-height:1.5em;margin-top:10px;font-style:italic}
+.wackel{animation:wackel .35s}
+@keyframes wackel{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+#inhalt h2{font-weight:normal;font-size:20px;border-bottom:1px solid var(--akzent);
+  padding-bottom:4px;margin:22px 0 10px}
+#inhalt img{max-width:100%;height:auto}
+#inhalt details{border:1px solid rgba(0,0,0,.15);border-radius:4px;padding:8px 12px;margin:10px 0}
+#inhalt summary{cursor:pointer}
+footer{max-width:560px;margin:14px auto 0;text-align:center;font-size:12px;
+  color:var(--papier);opacity:.6}
+</style></head>
+<body>
+<main class="karte">
+<p class="kicker">Ein Krimidinner</p>
+<h1>Mord auf Brackenridge Hall</h1>
+<p class="unter">Die Auflösung</p>
+<div class="vorspann"><p>Erst öffnen, wenn alle ihre Anklage vorgelesen haben.</p></div>
+<div id="schloss">
+<p>Gib den Code ein, um die Seite zu öffnen.</p>
+<form id="form" autocomplete="off">
+<input id="code" name="code" type="text" autocapitalize="characters" autocomplete="off" autocorrect="off"
+ spellcheck="false" aria-label="Code" placeholder="Code">
+<button type="submit">Öffnen</button>
+</form>
+<p id="meldung" aria-live="polite"></p>
+</div>
+<div id="inhalt" hidden></div>
+<noscript><p>Diese Seite braucht JavaScript. Nutzt bitte den gedruckten Notfall-Umschlag.</p></noscript>
+</main>
+<footer>© mathtastic</footer>
+<script>
+(function(){
+var P = {"salz": "Zl4NUNX7sN21/bOumc5fNw==", "nonce": "jcjN2XKshjN8g1fC", "daten": "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", "iter": 100000};
+var schloss = document.getElementById('schloss'), inhalt = document.getElementById('inhalt'),
+    feld = document.getElementById('code'), meldung = document.getElementById('meldung'),
+    form = document.getElementById('form');
+function b64(s){var b=atob(s),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u;}
+function norm(c){return (c||'').toUpperCase().replace(/[^A-Z0-9]/g,'');}
+async function oeffne(code){
+  var enc = new TextEncoder();
+  var basis = await crypto.subtle.importKey('raw', enc.encode(norm(code)), 'PBKDF2', false, ['deriveKey']);
+  var key = await crypto.subtle.deriveKey({name:'PBKDF2', salt:b64(P.salz), iterations:P.iter, hash:'SHA-256'},
+                                          basis, {name:'AES-GCM', length:256}, false, ['decrypt']);
+  var klar = await crypto.subtle.decrypt({name:'AES-GCM', iv:b64(P.nonce)}, key, b64(P.daten));
+  return new TextDecoder().decode(klar);
+}
+function zeige(html){
+  inhalt.innerHTML = html; inhalt.hidden = false; schloss.hidden = true;
+  document.body.classList.add('offen'); window.scrollTo(0,0);
+}
+async function versuche(code, still){
+  if(norm(code).length < 4){ if(!still){ meldung.textContent = "Der Code hat mindestens vier Zeichen."; } return; }
+  meldung.textContent = "Pr\u00fcfe \u2026";
+  try { zeige(await oeffne(code)); meldung.textContent = ''; }
+  catch(e){
+    meldung.textContent = "Dieser Code passt nicht.";
+    form.classList.remove('wackel'); void form.offsetWidth; form.classList.add('wackel');
+  }
+}
+if(!(window.crypto && crypto.subtle && window.TextEncoder)){
+  form.hidden = true; meldung.textContent = "Dieser Browser kann die Seite nicht \u00f6ffnen. Nutzt bitte den gedruckten Notfall-Umschlag."; return;
+}
+form.addEventListener('submit', function(ev){ ev.preventDefault(); versuche(feld.value, false); });
+var m = /[#&]c=([^&]+)/.exec(location.hash);
+if(m){ versuche(decodeURIComponent(m[1]), true); }
+})();
+</script>
+</body></html>
