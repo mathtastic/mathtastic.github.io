@@ -241,7 +241,9 @@ var FORDERN=[
           tipp:'Auf 1 St&uuml;ck kommst du durch <b>Teilen</b>. Danach wird <b>malgenommen</b> '+
                '&mdash; links und rechts mit derselben Zahl.'};},
  function(){var a=[2,4,5][r(0,2)],k=[1.5,2,2.5,3][r(0,3)],b=a*k,x0=r(6,12);
-  return {f:'<b>Umkehraufgabe.</b> Der Punkt ('+a+'&nbsp;|&nbsp;'+DK(b)+') liegt auf einer '+
+  /* Punkt in einer nowrap-Spanne: Nach „|“ bricht Chrome auch vor &nbsp; um (Fund Themenposter 9,
+     11-19; Bugfix hier 11-26, Basti „ja“). */
+  return {f:'<b>Umkehraufgabe.</b> Der Punkt <span style="white-space:nowrap">('+a+'&nbsp;|&nbsp;'+DK(b)+')</span> liegt auf einer '+
             'Ursprungshalbgeraden. Welcher x-Wert geh&ouml;rt zu y = '+DK(k*x0)+'?',typ:'ein',
           pruef:function(v){return nah(v,x0);},
           tipp:'Auf der Ursprungshalbgeraden ist y : x immer gleich, hier '+DK(b)+' : '+a+' = '+DK(k)+'.'};},
